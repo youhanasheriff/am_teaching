@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 import { z } from 'zod';
 
 // Validation schema for contact form
@@ -10,28 +10,8 @@ const contactSchema = z.object({
   message: z.string().min(10, 'Message must be at least 10 characters long'),
 });
 
-// Create nodemailer transporter
-const createTransporter = () => {
-  const smtpHost = process.env.SMTP_HOST;
-  const smtpUser = process.env.SMTP_USER;
-  const smtpPass = process.env.SMTP_PASS;
-  const smtpPort = process.env.SMTP_PORT || '587';
-
-  if (!smtpHost || !smtpUser || !smtpPass) {
-    console.warn('SMTP configuration missing. Email will not be sent.');
-    return null;
-  }
-
-  return nodemailer.createTransporter({
-    host: smtpHost,
-    port: parseInt(smtpPort),
-    secure: smtpPort === '465', // true for 465, false for other ports
-    auth: {
-      user: smtpUser,
-      pass: smtpPass,
-    },
-  });
-};
+// Initialize Resend
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
@@ -42,13 +22,10 @@ export async function POST(request: NextRequest) {
     
     const { name, email, lessonType, message } = validatedData;
     
-    // Create email transporter
-    const transporter = createTransporter();
-    
-    if (!transporter) {
-      // If SMTP is not configured, log the message and return success
-      // This allows the form to work even without email configuration
-      console.log('Contact form submission (SMTP not configured):', {
+    // Check if Resend is configured
+    if (!process.env.RESEND_API_KEY) {
+      // If Resend is not configured, log the message and return success
+      console.log('Contact form submission (Resend not configured):', {
         name,
         email,
         lessonType,
@@ -65,8 +42,8 @@ export async function POST(request: NextRequest) {
     const fromEmail = process.env.CONTACT_FROM_EMAIL || 'noreply@amteachings.com';
     const teacherEmail = process.env.TEACHER_EMAIL || 'aya@amteachings.com';
     
-    // Email to teacher (notification)
-    const teacherEmailOptions = {
+    // Send notification email to teacher
+    const teacherEmailResult = await resend.emails.send({
       from: fromEmail,
       to: teacherEmail,
       subject: `New Contact Form Submission - ${lessonType}`,
@@ -91,10 +68,10 @@ export async function POST(request: NextRequest) {
           </p>
         </div>
       `,
-    };
+    });
     
-    // Confirmation email to user
-    const userEmailOptions = {
+    // Send confirmation email to user
+    const userEmailResult = await resend.emails.send({
       from: fromEmail,
       to: email,
       subject: 'Thank you for contacting AM Teachings!',
@@ -142,15 +119,15 @@ export async function POST(request: NextRequest) {
           </div>
         </div>
       `,
-    };
+    });
     
-    // Send both emails
-    await Promise.all([
-      transporter.sendMail(teacherEmailOptions),
-      transporter.sendMail(userEmailOptions),
-    ]);
-    
-    console.log('Contact form emails sent successfully:', { name, email, lessonType });
+    console.log('Contact form emails sent successfully:', { 
+      name, 
+      email, 
+      lessonType,
+      teacherEmailId: teacherEmailResult.data?.id,
+      userEmailId: userEmailResult.data?.id
+    });
     
     return NextResponse.json({ 
       success: true, 
@@ -165,7 +142,7 @@ export async function POST(request: NextRequest) {
         { 
           success: false, 
           message: 'Invalid form data',
-          errors: error.errors 
+          errors: error.issues 
         },
         { status: 400 }
       );

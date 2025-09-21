@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useSession, signOut } from 'next-auth/react';
 import { Button } from '@/components/ui/Button';
 
 const navigation = [
@@ -18,6 +19,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const { data: session } = useSession();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,11 +71,32 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* CTA Button */}
+        {/* Auth & CTA Buttons */}
         <div className="flex items-center space-x-4">
-          <Link href="/booking" className="hidden sm:block">
-            <Button size="sm">Book Now</Button>
-          </Link>
+          {session ? (
+            <div className="hidden sm:flex items-center space-x-3">
+              <Link href="/dashboard" className="text-sm font-medium text-gray-600 hover:text-brand">
+                Dashboard
+              </Link>
+              <span className="text-sm text-gray-500">Hi, {session.user?.name || 'User'}</span>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => signOut({ callbackUrl: '/' })}
+              >
+                Sign Out
+              </Button>
+            </div>
+          ) : (
+            <div className="hidden sm:flex items-center space-x-3">
+              <Link href="/auth/signin" className="text-sm font-medium text-gray-600 hover:text-brand">
+                Sign In
+              </Link>
+              <Link href="/booking">
+                <Button size="sm">Book Now</Button>
+              </Link>
+            </div>
+          )}
 
           {/* Mobile menu button */}
           <button
@@ -130,10 +153,32 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
-            <div className="mt-6 pt-4 border-t border-gray-200">
-              <Link href="/booking" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full justify-center">Book Now</Button>
-              </Link>
+            <div className="mt-6 pt-4 border-t border-gray-200 space-y-3">
+              {session ? (
+                <>
+                  <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}>
+                    <Button variant="outline" className="w-full justify-center">Dashboard</Button>
+                  </Link>
+                  <Button 
+                    className="w-full justify-center" 
+                    onClick={() => {
+                      signOut({ callbackUrl: '/' });
+                      setMobileMenuOpen(false);
+                    }}
+                  >
+                    Sign Out
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Link href="/auth/signin" onClick={() => setMobileMenuOpen(false)}>
+                    <Button variant="outline" className="w-full justify-center">Sign In</Button>
+                  </Link>
+                  <Link href="/booking" onClick={() => setMobileMenuOpen(false)}>
+                    <Button className="w-full justify-center">Book Now</Button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

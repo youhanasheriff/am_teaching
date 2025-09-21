@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 // Simple markdown-like content renderer
 function renderContent(content: string) {
   // Basic markdown parsing - in a real app you'd use a proper markdown parser
-  let html = content
+  const html = content
     // Headers
     .replace(/^### (.*$)/gim, '<h3 class="text-xl font-semibold text-gray-900 mb-4 mt-8">$1</h3>')
     .replace(/^## (.*$)/gim, '<h2 class="text-2xl font-bold text-gray-900 mb-6 mt-10">$1</h2>')
@@ -58,7 +58,7 @@ function renderContent(content: string) {
     
     // Lists
     .replace(/^\- (.*$)/gim, '<li class="mb-2">$1</li>')
-    .replace(/(<li class="mb-2">.*<\/li>)/s, '<ul class="list-disc list-inside space-y-2 mb-4 ml-4">$1</ul>')
+    .replace(/(<li class="mb-2">.*<\/li>)/g, '<ul class="list-disc list-inside space-y-2 mb-4 ml-4">$1</ul>')
     
     // Paragraphs
     .replace(/^(?!<[h|u|l])(.*$)/gim, '<p class="mb-4 text-gray-700 leading-relaxed">$1</p>')

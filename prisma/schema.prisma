@@ -27,13 +27,19 @@ model Booking {
   id              String   @id @default(cuid())
   user            User?    @relation(fields: [userId], references: [id])
   userId          String?
-  lessonType      String   // "general" | "ielts"
+  lessonType      String   // "individual" | "group" | "general"
   durationMin     Int
-  provider        String   // "cal" | "calendly"
+  provider        String   @default("cal") // "cal" | "calendly"
   providerEventId String?
   meetLink        String?
   start           DateTime?
   end             DateTime?
+  date            String?  // Date string for booking
+  time            String?  // Time string for booking
+  notes           String?
+  status          String   @default("pending") // "pending" | "confirmed" | "cancelled"
+  paymentId       String?  // Stripe payment intent ID
+  amount          Int?     // Amount in cents
   createdAt       DateTime @default(now())
 }
 
