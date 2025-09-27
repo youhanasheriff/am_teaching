@@ -40,20 +40,8 @@ function EnglishLevelsSection() {
       title: tServices('beginnerTitle'),
       subtitle: tServices('beginnerSubtitle'),
       description: tServices('beginnerDescription'),
-      features: [
-        'Basic grammar structures and sentence formation',
-        'Essential vocabulary for daily conversations',
-        'Pronunciation and listening skills development',
-        'Simple reading and writing exercises',
-        'Numbers, dates, and time expressions',
-        'Introductions and basic personal information'
-      ],
-      outcomes: [
-        'Understand and use basic English phrases',
-        'Introduce yourself and ask simple questions',
-        'Handle basic everyday situations',
-        'Build confidence in speaking English'
-      ],
+      features: tServices.raw('beginnerFeatures') as string[],
+      outcomes: tServices.raw('beginnerOutcomes') as string[],
       duration: tServices('beginnerDuration'),
       icon: '🌱',
       color: 'from-green-100 to-green-50'
@@ -62,20 +50,8 @@ function EnglishLevelsSection() {
       title: tServices('intermediateTitle'),
       subtitle: tServices('intermediateSubtitle'),
       description: tServices('intermediateDescription'),
-      features: [
-        'Complex grammar patterns and tenses',
-        'Expanded vocabulary and idiomatic expressions',
-        'Conversational skills and discussion topics',
-        'Reading comprehension with longer texts',
-        'Email writing and formal communication',
-        'Listening to native speaker materials',
-      ],
-      outcomes: [
-        'Communicate fluently in most situations',
-        'Express opinions and participate in discussions',
-        'Understand movies, news, and podcasts',
-        'Write clear and detailed texts',
-      ],
+      features: tServices.raw('intermediateFeatures') as string[],
+      outcomes: tServices.raw('intermediateOutcomes') as string[],
       duration: tServices('intermediateDuration'),
       icon: '🚀',
       color: 'from-blue-100 to-blue-50',
@@ -84,20 +60,8 @@ function EnglishLevelsSection() {
       title: tServices('advancedTitle'),
       subtitle: tServices('advancedSubtitle'),
       description: tServices('advancedDescription'),
-      features: [
-        'Advanced grammar and complex structures',
-        'Sophisticated vocabulary and nuanced expressions',
-        'Business and academic English skills',
-        'Critical thinking and argumentation',
-        'Advanced writing techniques',
-        'Cultural context and native-like fluency',
-      ],
-      outcomes: [
-        'Express yourself fluently and precisely',
-        'Handle complex professional situations',
-        'Understand implicit meaning and nuance',
-        'Produce sophisticated written work',
-      ],
+      features: tServices.raw('advancedFeatures') as string[],
+      outcomes: tServices.raw('advancedOutcomes') as string[],
       duration: tServices('advancedDuration'),
       icon: '🎯',
       color: 'from-purple-100 to-purple-50',
@@ -194,45 +158,25 @@ function IELTSSection() {
     {
       title: tServices('ielts.listeningTitle'),
       description: tServices('ielts.listeningDescription'),
-      skills: [
-        'Note-taking techniques',
-        'Predicting answers',
-        'Understanding accents',
-        'Time management',
-      ],
+      skills: tServices.raw('ielts.listeningSkills') as string[],
       icon: '👂',
     },
     {
       title: tServices('ielts.readingTitle'),
       description: tServices('ielts.readingDescription'),
-      skills: [
-        'Skimming and scanning',
-        'Question types mastery',
-        'Time allocation',
-        'Vocabulary building',
-      ],
+      skills: tServices.raw('ielts.readingSkills') as string[],
       icon: '📚',
     },
     {
       title: tServices('ielts.writingTitle'),
       description: tServices('ielts.writingDescription'),
-      skills: [
-        'Task achievement',
-        'Coherence and cohesion',
-        'Lexical resource',
-        'Grammar accuracy',
-      ],
+      skills: tServices.raw('ielts.writingSkills') as string[],
       icon: '✍️',
     },
     {
       title: tServices('ielts.speakingTitle'),
       description: tServices('ielts.speakingDescription'),
-      skills: [
-        'Fluency development',
-        'Pronunciation practice',
-        'Vocabulary expansion',
-        'Exam strategies',
-      ],
+      skills: tServices.raw('ielts.speakingSkills') as string[],
       icon: '🗣️',
     },
   ];
@@ -302,12 +246,9 @@ function IELTSSection() {
             <div className="space-y-4">
               <h4 className="font-semibold">{tServices('ielts.programIncludes')}</h4>
               <ul className="space-y-2 text-blue-100">
-                <li>✓ Full-length practice tests</li>
-                <li>✓ Detailed feedback and scoring</li>
-                <li>✓ Exam strategies and time management</li>
-                <li>✓ Mock interviews and speaking practice</li>
-                <li>✓ Writing samples and model answers</li>
-                <li>✓ Ongoing support until test day</li>
+                { (tServices.raw('ielts.programFeatures') as string[]).map((feature, i) => (
+                  <li key={i}>✓ {feature}</li>
+                ))}
               </ul>
               <Link href="/contact">
                 <Button
@@ -333,34 +274,19 @@ function SpecializedServicesSection() {
     {
       title: tServices('specialized.businessTitle'),
       description: tServices('specialized.businessDescription'),
-      features: [
-        'Meeting participation',
-        'Email writing',
-        'Presentation skills',
-        'Negotiation language',
-      ],
+      features: tServices.raw('specialized.businessFeatures') as string[],
       icon: '💼',
     },
     {
       title: tServices('specialized.academicTitle'),
       description: tServices('specialized.academicDescription'),
-      features: [
-        'Essay writing',
-        'Research skills',
-        'Academic vocabulary',
-        'Citation techniques',
-      ],
+      features: tServices.raw('specialized.academicFeatures') as string[],
       icon: '🎓',
     },
     {
       title: tServices('specialized.conversationTitle'),
       description: tServices('specialized.conversationDescription'),
-      features: [
-        'Natural conversation',
-        'Pronunciation practice',
-        'Idioms and expressions',
-        'Cultural context',
-      ],
+      features: tServices.raw('specialized.conversationFeatures') as string[],
       icon: '💬',
     },
   ];
