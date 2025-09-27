@@ -107,23 +107,6 @@
       "contactButton": "Have Questions? Contact Me"
     }
   },
-  "services": {
-    "title": "English Learning Services",
-    "subtitle": "From beginner foundations to advanced fluency and IELTS mastery. Choose the perfect program to achieve your English learning goals.",
-    "generalEnglish": "General English",
-    "spokenEnglish": "Spoken English", 
-    "ieltsPreparation": "IELTS Preparation",
-    "ielts": {
-      "title": "IELTS Preparation Program",
-      "description": "Comprehensive IELTS training with a 95% success rate. Get the score you need for university admission, immigration, or career advancement.",
-      "score": "Band 8.5",
-      "scoreLabel": "IELTS Score",
-      "successRate": "95%",
-      "successRateLabel": "Success Rate",
-      "duration": "2-4",
-      "durationLabel": "Months to Target"
-    }
-  },
   "contact": {
     "title": "Contact Aya Mohsen",
     "subtitle": "Have questions about English lessons or IELTS preparation? I'm here to help you succeed in your language learning journey.",
