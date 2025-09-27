@@ -1,11 +1,14 @@
+'use client';
+
 import Link from 'next/link';
+import { Mail, Globe, Clock, MessageCircle, Linkedin, Youtube } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
 
 const navigation = {
   main: [
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Pricing', href: '/pricing' },
     { name: 'Contact', href: '/contact' },
   ],
   legal: [
@@ -16,33 +19,23 @@ const navigation = {
     {
       name: 'LinkedIn',
       href: '#',
-      icon: (
-        <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-          <path
-            fillRule="evenodd"
-            d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
-            clipRule="evenodd"
-          />
-        </svg>
-      ),
+      icon: <Linkedin className="h-6 w-6" />,
     },
     {
       name: 'YouTube',
       href: '#',
-      icon: (
-        <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-          <path
-            fillRule="evenodd"
-            d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
-            clipRule="evenodd"
-          />
-        </svg>
-      ),
+      icon: <Youtube className="h-6 w-6" />,
     },
   ],
 };
 
 export default function Footer() {
+  const handleWhatsAppContact = () => {
+    const phoneNumber = '+1234567890'; // Replace with actual WhatsApp number
+    const message = encodeURIComponent('Hello! I found your website and I\'m interested in English lessons. Could you please provide more information?');
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
   return (
     <footer className="bg-gray-900" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -65,6 +58,26 @@ export default function Footer() {
               Empowering students to achieve fluency in English and excel in IELTS exams through 
               personalized, effective teaching methods with Aya Mohsen.
             </p>
+            
+            {/* WhatsApp Contact */}
+            <div className="bg-green-900/30 border border-green-800 rounded-lg p-4">
+              <div className="flex items-center space-x-3 mb-3">
+                <MessageCircle className="h-5 w-5 text-green-400" />
+                <span className="text-sm font-medium text-green-400">Quick Contact</span>
+              </div>
+              <p className="text-gray-300 text-sm mb-3">
+                Get instant responses via WhatsApp
+              </p>
+              <Button 
+                onClick={handleWhatsAppContact}
+                size="sm"
+                className="bg-green-600 hover:bg-green-700 text-white flex items-center space-x-2"
+              >
+                <MessageCircle className="h-4 w-4" />
+                <span>Message on WhatsApp</span>
+              </Button>
+            </div>
+
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
                 <Link
@@ -99,19 +112,22 @@ export default function Footer() {
               <div className="mt-10 md:mt-0">
                 <h3 className="text-sm font-semibold leading-6 text-white">Contact</h3>
                 <ul role="list" className="mt-6 space-y-4">
-                  <li>
+                  <li className="flex items-center space-x-2">
+                    <Mail className="h-4 w-4 text-gray-400" />
                     <span className="text-sm leading-6 text-gray-400">
-                      📧 aya@amteachings.com
+                      ayamohsen57@gmail.com
                     </span>
                   </li>
-                  <li>
+                  <li className="flex items-center space-x-2">
+                    <Globe className="h-4 w-4 text-gray-400" />
                     <span className="text-sm leading-6 text-gray-400">
-                      🌍 Online Lessons Worldwide
+                      Online Lessons Worldwide
                     </span>
                   </li>
-                  <li>
+                  <li className="flex items-center space-x-2">
+                    <Clock className="h-4 w-4 text-gray-400" />
                     <span className="text-sm leading-6 text-gray-400">
-                      🕒 Available 7 days a week
+                      Available 7 days a week
                     </span>
                   </li>
                 </ul>
@@ -123,18 +139,18 @@ export default function Footer() {
                 <ul role="list" className="mt-6 space-y-4">
                   <li>
                     <Link
-                      href="/booking"
+                      href="/contact"
                       className="text-sm leading-6 text-brand hover:text-brand-dark transition-colors duration-200 font-medium"
                     >
-                      Book a Lesson →
+                      Contact Me →
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="/services#ielts"
+                      href="/services"
                       className="text-sm leading-6 text-gray-400 hover:text-brand transition-colors duration-200"
                     >
-                      IELTS Preparation
+                      Teaching Services
                     </Link>
                   </li>
                   <li>

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Input, Textarea, Label } from '@/components/ui/Input';
+import { Mail, Clock, Globe, MessageCircle, Linkedin, Youtube, Send, Phone, MapPin, CheckCircle, AlertCircle } from 'lucide-react';
 
 interface FormData {
   name: string;
@@ -16,6 +17,7 @@ interface FormErrors {
   name?: string;
   email?: string;
   message?: string;
+  general?: string;
 }
 
 function ContactForm() {
@@ -32,18 +34,31 @@ function ContactForm() {
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
+    // Enhanced validation
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters';
+    } else if (formData.name.trim().length > 100) {
+      newErrors.name = 'Name is too long (max 100 characters)';
+    } else if (!/^[a-zA-Z\s]+$/.test(formData.name.trim())) {
+      newErrors.name = 'Name can only contain letters and spaces';
     }
 
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email address';
+    } else if (formData.email.length > 255) {
+      newErrors.email = 'Email is too long';
     }
 
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
+    } else if (formData.message.trim().length > 2000) {
+      newErrors.message = 'Message is too long (max 2000 characters)';
     }
 
     setErrors(newErrors);
@@ -59,6 +74,7 @@ function ContactForm() {
 
     setIsSubmitting(true);
     setSubmitStatus('idle');
+    setErrors({});
 
     try {
       const response = await fetch('/api/contact', {
@@ -69,7 +85,9 @@ function ContactForm() {
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         setSubmitStatus('success');
         setFormData({
           name: '',
@@ -79,10 +97,20 @@ function ContactForm() {
         });
       } else {
         setSubmitStatus('error');
+        if (result.details) {
+          const fieldErrors: FormErrors = {};
+          result.details.forEach((detail: any) => {
+            fieldErrors[detail.field as keyof FormErrors] = detail.message;
+          });
+          setErrors(fieldErrors);
+        } else {
+          setErrors({ general: result.error || 'An error occurred. Please try again.' });
+        }
       }
     } catch (error) {
       console.error('Error submitting form:', error);
       setSubmitStatus('error');
+      setErrors({ general: 'Network error. Please check your connection and try again.' });
     } finally {
       setIsSubmitting(false);
     }
@@ -98,36 +126,43 @@ function ContactForm() {
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({
         ...prev,
-        [name]: undefined
+        [name]: ''
       }));
     }
   };
 
   return (
-    <Card className="w-full">
-      <CardHeader>
-        <CardTitle className="text-2xl font-bold text-gray-900">
-          Send Me a Message
+    <Card className="w-full shadow-lg">
+      <CardHeader className="bg-gradient-to-r from-brand/5 to-blue-50">
+        <CardTitle className="text-2xl font-bold text-gray-900 flex items-center space-x-2">
+          <Send className="h-6 w-6 text-brand" />
+          <span>Send Me a Message</span>
         </CardTitle>
         <p className="text-gray-600">
-          Have questions about lessons or want to get started? I&apos;d love to hear from you!
+          Have questions about lessons or want to get started? I'd love to hear from you!
         </p>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-6">
         <form onSubmit={handleSubmit} className="space-y-6">
           {submitStatus === 'success' && (
-            <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-              <p className="text-green-800">
-                Thank you for your message! I&apos;ll get back to you within 24 hours.
-              </p>
+            <div className="p-4 bg-green-50 border border-green-200 rounded-lg flex items-start space-x-3">
+              <CheckCircle className="h-5 w-5 text-green-600 mt-0.5" />
+              <div>
+                <p className="text-green-800 font-medium">Message sent successfully!</p>
+                <p className="text-green-700 text-sm">I'll get back to you within 24 hours.</p>
+              </div>
             </div>
           )}
 
           {submitStatus === 'error' && (
-            <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-red-800">
-                Sorry, there was an error sending your message. Please try again.
-              </p>
+            <div className="p-4 bg-red-50 border border-red-200 rounded-lg flex items-start space-x-3">
+              <AlertCircle className="h-5 w-5 text-red-600 mt-0.5" />
+              <div>
+                <p className="text-red-800 font-medium">Error sending message</p>
+                <p className="text-red-700 text-sm">
+                  {errors.general || 'Please try again or contact me directly via WhatsApp.'}
+                </p>
+              </div>
             </div>
           )}
 
@@ -142,11 +177,15 @@ function ContactForm() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className={`w-full ${errors.name ? 'border-red-500' : ''}`}
+                className={`w-full ${errors.name ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                 placeholder="Your full name"
+                maxLength={100}
               />
               {errors.name && (
-                <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+                <p className="mt-1 text-sm text-red-600 flex items-center space-x-1">
+                  <AlertCircle className="h-3 w-3" />
+                  <span>{errors.name}</span>
+                </p>
               )}
             </div>
 
@@ -160,11 +199,15 @@ function ContactForm() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full ${errors.email ? 'border-red-500' : ''}`}
+                className={`w-full ${errors.email ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
                 placeholder="your.email@example.com"
+                maxLength={255}
               />
               {errors.email && (
-                <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                <p className="mt-1 text-sm text-red-600 flex items-center space-x-1">
+                  <AlertCircle className="h-3 w-3" />
+                  <span>{errors.email}</span>
+                </p>
               )}
             </div>
           </div>
@@ -182,6 +225,8 @@ function ContactForm() {
             >
               <option value="general">General English Lessons</option>
               <option value="ielts">IELTS Preparation</option>
+              <option value="individual">Individual Lessons</option>
+              <option value="group">Group Lessons</option>
               <option value="business">Business English</option>
               <option value="conversation">Conversation Practice</option>
               <option value="other">Other</option>
@@ -198,20 +243,32 @@ function ContactForm() {
               value={formData.message}
               onChange={handleChange}
               rows={5}
-              className={`w-full ${errors.message ? 'border-red-500' : ''}`}
+              className={`w-full ${errors.message ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
               placeholder="Tell me about your English learning goals, current level, or any specific questions you have..."
+              maxLength={2000}
             />
-            {errors.message && (
-              <p className="mt-1 text-sm text-red-600">{errors.message}</p>
-            )}
+            <div className="flex justify-between items-center mt-1">
+              {errors.message ? (
+                <p className="text-sm text-red-600 flex items-center space-x-1">
+                  <AlertCircle className="h-3 w-3" />
+                  <span>{errors.message}</span>
+                </p>
+              ) : (
+                <span></span>
+              )}
+              <span className="text-xs text-gray-500">
+                {formData.message.length}/2000 characters
+              </span>
+            </div>
           </div>
 
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full md:w-auto"
+            className="w-full md:w-auto flex items-center justify-center space-x-2 min-w-[200px]"
           >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
+            <Send className="h-4 w-4" />
+            <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
           </Button>
         </form>
       </CardContent>
@@ -219,63 +276,114 @@ function ContactForm() {
   );
 }
 
-function ContactInfo() {
-  const contactDetails = [
-    {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      ),
-      title: 'Email',
-      content: 'aya@amteachings.com',
-      description: 'Send me an email anytime'
-    },
-    {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
-      title: 'Response Time',
-      content: 'Within 24 hours',
-      description: 'I typically respond quickly'
-    },
-    {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9" />
-        </svg>
-      ),
-      title: 'Availability',
-      content: '7 days a week',
-      description: 'Flexible scheduling worldwide'
-    }
-  ];
+function ContactMethods() {
+  const handleWhatsAppContact = () => {
+    const phoneNumber = '+1234567890'; // Replace with actual WhatsApp number
+    const message = encodeURIComponent('Hello Aya! I found your website and I\'m interested in English lessons. Could you please provide more information?');
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
+  const handleEmailContact = () => {
+    const email = 'ayamohsen57@gmail.com';
+    const subject = encodeURIComponent('English Lessons Inquiry');
+    const body = encodeURIComponent('Hello Aya,\n\nI\'m interested in learning more about your English teaching services.\n\nBest regards,');
+    window.open(`mailto:${email}?subject=${subject}&body=${body}`, '_blank');
+  };
 
   return (
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-gray-900 mb-4">Get in Touch</h2>
         <p className="text-gray-600 mb-6">
-          Ready to start your English learning journey? I&apos;m here to help you achieve your language goals.
+          Ready to start your English learning journey? Choose your preferred contact method below.
         </p>
       </div>
 
-      <div className="space-y-4">
-        {contactDetails.map((detail, index) => (
-          <div key={index} className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
-            <div className="flex-shrink-0 w-10 h-10 bg-brand text-white rounded-lg flex items-center justify-center">
-              {detail.icon}
+      {/* WhatsApp Contact - Primary Method */}
+      <Card className="border-green-200 bg-gradient-to-r from-green-50 to-emerald-50 shadow-lg">
+        <CardContent className="pt-6">
+          <div className="flex items-center space-x-4 mb-4">
+            <div className="flex-shrink-0 w-14 h-14 bg-green-600 text-white rounded-xl flex items-center justify-center shadow-lg">
+              <MessageCircle className="h-7 w-7" />
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900">{detail.title}</h3>
-              <p className="text-brand font-medium">{detail.content}</p>
-              <p className="text-sm text-gray-600">{detail.description}</p>
+              <h3 className="font-bold text-gray-900 text-lg">WhatsApp (Preferred)</h3>
+              <p className="text-green-700 font-medium">Instant messaging & quick responses</p>
+              <p className="text-sm text-green-600">Get answers within minutes, not hours</p>
             </div>
           </div>
-        ))}
+          <Button 
+            onClick={handleWhatsAppContact}
+            className="w-full bg-green-600 hover:bg-green-700 flex items-center justify-center space-x-2 text-lg py-3"
+          >
+            <MessageCircle className="h-5 w-5" />
+            <span>Start WhatsApp Conversation</span>
+          </Button>
+        </CardContent>
+      </Card>
+
+      {/* Email Contact */}
+      <Card className="border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50 shadow-lg">
+        <CardContent className="pt-6">
+          <div className="flex items-center space-x-4 mb-4">
+            <div className="flex-shrink-0 w-14 h-14 bg-blue-600 text-white rounded-xl flex items-center justify-center shadow-lg">
+              <Mail className="h-7 w-7" />
+            </div>
+            <div>
+              <h3 className="font-bold text-gray-900 text-lg">Email</h3>
+              <p className="text-blue-700 font-medium">ayamohsen57@gmail.com</p>
+              <p className="text-sm text-blue-600">Professional email communication</p>
+            </div>
+          </div>
+          <Button 
+            onClick={handleEmailContact}
+            variant="outline"
+            className="w-full border-blue-300 text-blue-700 hover:bg-blue-50 flex items-center justify-center space-x-2 text-lg py-3"
+          >
+            <Mail className="h-5 w-5" />
+            <span>Send Email</span>
+          </Button>
+        </CardContent>
+      </Card>
+
+      {/* Contact Information */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
+          <Clock className="h-6 w-6 text-brand" />
+          <div>
+            <h4 className="font-semibold text-gray-900">Response Time</h4>
+            <p className="text-sm text-gray-600">Within 24 hours</p>
+          </div>
+        </div>
+        <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
+          <Globe className="h-6 w-6 text-brand" />
+          <div>
+            <h4 className="font-semibold text-gray-900">Availability</h4>
+            <p className="text-sm text-gray-600">7 days a week</p>
+          </div>
+        </div>
+        <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
+          <MapPin className="h-6 w-6 text-brand" />
+          <div>
+            <h4 className="font-semibold text-gray-900">Location</h4>
+            <p className="text-sm text-gray-600">Online worldwide</p>
+          </div>
+        </div>
       </div>
+    </div>
+  );
+}
+
+function ContactFormSection() {
+  return (
+    <div className="space-y-6">
+      <div>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Form</h2>
+        <p className="text-gray-600 mb-6">
+          Prefer to send a detailed message? Use the form below and I'll respond via email.
+        </p>
+      </div>
+      <ContactForm />
     </div>
   );
 }
@@ -285,41 +393,43 @@ function SocialLinks() {
     {
       name: 'LinkedIn',
       href: '#',
-      icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clipRule="evenodd" />
-        </svg>
-      ),
-      color: 'hover:text-blue-600'
+      icon: <Linkedin className="h-6 w-6" />,
+      color: 'hover:text-blue-600 hover:bg-blue-50',
+      description: 'Professional network'
     },
     {
       name: 'YouTube',
       href: '#',
-      icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" clipRule="evenodd" />
-        </svg>
-      ),
-      color: 'hover:text-red-600'
+      icon: <Youtube className="h-6 w-6" />,
+      color: 'hover:text-red-600 hover:bg-red-50',
+      description: 'Educational videos'
     }
   ];
 
   return (
-    <div className="text-center">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Connect With Me</h3>
-      <div className="flex justify-center space-x-4">
-        {socialLinks.map((link) => (
-          <a
-            key={link.name}
-            href={link.href}
-            className={`p-3 bg-gray-100 rounded-full text-gray-600 transition-colors duration-200 ${link.color}`}
-            aria-label={link.name}
-          >
-            {link.icon}
-          </a>
-        ))}
-      </div>
-    </div>
+    <Card className="shadow-lg">
+      <CardContent className="pt-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">Connect on Social Media</h3>
+        <div className="flex justify-center space-x-4">
+          {socialLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className={`p-4 bg-gray-100 rounded-xl text-gray-600 transition-all duration-200 ${link.color} group`}
+              aria-label={link.name}
+              title={link.description}
+            >
+              <div className="group-hover:scale-110 transition-transform duration-200">
+                {link.icon}
+              </div>
+            </a>
+          ))}
+        </div>
+        <p className="text-center text-sm text-gray-500 mt-4">
+          Follow for English learning tips and updates
+        </p>
+      </CardContent>
+    </Card>
   );
 }
 
@@ -329,22 +439,55 @@ export default function ContactPageClient() {
       <div className="container">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Contact Me
+            Contact Aya Mohsen
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Have questions about English lessons or IELTS preparation? 
-            I&apos;m here to help you succeed in your language learning journey.
+            I'm here to help you succeed in your language learning journey.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+          {/* Contact Methods - Left Column */}
           <div>
-            <ContactForm />
+            <ContactMethods />
           </div>
-          <div className="space-y-8">
-            <ContactInfo />
-            <SocialLinks />
+          
+          {/* Contact Form - Right Column */}
+          <div>
+            <ContactFormSection />
           </div>
+        </div>
+
+        {/* Social Links */}
+        <div className="max-w-md mx-auto mt-12">
+          <SocialLinks />
+        </div>
+
+        {/* Additional Help Section */}
+        <div className="max-w-4xl mx-auto mt-16">
+          <Card className="bg-gradient-to-r from-brand/5 to-blue-50 border-brand/20">
+            <CardContent className="pt-6 text-center">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Need Immediate Assistance?
+              </h3>
+              <p className="text-gray-600 mb-6">
+                For urgent questions or immediate support, WhatsApp is the fastest way to reach me.
+              </p>
+              <Button 
+                onClick={() => {
+                  const phoneNumber = '+1234567890';
+                  const message = encodeURIComponent('Hello Aya! I need immediate assistance with English learning. Could you help me?');
+                  window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+                }}
+                size="lg"
+                className="bg-green-600 hover:bg-green-700 flex items-center space-x-2"
+              >
+                <MessageCircle className="h-5 w-5" />
+                <span>WhatsApp for Urgent Help</span>
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

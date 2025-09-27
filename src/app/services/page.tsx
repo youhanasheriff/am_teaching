@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { MessageCircle, Sprout, Rocket, Target, Trophy, CheckCircle, Clock, Users, User, BookOpen, Award } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'English Learning Services | AM Teachings - All Levels & IELTS Preparation',
@@ -22,14 +23,10 @@ function HeroSection() {
             Choose the perfect program to achieve your English learning goals.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Link href="/booking">
-              <Button size="lg" className="w-full sm:w-auto">
-                Book a Free Consultation
-              </Button>
-            </Link>
-            <Link href="/pricing">
-              <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                View Pricing Plans
+            <Link href="/contact">
+              <Button size="lg" className="w-full sm:w-auto flex items-center space-x-2">
+                <MessageCircle className="h-5 w-5" />
+                <span>Contact Me</span>
               </Button>
             </Link>
           </div>
@@ -163,9 +160,9 @@ function EnglishLevelsSection() {
                         </li>
                       ))}
                     </ul>
-                    <Link href="/booking">
+                    <Link href="/contact">
                       <Button className="w-full sm:w-auto">
-                        Start {level.title}
+                        Contact for {level.title}
                       </Button>
                     </Link>
                   </div>
@@ -278,13 +275,13 @@ function IELTSSection() {
                 <li>✓ Writing samples and model answers</li>
                 <li>✓ Ongoing support until test day</li>
               </ul>
-              <Link href="/booking">
+              <Link href="/contact">
                 <Button 
                   size="lg" 
                   variant="secondary" 
                   className="bg-white text-brand hover:bg-gray-50"
                 >
-                  Start IELTS Preparation
+                  Contact for IELTS Prep
                 </Button>
               </Link>
             </div>
@@ -342,9 +339,9 @@ function SpecializedServicesSection() {
                     <li key={i}>• {feature}</li>
                   ))}
                 </ul>
-                <Link href="/booking">
+                <Link href="/contact">
                   <Button variant="outline" className="w-full">
-                    Learn More
+                    Contact Me
                   </Button>
                 </Link>
               </CardContent>
@@ -365,17 +362,12 @@ function CTASection() {
             Ready to Begin Your English Journey?
           </h2>
           <p className="text-xl text-gray-600">
-            Book a free consultation to discuss your goals and find the perfect program for you.
+            Contact me to discuss your goals and find the perfect program for you.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Link href="/booking">
-              <Button size="lg" className="w-full sm:w-auto">
-                Book Free Consultation
-              </Button>
-            </Link>
             <Link href="/contact">
-              <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                Ask Questions
+              <Button size="lg" className="w-full sm:w-auto">
+                Contact Me Now
               </Button>
             </Link>
           </div>

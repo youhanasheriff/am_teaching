@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { getBlogPosts } from '@/lib/blog';
+import { Trophy, BookOpen, MessageSquare, Calendar, User, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'English Learning Blog | AM Teachings - Tips, Strategies & Resources',
@@ -41,8 +42,8 @@ export default function BlogPage() {
           <div className="grid gap-6 md:grid-cols-3">
             <Card className="group text-center cursor-pointer hover:shadow-xl transition-shadow duration-200">
               <CardContent className="pt-6">
-                <div className="text-4xl group-hover:scale-110 transition-transform duration-200 mb-3">
-                  🏆
+                <div className="text-brand group-hover:scale-110 transition-transform duration-200 mb-3 flex justify-center">
+                  <Trophy className="h-10 w-10" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">IELTS Preparation</h3>
                 <p className="text-gray-600 text-sm mb-4">
@@ -55,8 +56,8 @@ export default function BlogPage() {
             </Card>
             <Card className="group text-center cursor-pointer hover:shadow-xl transition-shadow duration-200">
               <CardContent className="pt-6">
-                <div className="text-4xl group-hover:scale-110 transition-transform duration-200 mb-3">
-                  💬
+                <div className="text-brand group-hover:scale-110 transition-transform duration-200 mb-3 flex justify-center">
+                  <MessageSquare className="h-10 w-10" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">Speaking Skills</h3>
                 <p className="text-gray-600 text-sm mb-4">
@@ -69,8 +70,8 @@ export default function BlogPage() {
             </Card>
             <Card className="group text-center cursor-pointer hover:shadow-xl transition-shadow duration-200">
               <CardContent className="pt-6">
-                <div className="text-4xl group-hover:scale-110 transition-transform duration-200 mb-3">
-                  📚
+                <div className="text-brand group-hover:scale-110 transition-transform duration-200 mb-3 flex justify-center">
+                  <BookOpen className="h-10 w-10" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">Grammar Guide</h3>
                 <p className="text-gray-600 text-sm mb-4">
@@ -99,11 +100,11 @@ export default function BlogPage() {
               <Card key={post.id} className="group overflow-hidden bg-white">
                 <div className="p-2">
                   <div className="aspect-[16/10] bg-gradient-to-br from-brand/10 to-accent/5 rounded-lg flex items-center justify-center">
-                    <div className="text-6xl opacity-20">
-                      {post.category === 'IELTS Preparation' && '🏆'}
-                      {post.category === 'Speaking Skills' && '💬'}
-                      {post.category === 'Grammar' && '📚'}
-                      {!['IELTS Preparation', 'Speaking Skills', 'Grammar'].includes(post.category) && '📝'}
+                    <div className="text-brand/30">
+                      {post.category === 'IELTS Preparation' && <Trophy className="h-16 w-16" />}
+                      {post.category === 'Speaking Skills' && <MessageSquare className="h-16 w-16" />}
+                      {post.category === 'Grammar' && <BookOpen className="h-16 w-16" />}
+                      {!['IELTS Preparation', 'Speaking Skills', 'Grammar'].includes(post.category) && <BookOpen className="h-16 w-16" />}
                     </div>
                   </div>
                 </div>
@@ -125,18 +126,23 @@ export default function BlogPage() {
                     {post.excerpt}
                   </p>
                   <div className="flex items-center justify-between">
-                    <div className="text-sm text-gray-500">
-                      By {post.author} • {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                    <div className="text-sm text-gray-500 flex items-center space-x-1">
+                      <User className="h-3 w-3" />
+                      <span>By {post.author}</span>
+                      <span>•</span>
+                      <Calendar className="h-3 w-3" />
+                      <span>{new Date(post.publishedAt).toLocaleDateString('en-US', {
                         month: 'short',
                         day: 'numeric',
                         year: 'numeric'
-                      })}
+                      })}</span>
                     </div>
                     <Link 
                       href={`/blog/${post.slug}`}
-                      className="text-brand font-medium text-sm hover:text-brand-dark transition-colors duration-200"
+                      className="text-brand font-medium text-sm hover:text-brand-dark transition-colors duration-200 flex items-center space-x-1"
                     >
-                      Read More →
+                      <span>Read More</span>
+                      <ArrowRight className="h-3 w-3" />
                     </Link>
                   </div>
                   <div className="flex flex-wrap gap-2 mt-4">

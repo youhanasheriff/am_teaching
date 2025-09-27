@@ -3,15 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useSession, signOut } from 'next-auth/react';
 import { Button } from '@/components/ui/Button';
+import { Menu, X, MessageCircle } from 'lucide-react';
 
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Services', href: '/services' },
   { name: 'Blog', href: '/blog' },
-  { name: 'Pricing', href: '/pricing' },
   { name: 'Contact', href: '/contact' },
 ];
 
@@ -19,7 +18,6 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const { data: session } = useSession();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +30,14 @@ export default function Navbar() {
 
   const isActive = (href: string) => {
     return pathname === href;
+  };
+
+  const handleWhatsAppContact = () => {
+    const phoneNumber = '+1234567890'; // Replace with actual WhatsApp number
+    const message = encodeURIComponent(
+      "Hello! I'm interested in English lessons. Could you please provide more information?"
+    );
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
   return (
@@ -49,14 +55,16 @@ export default function Navbar() {
             AM
           </div>
           <div className="hidden sm:block">
-            <span className="text-xl font-bold text-gray-900">AM Teachings</span>
+            <span className="text-xl font-bold text-gray-900">
+              AM Teachings
+            </span>
             <p className="text-sm text-gray-500 -mt-1">English & IELTS</p>
           </div>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center space-x-8">
-          {navigation.map((item) => (
+          {navigation.map(item => (
             <Link
               key={item.name}
               href={item.href}
@@ -71,32 +79,22 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Auth & CTA Buttons */}
+        {/* Contact Buttons */}
         <div className="flex items-center space-x-4">
-          {session ? (
-            <div className="hidden sm:flex items-center space-x-3">
-              <Link href="/dashboard" className="text-sm font-medium text-gray-600 hover:text-brand">
-                Dashboard
-              </Link>
-              <span className="text-sm text-gray-500">Hi, {session.user?.name || 'User'}</span>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                onClick={() => signOut({ callbackUrl: '/' })}
-              >
-                Sign Out
-              </Button>
-            </div>
-          ) : (
-            <div className="hidden sm:flex items-center space-x-3">
-              <Link href="/auth/signin" className="text-sm font-medium text-gray-600 hover:text-brand">
-                Sign In
-              </Link>
-              <Link href="/booking">
-                <Button size="sm">Book Now</Button>
-              </Link>
-            </div>
-          )}
+          <div className="hidden sm:flex items-center space-x-3">
+            <Link href="/contact">
+              <Button size="sm">Contact Me</Button>
+            </Link>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleWhatsAppContact}
+              className="flex items-center space-x-2"
+            >
+              <MessageCircle className="h-4 w-4" />
+              <span>WhatsApp</span>
+            </Button>
+          </div>
 
           {/* Mobile menu button */}
           <button
@@ -106,29 +104,11 @@ export default function Navbar() {
             aria-expanded="false"
           >
             <span className="sr-only">Open main menu</span>
-            <svg
-              className={`h-6 w-6 transition-transform duration-200 ${
-                mobileMenuOpen ? 'rotate-180' : ''
-              }`}
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-            >
-              {mobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              )}
-            </svg>
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
         </div>
       </nav>
@@ -138,7 +118,7 @@ export default function Navbar() {
         <div className="lg:hidden">
           <div className="border-t border-gray-200 bg-white px-4 pb-6 pt-4 shadow-lg">
             <div className="space-y-1">
-              {navigation.map((item) => (
+              {navigation.map(item => (
                 <Link
                   key={item.name}
                   href={item.href}
@@ -154,31 +134,20 @@ export default function Navbar() {
               ))}
             </div>
             <div className="mt-6 pt-4 border-t border-gray-200 space-y-3">
-              {session ? (
-                <>
-                  <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}>
-                    <Button variant="outline" className="w-full justify-center">Dashboard</Button>
-                  </Link>
-                  <Button 
-                    className="w-full justify-center" 
-                    onClick={() => {
-                      signOut({ callbackUrl: '/' });
-                      setMobileMenuOpen(false);
-                    }}
-                  >
-                    Sign Out
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Link href="/auth/signin" onClick={() => setMobileMenuOpen(false)}>
-                    <Button variant="outline" className="w-full justify-center">Sign In</Button>
-                  </Link>
-                  <Link href="/booking" onClick={() => setMobileMenuOpen(false)}>
-                    <Button className="w-full justify-center">Book Now</Button>
-                  </Link>
-                </>
-              )}
+              <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
+                <Button className="w-full justify-center">Contact Me</Button>
+              </Link>
+              <Button
+                variant="outline"
+                className="w-full justify-center flex items-center space-x-2"
+                onClick={() => {
+                  handleWhatsAppContact();
+                  setMobileMenuOpen(false);
+                }}
+              >
+                <MessageCircle className="h-4 w-4" />
+                <span>WhatsApp Me</span>
+              </Button>
             </div>
           </div>
         </div>
