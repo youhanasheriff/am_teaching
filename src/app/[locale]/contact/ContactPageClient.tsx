@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Input, Textarea, Label } from '@/components/ui/Input';
@@ -40,6 +41,7 @@ interface FormErrors {
 }
 
 function ContactForm() {
+  const tContact = useTranslations('contact');
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -57,29 +59,29 @@ function ContactForm() {
 
     // Enhanced validation
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = tContact('form.validation.nameRequired');
     } else if (formData.name.trim().length < 2) {
-      newErrors.name = 'Name must be at least 2 characters';
+      newErrors.name = tContact('form.validation.nameMinLength');
     } else if (formData.name.trim().length > 100) {
-      newErrors.name = 'Name is too long (max 100 characters)';
+      newErrors.name = tContact('form.validation.nameMaxLength');
     } else if (!/^[a-zA-Z\s]+$/.test(formData.name.trim())) {
-      newErrors.name = 'Name can only contain letters and spaces';
+      newErrors.name = tContact('form.validation.nameInvalid');
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = tContact('form.validation.emailRequired');
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
+      newErrors.email = tContact('form.validation.emailInvalid');
     } else if (formData.email.length > 255) {
-      newErrors.email = 'Email is too long';
+      newErrors.email = tContact('form.validation.emailTooLong');
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = tContact('form.validation.messageRequired');
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters';
+      newErrors.message = tContact('form.validation.messageMinLength');
     } else if (formData.message.trim().length > 2000) {
-      newErrors.message = 'Message is too long (max 2000 characters)';
+      newErrors.message = tContact('form.validation.messageTooLong');
     }
 
     setErrors(newErrors);
@@ -165,11 +167,10 @@ function ContactForm() {
       <CardHeader>
         <CardTitle className="text-2xl font-bold text-gray-900 flex items-center space-x-2">
           <Send className="h-6 w-6 text-brand" />
-          <span>Send Me a Message</span>
+          <span>{tContact('sendMessage')}</span>
         </CardTitle>
         <p className="text-gray-600">
-          Have questions about lessons or want to get started? I'd love to hear
-          from you!
+          {tContact('sendMessageDescription')}
         </p>
       </CardHeader>
       <CardContent className="p-6">
@@ -179,10 +180,10 @@ function ContactForm() {
               <CheckCircle className="h-5 w-5 text-green-600 mt-0.5" />
               <div>
                 <p className="text-green-800 font-medium">
-                  Message sent successfully!
+                  {tContact('form.successTitle')}
                 </p>
                 <p className="text-green-700 text-sm">
-                  I'll get back to you within 24 hours.
+                  {tContact('form.successMessage')}
                 </p>
               </div>
             </div>
@@ -196,8 +197,7 @@ function ContactForm() {
                   Error sending message
                 </p>
                 <p className="text-red-700 text-sm">
-                  {errors.general ||
-                    'Please try again or contact me directly via WhatsApp.'}
+                  {errors.general || tContact('form.errorMessage')}
                 </p>
               </div>
             </div>
@@ -209,7 +209,7 @@ function ContactForm() {
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-700 mb-2"
               >
-                Full Name *
+                {tContact('form.name')} {tContact('form.required')}
               </Label>
               <Input
                 type="text"
@@ -222,7 +222,7 @@ function ContactForm() {
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
                     : ''
                 }`}
-                placeholder="Your full name"
+                placeholder={tContact('form.namePlaceholder')}
                 maxLength={100}
               />
               {errors.name && (
@@ -238,7 +238,7 @@ function ContactForm() {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700 mb-2"
               >
-                Email Address *
+                {tContact('form.email')} {tContact('form.required')}
               </Label>
               <Input
                 type="email"
@@ -251,7 +251,7 @@ function ContactForm() {
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
                     : ''
                 }`}
-                placeholder="your.email@example.com"
+                placeholder={tContact('form.emailPlaceholder')}
                 maxLength={255}
               />
               {errors.email && (
@@ -268,7 +268,7 @@ function ContactForm() {
               htmlFor="lessonType"
               className="block text-sm font-medium text-gray-700 mb-2"
             >
-              What are you interested in?
+              {tContact('form.lessonType')}
             </Label>
             <select
               id="lessonType"
@@ -277,13 +277,13 @@ function ContactForm() {
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand cursor-pointer"
             >
-              <option value="general">General English Lessons</option>
-              <option value="ielts">IELTS Preparation</option>
-              <option value="individual">Individual Lessons</option>
-              <option value="group">Group Lessons</option>
-              <option value="business">Business English</option>
-              <option value="conversation">Conversation Practice</option>
-              <option value="other">Other</option>
+              <option value="general">{tContact('lessonTypes.general')}</option>
+              <option value="ielts">{tContact('lessonTypes.ielts')}</option>
+              <option value="individual">{tContact('lessonTypes.individual')}</option>
+              <option value="group">{tContact('lessonTypes.group')}</option>
+              <option value="business">{tContact('lessonTypes.business')}</option>
+              <option value="conversation">{tContact('lessonTypes.conversation')}</option>
+              <option value="other">{tContact('lessonTypes.other')}</option>
             </select>
           </div>
 
@@ -292,7 +292,7 @@ function ContactForm() {
               htmlFor="message"
               className="block text-sm font-medium text-gray-700 mb-2"
             >
-              Message *
+              {tContact('form.message')} {tContact('form.required')}
             </Label>
             <Textarea
               id="message"
@@ -305,7 +305,7 @@ function ContactForm() {
                   ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
                   : ''
               }`}
-              placeholder="Tell me about your English learning goals, current level, or any specific questions you have..."
+              placeholder={tContact('form.messagePlaceholder')}
               maxLength={2000}
             />
             <div className="flex justify-between items-center mt-1">
@@ -318,7 +318,7 @@ function ContactForm() {
                 <span></span>
               )}
               <span className="text-xs text-gray-500">
-                {formData.message.length}/2000 characters
+                {tContact('charactersCount', { count: formData.message.length })}
               </span>
             </div>
           </div>
@@ -329,7 +329,7 @@ function ContactForm() {
             className="w-full md:w-auto flex items-center justify-center space-x-2 min-w-[200px]"
           >
             <Send className="h-4 w-4" />
-            <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+            <span>{isSubmitting ? tContact('form.sending') : tContact('form.submit')}</span>
           </Button>
         </form>
       </CardContent>
@@ -338,6 +338,8 @@ function ContactForm() {
 }
 
 function ContactMethods() {
+  const tContact = useTranslations('contact');
+  
   const handleWhatsAppContact = () => {
     window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.ABOUT_INQUIRY), '_blank');
   };
@@ -349,10 +351,9 @@ function ContactMethods() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Get in Touch</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">{tContact('getInTouch')}</h2>
         <p className="text-gray-600 mb-6">
-          Ready to start your English learning journey? Choose your preferred
-          contact method below.
+          {tContact('getInTouchDescription')}
         </p>
       </div>
 
@@ -365,13 +366,13 @@ function ContactMethods() {
             </div>
             <div>
               <h3 className="font-bold text-gray-900 text-lg">
-                WhatsApp (Preferred)
+                {tContact('methods.whatsappTitle')}
               </h3>
               <p className="text-green-700 font-medium">
-                Instant messaging & quick responses
+                {tContact('methods.whatsappSubtitle')}
               </p>
               <p className="text-sm text-green-600">
-                Get answers within minutes, not hours
+                {tContact('methods.whatsappDescription')}
               </p>
             </div>
           </div>
@@ -389,22 +390,22 @@ function ContactMethods() {
         <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
           <Clock className="h-6 w-6 text-brand" />
           <div>
-            <h4 className="font-semibold text-gray-900">Response Time</h4>
-            <p className="text-sm text-gray-600">Within 24 hours</p>
+            <h4 className="font-semibold text-gray-900">{tContact('responseTime')}</h4>
+            <p className="text-sm text-gray-600">{tContact('responseTimeValue')}</p>
           </div>
         </div>
         <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
           <Globe className="h-6 w-6 text-brand" />
           <div>
-            <h4 className="font-semibold text-gray-900">Availability</h4>
-            <p className="text-sm text-gray-600">7 days a week</p>
+            <h4 className="font-semibold text-gray-900">{tContact('availability')}</h4>
+            <p className="text-sm text-gray-600">{tContact('availabilityValue')}</p>
           </div>
         </div>
         <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
           <MapPin className="h-6 w-6 text-brand" />
           <div>
-            <h4 className="font-semibold text-gray-900">Location</h4>
-            <p className="text-sm text-gray-600">Online worldwide</p>
+            <h4 className="font-semibold text-gray-900">{tContact('location')}</h4>
+            <p className="text-sm text-gray-600">{tContact('locationValue')}</p>
           </div>
         </div>
       </div>
@@ -413,13 +414,14 @@ function ContactMethods() {
 }
 
 function ContactFormSection() {
+  const tContact = useTranslations('contact');
+  
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Form</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">{tContact('contactForm')}</h2>
         <p className="text-gray-600 mb-6">
-          Prefer to send a detailed message? Use the form below and I'll respond
-          via email.
+          {tContact('contactFormDescription')}
         </p>
       </div>
       <ContactForm />
@@ -428,9 +430,12 @@ function ContactFormSection() {
 }
 
 function SocialLinks() {
+  const tContact = useTranslations('contact');
+  const tFooter = useTranslations('footer');
+  
   const socialLinks = [
     {
-      name: 'LinkedIn',
+      name: tFooter('socialLinkedIn'),
       href: '#',
       icon: <Linkedin className="h-6 w-6" />,
       color: 'hover:text-blue-600 hover:bg-blue-50',
@@ -442,7 +447,7 @@ function SocialLinks() {
     <Card className="shadow-lg">
       <CardContent className="pt-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
-          Connect on Social Media
+          {tContact('connectSocial')}
         </h3>
         <div className="flex justify-center space-x-4">
           {socialLinks.map(link => (
@@ -468,16 +473,17 @@ function SocialLinks() {
 }
 
 export default function ContactPageClient() {
+  const tContact = useTranslations('contact');
+  
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="container">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Contact Aya Mohsen
+            {tContact('title')}
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Have questions about English lessons or IELTS preparation? I'm here
-            to help you succeed in your language learning journey.
+            {tContact('subtitle')}
           </p>
         </div>
 
@@ -503,11 +509,10 @@ export default function ContactPageClient() {
           <Card className="bg-gradient-to-r from-brand/5 to-blue-50 border-brand/20">
             <CardContent className="pt-6 text-center">
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Need Immediate Assistance?
+                {tContact('needImmediate')}
               </h3>
               <p className="text-gray-600 mb-6">
-                For urgent questions or immediate support, WhatsApp is the
-                fastest way to reach me.
+                {tContact('needImmediateDescription')}
               </p>
               <Button
                 onClick={() => {
@@ -520,7 +525,7 @@ export default function ContactPageClient() {
                 className="bg-green-600 hover:bg-green-700 flex items-center space-x-2"
               >
                 <MessageCircle className="h-5 w-5" />
-                <span>WhatsApp for Urgent Help</span>
+                <span>{tContact('whatsappUrgent')}</span>
               </Button>
             </CardContent>
           </Card>

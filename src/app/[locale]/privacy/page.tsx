@@ -1,37 +1,38 @@
-import type { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy | AM Teachings',
-  description: 'Privacy Policy for AM Teachings - Learn how we collect, use, and protect your personal information.',
-};
+import type { Metadata } from 'next';
+import { useTranslations } from 'next-intl';
 
 export default function PrivacyPolicy() {
+  const tLegal = useTranslations('legal.privacyPolicy');
+  const tUi = useTranslations('ui');
+  
   return (
     <div className="container py-16 lg:py-24">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">{tLegal('title')}</h1>
           <p className="text-lg text-gray-600">
-            Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            {tUi('lastUpdated')} {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </p>
         </div>
 
         <div className="prose prose-lg max-w-none">
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Introduction</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">{tLegal('introduction.title')}</h2>
             <p className="text-gray-700 mb-4">
-              Welcome to AM Teachings ("we," "our," or "us"). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
+              {tLegal('introduction.content1')}
             </p>
             <p className="text-gray-700">
-              By using our website and services, you consent to the data practices described in this policy.
+              {tLegal('introduction.content2')}
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Information We Collect</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">{tLegal('informationCollection.title')}</h2>
             
-            <h3 className="text-xl font-medium text-gray-900 mb-3">2.1 Personal Information</h3>
-            <p className="text-gray-700 mb-4">We may collect the following personal information:</p>
+            <h3 className="text-xl font-medium text-gray-900 mb-3">{tLegal('informationCollection.personalTitle')}</h3>
+            <p className="text-gray-700 mb-4">{tLegal('informationCollection.personalContent')}</p>
             <ul className="list-disc pl-6 text-gray-700 mb-4">
               <li>Name and contact information (email address, phone number)</li>
               <li>Account credentials (username, password)</li>
@@ -40,8 +41,8 @@ export default function PrivacyPolicy() {
               <li>Lesson preferences and scheduling information</li>
             </ul>
 
-            <h3 className="text-xl font-medium text-gray-900 mb-3">2.2 Automatically Collected Information</h3>
-            <p className="text-gray-700 mb-4">We automatically collect certain information when you visit our website:</p>
+            <h3 className="text-xl font-medium text-gray-900 mb-3">{tLegal('informationCollection.automaticTitle')}</h3>
+            <p className="text-gray-700 mb-4">{tLegal('informationCollection.automaticContent')}</p>
             <ul className="list-disc pl-6 text-gray-700 mb-4">
               <li>IP address and device information</li>
               <li>Browser type and version</li>

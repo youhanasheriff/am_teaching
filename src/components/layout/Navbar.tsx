@@ -10,6 +10,8 @@ import { createWhatsAppUrl, WHATSAPP_MESSAGES } from '@/lib/constants';
 
 export default function Navbar() {
   const t = useTranslations('navigation');
+  const tFooter = useTranslations('footer');
+  const tUi = useTranslations('ui');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
@@ -55,9 +57,9 @@ export default function Navbar() {
           </div>
           <div className="hidden sm:block">
             <span className="text-xl font-bold text-gray-900">
-              AM Teachings
+              {tFooter('brandName')}
             </span>
-            <p className="text-sm text-gray-500 -mt-1">English & IELTS</p>
+            <p className="text-sm text-gray-500 -mt-1">{tFooter('brandTagline')}</p>
           </div>
         </Link>
 
@@ -92,7 +94,7 @@ export default function Navbar() {
               className="flex items-center space-x-2"
             >
               <MessageCircle className="h-4 w-4" />
-              <span>WhatsApp</span>
+              <span>{tUi('whatsapp')}</span>
             </Button>
           </div>
 
@@ -103,7 +105,7 @@ export default function Navbar() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded="false"
           >
-            <span className="sr-only">Open main menu</span>
+            <span className="sr-only">{tUi('openMainMenu')}</span>
             {mobileMenuOpen ? (
               <X className="h-6 w-6" />
             ) : (
@@ -149,7 +151,7 @@ export default function Navbar() {
                 }}
               >
                 <MessageCircle className="h-4 w-4" />
-                <span>WhatsApp</span>
+                <span>{tUi('whatsapp')}</span>
               </Button>
             </div>
           </div>

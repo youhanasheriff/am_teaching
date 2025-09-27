@@ -110,6 +110,23 @@
   "contact": {
     "title": "Contact Aya Mohsen",
     "subtitle": "Have questions about English lessons or IELTS preparation? I'm here to help you succeed in your language learning journey.",
+    "sendMessage": "Send Me a Message",
+    "sendMessageDescription": "Have questions about lessons or want to get started? I'd love to hear from you!",
+    "getInTouch": "Get in Touch",
+    "getInTouchDescription": "Ready to start your English learning journey? Choose your preferred contact method below.",
+    "contactForm": "Contact Form",
+    "contactFormDescription": "Prefer to send a detailed message? Use the form below and I'll respond via email.",
+    "connectSocial": "Connect on Social Media",
+    "needImmediate": "Need Immediate Assistance?",
+    "needImmediateDescription": "For urgent questions or quick clarifications, WhatsApp is the fastest way to reach me.",
+    "whatsappUrgent": "WhatsApp for Urgent Help",
+    "responseTime": "Response Time",
+    "responseTimeValue": "Within 24 hours",
+    "availability": "Availability", 
+    "availabilityValue": "7 days a week",
+    "location": "Location",
+    "locationValue": "Online worldwide",
+    "charactersCount": "{count}/2000 characters",
     "form": {
       "name": "Full Name",
       "email": "Email Address",
@@ -124,7 +141,19 @@
       "successTitle": "Message sent successfully!",
       "successMessage": "I'll get back to you within 24 hours.",
       "errorTitle": "Error sending message",
-      "errorMessage": "Please try again or contact me directly via WhatsApp."
+      "errorMessage": "Please try again or contact me directly via WhatsApp.",
+      "validation": {
+        "nameRequired": "Name is required",
+        "nameMinLength": "Name must be at least 2 characters",
+        "nameMaxLength": "Name is too long (max 100 characters)",
+        "nameInvalid": "Name can only contain letters and spaces",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email address",
+        "emailTooLong": "Email is too long",
+        "messageRequired": "Message is required",
+        "messageMinLength": "Message must be at least 10 characters",
+        "messageTooLong": "Message is too long (max 2000 characters)"
+      }
     },
     "lessonTypes": {
       "general": "General English Lessons",
@@ -239,6 +268,90 @@
     "termsOfService": "Terms of Service",
     "followDescription": "Follow for English learning tips and updates",
     "copyright": "© 2024 AM Teachings. All rights reserved.",
-    "copyrightExtended": "© {year} AM Teachings. All rights reserved. Created with ❤️ for English learners."
+    "copyrightExtended": "© {year} AM Teachings. All rights reserved. Created with ❤️ for English learners.",
+    "footerHeading": "Footer",
+    "brandName": "AM Teachings",
+    "brandTagline": "English & IELTS Excellence",
+    "availableSchedule": "Available 7 days a week",
+    "socialLinkedIn": "LinkedIn"
+  },
+  "ui": {
+    "openMainMenu": "Open main menu",
+    "whatsapp": "WhatsApp",
+    "lastUpdated": "Last updated:",
+    "readMore": "Read More",
+    "viewPosts": "View {category} Posts →",
+    "by": "By",
+    "expertTips": "Expert tips, proven strategies, and practical advice to help you master English and achieve your IELTS goals. Learn from my experience teaching 500+ students.",
+    "popularCategories": "Popular Categories",
+    "exploreContent": "Explore our most helpful content organized by topic.",
+    "latestArticles": "Latest Articles",
+    "freshInsights": "Fresh insights and practical tips to accelerate your English learning journey.",
+    "ieltsPreparation": "IELTS Preparation",
+    "ieltsDescription": "Proven strategies and tips for all four IELTS modules",
+    "speakingSkills": "Speaking Skills", 
+    "speakingDescription": "Build confidence and fluency in English conversation",
+    "grammarGuide": "Grammar Guide",
+    "grammarDescription": "Master English grammar from basic to advanced levels",
+    "getWeeklyTips": "Get Weekly English Tips",
+    "joinLearners": "Join 1,000+ learners receiving expert advice directly in their inbox",
+    "enterEmail": "Enter your email address",
+    "subscribeNow": "Subscribe Now",
+    "benefits": "✓ Weekly tips ✓ No spam ✓ Unsubscribe anytime",
+    "readyPersonalized": "Ready for Personalized Learning?",
+    "personalizedDescription": "While these articles provide valuable insights, nothing beats personalized feedback and guidance tailored to your specific needs."
+  },
+  "legal": {
+    "privacyPolicy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated:",
+      "introduction": {
+        "title": "1. Introduction",
+        "content1": "Welcome to AM Teachings (\"we,\" \"our,\" or \"us\"). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.",
+        "content2": "By using our website and services, you consent to the data practices described in this policy."
+      },
+      "informationCollection": {
+        "title": "2. Information We Collect",
+        "personalTitle": "2.1 Personal Information",
+        "personalContent": "We may collect the following personal information:",
+        "personalItems": [
+          "Name and contact information (email address, phone number)",
+          "Account credentials (username, password)",
+          "Payment information (processed securely through third-party providers)",
+          "Educational background and learning goals",
+          "Lesson preferences and scheduling information"
+        ],
+        "automaticTitle": "2.2 Automatically Collected Information",
+        "automaticContent": "We automatically collect certain information when you visit our website:",
+        "automaticItems": [
+          "IP address and device information",
+          "Browser type and version",
+          "Pages visited and time spent on our website",
+          "Referring website information",
+          "Usage patterns and preferences"
+        ]
+      }
+    },
+    "termsOfService": {
+      "title": "Terms of Service",
+      "lastUpdated": "Last updated:",
+      "agreementToTerms": {
+        "title": "1. Agreement to Terms",
+        "content1": "Welcome to AM Teachings. These Terms of Service (\"Terms\") govern your use of our website, services, and educational programs. By accessing or using our services, you agree to be bound by these Terms and our Privacy Policy.",
+        "content2": "If you do not agree to these Terms, please do not use our services."
+      },
+      "serviceDescription": {
+        "title": "2. Description of Services",
+        "content": "AM Teachings provides online English language education and IELTS preparation services, including:",
+        "items": [
+          "Individual and group English lessons",
+          "IELTS preparation courses and practice sessions",
+          "Educational resources and materials",
+          "Online booking and scheduling systems",
+          "Progress tracking and assessment tools",
+          "Educational blog content and learning resources"
+        ]
+      }
+    }
   }
 }

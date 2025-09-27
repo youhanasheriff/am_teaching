@@ -1,36 +1,37 @@
-import type { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Terms of Service | AM Teachings',
-  description: 'Terms of Service for AM Teachings - Learn about our website usage guidelines, user responsibilities, and legal terms.',
-};
+import type { Metadata } from 'next';
+import { useTranslations } from 'next-intl';
 
 export default function TermsOfService() {
+  const tLegal = useTranslations('legal.termsOfService');
+  const tUi = useTranslations('ui');
+  
   return (
     <div className="container py-16 lg:py-24">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Terms of Service</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">{tLegal('title')}</h1>
           <p className="text-lg text-gray-600">
-            Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            {tUi('lastUpdated')} {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </p>
         </div>
 
         <div className="prose prose-lg max-w-none">
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Agreement to Terms</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">{tLegal('agreementToTerms.title')}</h2>
             <p className="text-gray-700 mb-4">
-              Welcome to AM Teachings. These Terms of Service ("Terms") govern your use of our website, services, and educational programs. By accessing or using our services, you agree to be bound by these Terms and our Privacy Policy.
+              {tLegal('agreementToTerms.content1')}
             </p>
             <p className="text-gray-700">
-              If you do not agree to these Terms, please do not use our services.
+              {tLegal('agreementToTerms.content2')}
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Description of Services</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">{tLegal('serviceDescription.title')}</h2>
             <p className="text-gray-700 mb-4">
-              AM Teachings provides online English language education and IELTS preparation services, including:
+              {tLegal('serviceDescription.content')}
             </p>
             <ul className="list-disc pl-6 text-gray-700 mb-4">
               <li>Individual and group English lessons</li>

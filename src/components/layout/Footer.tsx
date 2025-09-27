@@ -34,7 +34,7 @@ export default function Footer() {
     ],
     social: [
       {
-        name: 'LinkedIn',
+        name: tFooter('socialLinkedIn'),
         href: '#',
         icon: <Linkedin className="h-6 w-6" />,
       },
@@ -48,7 +48,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
-        Footer
+        {tFooter('footerHeading')}
       </h2>
       <div className="container py-12 lg:py-16">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
@@ -60,10 +60,10 @@ export default function Footer() {
               </div>
               <div>
                 <span className="text-xl font-bold text-white">
-                  AM Teachings
+                  {tFooter('brandName')}
                 </span>
                 <p className="text-sm text-gray-400 -mt-1">
-                  English & IELTS Excellence
+                  {tFooter('brandTagline')}
                 </p>
               </div>
             </div>
@@ -147,7 +147,7 @@ export default function Footer() {
                   <li className="flex items-center space-x-2">
                     <Clock className="h-4 w-4 text-gray-400" />
                     <span className="text-sm leading-6 text-gray-400">
-                      Available 7 days a week
+                      {tFooter('availableSchedule')}
                     </span>
                   </li>
                 </ul>
@@ -204,8 +204,7 @@ export default function Footer() {
               ))}
             </div>
             <p className="mt-8 text-sm leading-5 text-gray-400 md:order-1 md:mt-0">
-              &copy; {new Date().getFullYear()} AM Teachings. All rights
-              reserved. Created with ❤️ for English learners.
+              {tFooter('copyrightExtended', { year: new Date().getFullYear() })}
             </p>
           </div>
         </div>
