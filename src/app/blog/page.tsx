@@ -179,7 +179,7 @@ export default function BlogPage() {
                 placeholder="Enter your email address"
                 className="form-input flex-1"
               />
-              <button className="btn-primary whitespace-nowrap">
+              <button className="btn-primary whitespace-nowrap cursor-pointer">
                 Subscribe Free
               </button>
             </div>
@@ -203,12 +203,12 @@ export default function BlogPage() {
             </p>
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Link href="/booking">
-                <button className="btn-secondary bg-white text-brand hover:bg-gray-50 w-full sm:w-auto">
+                <button className="btn-secondary bg-white text-brand hover:bg-gray-50 w-full sm:w-auto cursor-pointer">
                   Book a Lesson
                 </button>
               </Link>
               <Link href="/contact">
-                <button className="btn-secondary border-white text-white hover:bg-white/10 w-full sm:w-auto">
+                <button className="btn-secondary border-white text-white hover:bg-white/10 w-full sm:w-auto cursor-pointer">
                   Ask Questions
                 </button>
               </Link>

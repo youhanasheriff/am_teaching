@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
 
     // Primary email address as specified
     const teacherEmail = CONTACT_INFO.EMAIL;
-    const fromEmail = process.env.CONTACT_FROM_EMAIL || 'noreply@amteachings.com';
+    const fromEmail = process.env.CONTACT_FROM_EMAIL || 'noreply@sheriax.com';
 
     // Check if Resend is configured
     if (!process.env.RESEND_API_KEY) {
@@ -114,7 +114,9 @@ export async function POST(request: NextRequest) {
                 <p style="margin: 0; color: #065f46; font-size: 14px;">
                    <strong>Quick Actions:</strong><br>
                    • Reply via email: <a href="mailto:${email}" style="color: #3b82f6;">${email}</a><br>
-                   • Contact via WhatsApp: <a href="${createWhatsAppUrl(`Hello ${name}!`)}" style="color: #3b82f6;">Send WhatsApp Message</a>
+                   • Contact via WhatsApp: <a href="${createWhatsAppUrl(
+                     `Hello ${name}!`
+                   )}" style="color: #3b82f6;">Send WhatsApp Message</a>
                  </p>
               </div>
               
@@ -159,8 +161,12 @@ export async function POST(request: NextRequest) {
                 <h3 style="margin: 0 0 15px 0; color: #065f46;">Alternative Contact Methods:</h3>
                 <p style="margin: 0; color: #065f46; line-height: 1.6;">
                    For faster responses, you can also reach me via:<br>
-                   📧 Email: <a href="mailto:${CONTACT_INFO.EMAIL}" style="color: #3b82f6;">${CONTACT_INFO.EMAIL}</a><br>
-                   💬 WhatsApp: <a href="${createWhatsAppUrl('Hello Aya!')}" style="color: #3b82f6;">Send WhatsApp Message</a>
+                   📧 Email: <a href="mailto:${
+                     CONTACT_INFO.EMAIL
+                   }" style="color: #3b82f6;">${CONTACT_INFO.EMAIL}</a><br>
+                   💬 WhatsApp: <a href="${createWhatsAppUrl(
+                     'Hello Aya!'
+                   )}" style="color: #3b82f6;">Send WhatsApp Message</a>
                  </p>
               </div>
               

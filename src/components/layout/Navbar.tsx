@@ -96,7 +96,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             type="button"
-            className="lg:hidden rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500"
+            className="lg:hidden rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 cursor-pointer"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded="false"
           >

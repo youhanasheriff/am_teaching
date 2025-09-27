@@ -77,11 +77,11 @@ body {
 
 /* Button Styles */
 .btn-primary {
-  @apply inline-flex items-center justify-center rounded-lg bg-brand px-6 py-3 text-base font-semibold text-white shadow-lg transition-all duration-200 hover:bg-brand-dark hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
+  @apply inline-flex items-center justify-center rounded-lg bg-brand px-6 py-3 text-base font-semibold text-white shadow-lg transition-all duration-200 hover:bg-brand-dark hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 cursor-pointer;
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center rounded-lg border-2 border-gray-300 bg-white px-6 py-3 text-base font-semibold text-gray-700 transition-all duration-200 hover:border-brand hover:text-brand focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
+  @apply inline-flex items-center justify-center rounded-lg border-2 border-gray-300 bg-white px-6 py-3 text-base font-semibold text-gray-700 transition-all duration-200 hover:border-brand hover:text-brand focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 cursor-pointer;
 }
 
 /* Card Styles */

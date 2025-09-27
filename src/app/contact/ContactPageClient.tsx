@@ -222,7 +222,7 @@ function ContactForm() {
               name="lessonType"
               value={formData.lessonType}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand cursor-pointer"
             >
               <option value="general">General English Lessons</option>
               <option value="ielts">IELTS Preparation</option>
@@ -411,7 +411,7 @@ function SocialLinks() {
             <a
               key={link.name}
               href={link.href}
-              className={`p-4 bg-gray-100 rounded-xl text-gray-600 transition-all duration-200 ${link.color} group`}
+              className={`p-4 bg-gray-100 rounded-xl text-gray-600 transition-all duration-200 ${link.color} group cursor-pointer`}
               aria-label={link.name}
               title={link.description}
             >
