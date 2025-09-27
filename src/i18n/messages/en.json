@@ -27,7 +27,22 @@
     "subtitle": "Aya Mohsen",
     "description": "Licensed English educator specializing in General English, Spoken English, and IELTS preparation. American Diploma holder with IELTS 8.5 score, helping students achieve their language learning goals.",
     "cta1": "Start Learning Today",
-    "cta2": "Explore Services"
+    "cta2": "Explore Services",
+    "teacherName": "Aya Mohsen",
+    "teacherTitle": "Certified English Teacher",
+    "teacherExperience": "IELTS Specialist • 8+ Years Experience"
+  },
+  "servicesPreview": {
+    "title": "Choose Your Learning Path",
+    "subtitle": "Whether you're starting your English journey or preparing for IELTS, I have the perfect program for you.",
+    "beginnerTitle": "Beginner English",
+    "beginnerDescription": "Build strong foundations with grammar, vocabulary, and basic conversation skills.",
+    "intermediateTitle": "Intermediate English", 
+    "intermediateDescription": "Develop fluency and confidence in everyday communication and writing.",
+    "advancedTitle": "Advanced English",
+    "advancedDescription": "Master complex grammar, idioms, and professional communication skills.",
+    "ieltsTitle": "IELTS Preparation",
+    "ieltsDescription": "Comprehensive test preparation with proven strategies for all four skills."
   },
   "about": {
     "title": "Meet Aya Mohsen",
@@ -46,6 +61,50 @@
       "certified": "Certified",
       "licensed": "Licensed",
       "expert": "Expert"
+    },
+    "experience": {
+      "title": "Teaching Experience",
+      "subtitle": "Proven track record of helping students achieve their English learning goals.",
+      "studentsTitle": "500+ Students Taught",
+      "studentsDescription": "Successfully guided students from 40+ countries",
+      "successTitle": "95% IELTS Success Rate",
+      "successDescription": "Students consistently achieve their target band scores",
+      "yearsTitle": "8+ Years Teaching",
+      "yearsDescription": "Extensive experience in online and classroom settings"
+    },
+    "philosophy": {
+      "title": "My Teaching Philosophy",
+      "subtitle": "Every student is unique, and so should be their learning journey.",
+      "personalizedTitle": "Personalized Learning Approach",
+      "personalizedDescription": "I believe that effective language learning happens when lessons are tailored to individual needs, interests, and learning styles. That's why I take time to understand each student's goals and create customized lesson plans.",
+      "approachTitle": "My Approach:",
+      "approach1": "Assess individual learning style and pace",
+      "approach2": "Set clear, achievable goals together", 
+      "approach3": "Adapt teaching methods to student preferences",
+      "approach4": "Provide regular feedback and progress updates",
+      "principlesTitle": "Core Principles:",
+      "principle1": "Build confidence through small, achievable wins",
+      "principle2": "Make learning enjoyable and relevant to real life",
+      "principle3": "Encourage mistakes as learning opportunities", 
+      "principle4": "Provide consistent support and constructive feedback",
+      "confidenceTitle": "Confidence Through Practice",
+      "confidenceDescription": "Language learning is a journey that requires patience, practice, and positive reinforcement. I create a supportive environment where students feel comfortable making mistakes and learning from them.",
+      "ctaTitle": "Ready to Start Your Journey?",
+      "ctaDescription": "Let's work together to unlock your English potential and achieve your language goals.",
+      "ctaButton1": "Book a Free Consultation",
+      "ctaButton2": "Get in Touch"
+    },
+    "cta": {
+      "title": "Ready to Start Your Journey?",
+      "subtitle": "Let's work together to unlock your English potential and achieve your language goals.",
+      "bookConsultation": "Book a Free Consultation",
+      "getInTouch": "Get in Touch"
+    },
+    "aboutCta": {
+      "title": "Ready to Transform Your English?",
+      "subtitle": "Join hundreds of successful students and start your journey to English mastery today.",
+      "bookButton": "Book Your Free Consultation",
+      "contactButton": "Have Questions? Contact Me"
     }
   },
   "services": {
@@ -140,10 +199,10 @@
     "student2Name": "Omar Hassan", 
     "student2Role": "Intermediate Student",
     "student2Score": "Fluent Speaker",
-    "student3Quote": "Professional, patient, and results-driven. Aya's structured approach helped me pass my business English certification.",
-    "student3Name": "Sarah Johnson",
-    "student3Role": "Business Professional", 
-    "student3Score": "Certified"
+    "student3Quote": "Finally, I understand phrasal verbs! Aya's structured approach made complex grammar simple.",
+    "student3Name": "Sarah Ahmed",
+    "student3Role": "Advanced Student", 
+    "student3Score": "Grammar Master"
   },
   "blog": {
     "title": "English Learning Blog",
@@ -175,13 +234,28 @@
     "ratingTitle": "Average Rating",
     "ratingCount": "5⭐"
   },
+  "cta": {
+    "title": "Ready to Transform Your English?",
+    "subtitle": "Join hundreds of successful students and start your journey to English mastery today.",
+    "startWhatsApp": "Start with WhatsApp",
+    "emailForm": "Email Contact Form"
+  },
   "footer": {
+    "description": "Empowering students to achieve fluency in English and excel in IELTS exams through personalized, effective teaching methods with Aya Mohsen.",
     "quickContact": "Quick Contact",
     "quickContactDescription": "Get instant responses via WhatsApp",
     "messageWhatsApp": "Message on WhatsApp",
     "quickLinks": "Quick Links",
     "navigation": "Navigation",
+    "contact": "Contact",
+    "contactMe": "Contact Me →",
+    "teachingServices": "Teaching Services",
+    "learningResources": "Learning Resources",
+    "onlineLessons": "Online Lessons Worldwide",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
     "followDescription": "Follow for English learning tips and updates",
-    "copyright": "© 2024 AM Teachings. All rights reserved."
+    "copyright": "© 2024 AM Teachings. All rights reserved.",
+    "copyrightExtended": "© {year} AM Teachings. All rights reserved. Created with ❤️ for English learners."
   }
 }

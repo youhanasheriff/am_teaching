@@ -18,7 +18,7 @@ function HeroSection() {
   const t = useTranslations('hero');
   const tCommon = useTranslations('common');
   const tStats = useTranslations('stats');
-  
+
   const handleWhatsAppContact = () => {
     window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.HERO_CTA), '_blank');
   };
@@ -30,12 +30,9 @@ function HeroSection() {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-                {t('title')}{' '}
-                <span className="text-brand">{t('subtitle')}</span>
+                {t('title')} <span className="text-brand">{t('subtitle')}</span>
               </h1>
-              <p className="lead max-w-2xl">
-                {t('description')}
-              </p>
+              <p className="lead max-w-2xl">{t('description')}</p>
             </div>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               <Button
@@ -46,33 +43,40 @@ function HeroSection() {
                 <MessageCircle className="h-5 w-5" />
                 <span>{tCommon('whatsapp')}</span>
               </Button>
-              <Link href="/contact">
+              <Link href="/services">
                 <Button
                   variant="outline"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
-                  {tCommon('contactMe')}
-                </Button>
-              </Link>
-              <Link href="/services">
-                <Button variant="ghost" size="lg" className="w-full sm:w-auto">
                   {t('cta2')} →
                 </Button>
               </Link>
             </div>
             <div className="flex items-center gap-8 pt-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-brand">{tStats('studentsCount')}</div>
-                <div className="text-sm text-gray-600">{tStats('studentsTitle')}</div>
+                <div className="text-2xl font-bold text-brand">
+                  {tStats('studentsCount')}
+                </div>
+                <div className="text-sm text-gray-600">
+                  {tStats('studentsTitle')}
+                </div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-brand">{tStats('successCount')}</div>
-                <div className="text-sm text-gray-600">{tStats('successTitle')}</div>
+                <div className="text-2xl font-bold text-brand">
+                  {tStats('successCount')}
+                </div>
+                <div className="text-sm text-gray-600">
+                  {tStats('successTitle')}
+                </div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-brand">{tStats('ratingCount')}</div>
-                <div className="text-sm text-gray-600">{tStats('ratingTitle')}</div>
+                <div className="text-2xl font-bold text-brand">
+                  {tStats('ratingCount')}
+                </div>
+                <div className="text-sm text-gray-600">
+                  {tStats('ratingTitle')}
+                </div>
               </div>
             </div>
           </div>
@@ -84,11 +88,11 @@ function HeroSection() {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-xl font-semibold text-gray-900">
-                    Aya Mohsen
+                    {t('teacherName')}
                   </h3>
-                  <p className="text-gray-600">Certified English Teacher</p>
+                  <p className="text-gray-600">{t('teacherTitle')}</p>
                   <p className="text-sm text-gray-500">
-                    IELTS Specialist • 8+ Years Experience
+                    {t('teacherExperience')}
                   </p>
                 </div>
               </div>
@@ -101,29 +105,28 @@ function HeroSection() {
 }
 
 function ServicesPreview() {
+  const tServices = useTranslations('servicesPreview');
+  const tCommon = useTranslations('common');
+
   const services = [
     {
-      title: 'Beginner English',
-      description:
-        'Build strong foundations with grammar, vocabulary, and basic conversation skills.',
+      title: tServices('beginnerTitle'),
+      description: tServices('beginnerDescription'),
       icon: <Sprout className="h-8 w-8" />,
     },
     {
-      title: 'Intermediate English',
-      description:
-        'Develop fluency and confidence in everyday communication and writing.',
+      title: tServices('intermediateTitle'),
+      description: tServices('intermediateDescription'),
       icon: <Rocket className="h-8 w-8" />,
     },
     {
-      title: 'Advanced English',
-      description:
-        'Master complex grammar, idioms, and professional communication skills.',
+      title: tServices('advancedTitle'),
+      description: tServices('advancedDescription'),
       icon: <Target className="h-8 w-8" />,
     },
     {
-      title: 'IELTS Preparation',
-      description:
-        'Comprehensive training for all four IELTS modules with proven strategies.',
+      title: tServices('ieltsTitle'),
+      description: tServices('ieltsDescription'),
       icon: <Trophy className="h-8 w-8" />,
     },
   ];
@@ -132,11 +135,8 @@ function ServicesPreview() {
     <section className="section">
       <div className="container">
         <div className="text-center space-y-4 mb-12">
-          <h2 className="section-title">Choose Your Learning Path</h2>
-          <p className="lead max-w-2xl mx-auto">
-            Whether you're starting your English journey or preparing for IELTS,
-            I have the perfect program for you.
-          </p>
+          <h2 className="section-title">{tServices('title')}</h2>
+          <p className="lead max-w-2xl mx-auto">{tServices('subtitle')}</p>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
@@ -153,7 +153,7 @@ function ServicesPreview() {
         </div>
         <div className="text-center mt-8">
           <Link href="/services">
-            <Button variant="outline">View All Services</Button>
+            <Button variant="outline">{tCommon('viewAllServices')}</Button>
           </Link>
         </div>
       </div>
@@ -162,27 +162,26 @@ function ServicesPreview() {
 }
 
 function TestimonialsSection() {
+  const tTestimonials = useTranslations('testimonials');
+
   const testimonials = [
     {
-      quote:
-        'Aya helped me jump from IELTS 5.5 to 7.5 in just two months! Her teaching methods are incredibly effective.',
-      name: 'Mariam Al-Rashid',
-      role: 'IELTS Student',
-      score: '7.5 IELTS',
+      quote: tTestimonials('student1Quote'),
+      name: tTestimonials('student1Name'),
+      role: tTestimonials('student1Role'),
+      score: tTestimonials('student1Score'),
     },
     {
-      quote:
-        'Clear explanations and fun lessons. My speaking confidence soared after just a few sessions with Aya.',
-      name: 'Omar Hassan',
-      role: 'Intermediate Student',
-      score: 'Fluent Speaker',
+      quote: tTestimonials('student2Quote'),
+      name: tTestimonials('student2Name'),
+      role: tTestimonials('student2Role'),
+      score: tTestimonials('student2Score'),
     },
     {
-      quote:
-        "Finally, I understand phrasal verbs! Aya's structured approach made complex grammar simple.",
-      name: 'Sarah Ahmed',
-      role: 'Advanced Student',
-      score: 'Grammar Master',
+      quote: tTestimonials('student3Quote'),
+      name: tTestimonials('student3Name'),
+      role: tTestimonials('student3Role'),
+      score: tTestimonials('student3Score'),
     },
   ];
 
@@ -190,8 +189,8 @@ function TestimonialsSection() {
     <section className="section bg-gray-50">
       <div className="container">
         <div className="text-center space-y-4 mb-12">
-          <h2 className="section-title">What Students Say</h2>
-          <p className="lead">Real results from learners at every level.</p>
+          <h2 className="section-title">{tTestimonials('title')}</h2>
+          <p className="lead">{tTestimonials('subtitle')}</p>
         </div>
         <div className="grid gap-8 md:grid-cols-3">
           {testimonials.map((testimonial, index) => (
@@ -231,6 +230,8 @@ function TestimonialsSection() {
 }
 
 function CTASection() {
+  const tCta = useTranslations('cta');
+
   const handleWhatsAppContact = () => {
     window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.READY_TO_START), '_blank');
   };
@@ -239,13 +240,8 @@ function CTASection() {
     <section className="section bg-brand text-white">
       <div className="container text-center">
         <div className="max-w-3xl mx-auto space-y-6">
-          <h2 className="text-3xl font-bold sm:text-4xl">
-            Ready to Transform Your English?
-          </h2>
-          <p className="text-xl text-blue-100">
-            Join hundreds of successful students and start your journey to
-            English mastery today.
-          </p>
+          <h2 className="text-3xl font-bold sm:text-4xl">{tCta('title')}</h2>
+          <p className="text-xl text-blue-100">{tCta('subtitle')}</p>
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Button
               size="lg"
@@ -254,15 +250,15 @@ function CTASection() {
               onClick={handleWhatsAppContact}
             >
               <MessageCircle className="h-5 w-5" />
-              <span>Start with WhatsApp</span>
+              <span>{tCta('startWhatsApp')}</span>
             </Button>
             <Link href="/contact">
               <Button
                 size="lg"
                 variant="ghost"
-                className="w-full sm:w-auto text-white border-white hover:bg-white/10"
+                className="w-full sm:w-auto text-white border-white hover:bg-white/10 hover:text-white"
               >
-                Email Contact Form
+                {tCta('emailForm')}
               </Button>
             </Link>
           </div>

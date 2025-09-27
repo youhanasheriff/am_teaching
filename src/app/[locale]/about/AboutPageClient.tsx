@@ -123,20 +123,22 @@ function QualificationsSection() {
 }
 
 function ExperienceSection() {
+  const tExperience = useTranslations('about.experience');
+  
   const experiences = [
     {
-      title: '500+ Students Taught',
-      description: 'Successfully guided students from 40+ countries',
+      title: tExperience('studentsTitle'),
+      description: tExperience('studentsDescription'),
       icon: <Users className="h-6 w-6" />,
     },
     {
-      title: '95% IELTS Success Rate',
-      description: 'Students consistently achieve their target band scores',
+      title: tExperience('successTitle'),
+      description: tExperience('successDescription'),
       icon: <Target className="h-6 w-6" />,
     },
     {
-      title: '8+ Years Teaching',
-      description: 'Extensive experience in online and classroom settings',
+      title: tExperience('yearsTitle'),
+      description: tExperience('yearsDescription'),
       icon: <Award className="h-6 w-6" />,
     },
   ];
@@ -145,9 +147,9 @@ function ExperienceSection() {
     <section className="section bg-gray-50">
       <div className="container">
         <div className="text-center space-y-4 mb-12">
-          <h2 className="section-title">Teaching Experience</h2>
+          <h2 className="section-title">{tExperience('title')}</h2>
           <p className="lead max-w-2xl mx-auto">
-            Proven track record of helping students achieve their English learning goals.
+            {tExperience('subtitle')}
           </p>
         </div>
         <div className="grid gap-8 md:grid-cols-3">
@@ -167,13 +169,15 @@ function ExperienceSection() {
 }
 
 function PhilosophySection() {
+  const tPhilosophy = useTranslations('about.philosophy');
+  
   return (
     <section className="section">
       <div className="container">
         <div className="text-center space-y-4 mb-12">
-          <h2 className="section-title">My Teaching Philosophy</h2>
+          <h2 className="section-title">{tPhilosophy('title')}</h2>
           <p className="lead max-w-2xl mx-auto">
-            Every student is unique, and so should be their learning journey.
+            {tPhilosophy('subtitle')}
           </p>
         </div>
 
@@ -182,33 +186,31 @@ function PhilosophySection() {
             <div className="space-y-4">
               <h3 className="text-2xl font-semibold text-gray-900 flex items-center space-x-2">
                 <Target className="h-6 w-6 text-brand" />
-                <span>Personalized Learning Approach</span>
+                <span>{tPhilosophy('personalizedTitle')}</span>
               </h3>
               <p className="text-gray-600">
-                I believe that effective language learning happens when lessons are tailored to 
-                individual needs, interests, and learning styles. That's why I take time to 
-                understand each student's goals and create customized lesson plans.
+                {tPhilosophy('personalizedDescription')}
               </p>
             </div>
             <div className="bg-accent/10 rounded-2xl p-6">
               <div className="space-y-4">
-                <h4 className="font-semibold text-gray-900">My Approach:</h4>
+                <h4 className="font-semibold text-gray-900">{tPhilosophy('approachTitle')}</h4>
                 <ul className="space-y-2 text-gray-600">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
-                    <span>Assess individual learning style and pace</span>
+                    <span>{tPhilosophy('approach1')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
-                    <span>Set clear, achievable goals together</span>
+                    <span>{tPhilosophy('approach2')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
-                    <span>Adapt teaching methods to student preferences</span>
+                    <span>{tPhilosophy('approach3')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
-                    <span>Provide regular feedback and progress updates</span>
+                    <span>{tPhilosophy('approach4')}</span>
                   </li>
                 </ul>
               </div>
@@ -218,23 +220,23 @@ function PhilosophySection() {
           <div className="grid gap-8 md:grid-cols-2 items-center">
             <div className="bg-accent/10 rounded-2xl p-6 md:order-2">
               <div className="space-y-4">
-                <h4 className="font-semibold text-gray-900">Core Principles:</h4>
+                <h4 className="font-semibold text-gray-900">{tPhilosophy('principlesTitle')}</h4>
                 <ul className="space-y-2 text-gray-600">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
-                    <span>Build confidence through small, achievable wins</span>
+                    <span>{tPhilosophy('principle1')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
-                    <span>Make learning enjoyable and relevant to real life</span>
+                    <span>{tPhilosophy('principle2')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
-                    <span>Encourage mistakes as learning opportunities</span>
+                    <span>{tPhilosophy('principle3')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
-                    <span>Provide consistent support and constructive feedback</span>
+                    <span>{tPhilosophy('principle4')}</span>
                   </li>
                 </ul>
               </div>
@@ -242,31 +244,28 @@ function PhilosophySection() {
             <div className="space-y-4 md:order-1">
               <h3 className="text-2xl font-semibold text-gray-900 flex items-center space-x-2">
                 <Rocket className="h-6 w-6 text-brand" />
-                <span>Confidence Through Practice</span>
+                <span>{tPhilosophy('confidenceTitle')}</span>
               </h3>
               <p className="text-gray-600">
-                Language learning is a journey that requires patience, practice, and positive 
-                reinforcement. I focus on building my students' confidence by creating a 
-                supportive environment where they feel comfortable making mistakes and learning 
-                from them.
+                {tPhilosophy('confidenceDescription')}
               </p>
             </div>
           </div>
 
           <div className="text-center bg-brand text-white rounded-2xl p-8">
-            <h3 className="text-2xl font-semibold mb-4">Ready to Start Your Journey?</h3>
+            <h3 className="text-2xl font-semibold mb-4">{tPhilosophy('ctaTitle')}</h3>
             <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-              Let's work together to unlock your English potential and achieve your language goals.
+              {tPhilosophy('ctaDescription')}
             </p>
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Link href="/booking">
                 <Button size="lg" variant="secondary" className="w-full sm:w-auto bg-white text-brand hover:bg-gray-50">
-                  Book a Free Consultation
+                  {tPhilosophy('ctaButton1')}
                 </Button>
               </Link>
               <Link href="/contact">
                 <Button size="lg" variant="ghost" className="w-full sm:w-auto text-white border-white hover:bg-white/10">
-                  Get in Touch
+                  {tPhilosophy('ctaButton2')}
                 </Button>
               </Link>
             </div>
@@ -278,15 +277,17 @@ function PhilosophySection() {
 }
 
 function CTASection() {
+  const tCta = useTranslations('about.aboutCta');
+  
   return (
     <section className="section bg-brand text-white">
       <div className="container text-center">
         <div className="max-w-3xl mx-auto space-y-6">
           <h2 className="text-3xl font-bold sm:text-4xl">
-            Ready to Transform Your English?
+            {tCta('title')}
           </h2>
           <p className="text-xl text-blue-100">
-            Join hundreds of successful students and start your journey to English mastery today.
+            {tCta('subtitle')}
           </p>
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Link href="/booking">
@@ -295,7 +296,7 @@ function CTASection() {
                 variant="secondary"
                 className="w-full sm:w-auto bg-white text-brand hover:bg-gray-50"
               >
-                Book Your Free Consultation
+                {tCta('bookButton')}
               </Button>
             </Link>
             <Link href="/contact">
@@ -304,7 +305,7 @@ function CTASection() {
                 variant="ghost"
                 className="w-full sm:w-auto text-white border-white hover:bg-white/10"
               >
-                Have Questions? Contact Me
+                {tCta('contactButton')}
               </Button>
             </Link>
           </div>
