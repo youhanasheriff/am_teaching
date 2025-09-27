@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/Button';
 import { Menu, X, MessageCircle } from 'lucide-react';
+import { createWhatsAppUrl, WHATSAPP_MESSAGES } from '@/lib/constants';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -33,11 +34,7 @@ export default function Navbar() {
   };
 
   const handleWhatsAppContact = () => {
-    const phoneNumber = '+1234567890'; // Replace with actual WhatsApp number
-    const message = encodeURIComponent(
-      "Hello! I'm interested in English lessons. Could you please provide more information?"
-    );
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.GENERAL_INQUIRY), '_blank');
   };
 
   return (

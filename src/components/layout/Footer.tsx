@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Mail, Globe, Clock, MessageCircle, Linkedin, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { CONTACT_INFO, createWhatsAppUrl, WHATSAPP_MESSAGES } from '@/lib/constants';
 
 const navigation = {
   main: [
@@ -31,9 +32,7 @@ const navigation = {
 
 export default function Footer() {
   const handleWhatsAppContact = () => {
-    const phoneNumber = '+1234567890'; // Replace with actual WhatsApp number
-    const message = encodeURIComponent('Hello! I found your website and I\'m interested in English lessons. Could you please provide more information?');
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.ABOUT_INQUIRY), '_blank');
   };
 
   return (
@@ -115,7 +114,7 @@ export default function Footer() {
                   <li className="flex items-center space-x-2">
                     <Mail className="h-4 w-4 text-gray-400" />
                     <span className="text-sm leading-6 text-gray-400">
-                      ayamohsen57@gmail.com
+                      {CONTACT_INFO.EMAIL}
                     </span>
                   </li>
                   <li className="flex items-center space-x-2">

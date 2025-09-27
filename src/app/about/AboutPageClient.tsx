@@ -4,12 +4,11 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { MessageCircle, GraduationCap, Award, Users, BookOpen, Target, CheckCircle, Rocket, Trophy } from 'lucide-react';
+import { createWhatsAppUrl, WHATSAPP_MESSAGES } from '@/lib/constants';
 
 function HeroSection() {
   const handleWhatsAppContact = () => {
-    const phoneNumber = '+1234567890';
-    const message = encodeURIComponent('Hello Aya! I found your website and I\'m interested in learning more about your English teaching services.');
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.ABOUT_INQUIRY), '_blank');
   };
 
   return (

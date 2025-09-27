@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Input, Textarea, Label } from '@/components/ui/Input';
 import { Mail, Clock, Globe, MessageCircle, Linkedin, Youtube, Send, Phone, MapPin, CheckCircle, AlertCircle } from 'lucide-react';
+import { CONTACT_INFO, createWhatsAppUrl, createEmailUrl, WHATSAPP_MESSAGES, EMAIL_TEMPLATES } from '@/lib/constants';
 
 interface FormData {
   name: string;
@@ -278,16 +279,11 @@ function ContactForm() {
 
 function ContactMethods() {
   const handleWhatsAppContact = () => {
-    const phoneNumber = '+1234567890'; // Replace with actual WhatsApp number
-    const message = encodeURIComponent('Hello Aya! I found your website and I\'m interested in English lessons. Could you please provide more information?');
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.ABOUT_INQUIRY), '_blank');
   };
 
   const handleEmailContact = () => {
-    const email = 'ayamohsen57@gmail.com';
-    const subject = encodeURIComponent('English Lessons Inquiry');
-    const body = encodeURIComponent('Hello Aya,\n\nI\'m interested in learning more about your English teaching services.\n\nBest regards,');
-    window.open(`mailto:${email}?subject=${subject}&body=${body}`, '_blank');
+    window.open(createEmailUrl(), '_blank');
   };
 
   return (
@@ -330,10 +326,10 @@ function ContactMethods() {
               <Mail className="h-7 w-7" />
             </div>
             <div>
-              <h3 className="font-bold text-gray-900 text-lg">Email</h3>
-              <p className="text-blue-700 font-medium">ayamohsen57@gmail.com</p>
-              <p className="text-sm text-blue-600">Professional email communication</p>
-            </div>
+               <h3 className="font-bold text-gray-900 text-lg">Email</h3>
+               <p className="text-blue-700 font-medium">{CONTACT_INFO.EMAIL}</p>
+               <p className="text-sm text-blue-600">Professional email communication</p>
+             </div>
           </div>
           <Button 
             onClick={handleEmailContact}
@@ -475,17 +471,15 @@ export default function ContactPageClient() {
                 For urgent questions or immediate support, WhatsApp is the fastest way to reach me.
               </p>
               <Button 
-                onClick={() => {
-                  const phoneNumber = '+1234567890';
-                  const message = encodeURIComponent('Hello Aya! I need immediate assistance with English learning. Could you help me?');
-                  window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-                }}
-                size="lg"
-                className="bg-green-600 hover:bg-green-700 flex items-center space-x-2"
-              >
-                <MessageCircle className="h-5 w-5" />
-                <span>WhatsApp for Urgent Help</span>
-              </Button>
+                 onClick={() => {
+                   window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.URGENT_HELP), '_blank');
+                 }}
+                 size="lg"
+                 className="bg-green-600 hover:bg-green-700 flex items-center space-x-2"
+               >
+                 <MessageCircle className="h-5 w-5" />
+                 <span>WhatsApp for Urgent Help</span>
+               </Button>
             </CardContent>
           </Card>
         </div>

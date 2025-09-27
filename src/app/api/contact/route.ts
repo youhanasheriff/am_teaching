@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { z } from 'zod';
+import { CONTACT_INFO, createWhatsAppUrl } from '@/lib/constants';
 
 // Enhanced validation schema for contact form
 const contactSchema = z.object({
@@ -51,9 +52,8 @@ export async function POST(request: NextRequest) {
     const { name, email, lessonType, message } = validatedData;
 
     // Primary email address as specified
-    const teacherEmail = 'ayamohsen57@gmail.com';
-    const fromEmail =
-      process.env.CONTACT_FROM_EMAIL || 'noreply@amteachings.com';
+    const teacherEmail = CONTACT_INFO.EMAIL;
+    const fromEmail = process.env.CONTACT_FROM_EMAIL || 'noreply@amteachings.com';
 
     // Check if Resend is configured
     if (!process.env.RESEND_API_KEY) {
@@ -112,12 +112,10 @@ export async function POST(request: NextRequest) {
               
               <div style="background: #ecfdf5; border: 1px solid #d1fae5; padding: 15px; border-radius: 6px; margin: 20px 0;">
                 <p style="margin: 0; color: #065f46; font-size: 14px;">
-                  <strong>Quick Actions:</strong><br>
-                  • Reply via email: <a href="mailto:${email}" style="color: #3b82f6;">${email}</a><br>
-                  • Contact via WhatsApp: <a href="https://wa.me/+1234567890?text=Hello%20${encodeURIComponent(
-                    name
-                  )}!" style="color: #3b82f6;">Send WhatsApp Message</a>
-                </p>
+                   <strong>Quick Actions:</strong><br>
+                   • Reply via email: <a href="mailto:${email}" style="color: #3b82f6;">${email}</a><br>
+                   • Contact via WhatsApp: <a href="${createWhatsAppUrl(`Hello ${name}!`)}" style="color: #3b82f6;">Send WhatsApp Message</a>
+                 </p>
               </div>
               
               <p style="color: #6b7280; font-size: 14px; margin-bottom: 0;">
@@ -160,10 +158,10 @@ export async function POST(request: NextRequest) {
               <div style="background: #ecfdf5; border: 1px solid #d1fae5; padding: 20px; border-radius: 6px; margin: 25px 0;">
                 <h3 style="margin: 0 0 15px 0; color: #065f46;">Alternative Contact Methods:</h3>
                 <p style="margin: 0; color: #065f46; line-height: 1.6;">
-                  For faster responses, you can also reach me via:<br>
-                  📧 Email: <a href="mailto:ayamohsen57@gmail.com" style="color: #3b82f6;">ayamohsen57@gmail.com</a><br>
-                  💬 WhatsApp: <a href="https://wa.me/+1234567890?text=Hello%20Aya!" style="color: #3b82f6;">Send WhatsApp Message</a>
-                </p>
+                   For faster responses, you can also reach me via:<br>
+                   📧 Email: <a href="mailto:${CONTACT_INFO.EMAIL}" style="color: #3b82f6;">${CONTACT_INFO.EMAIL}</a><br>
+                   💬 WhatsApp: <a href="${createWhatsAppUrl('Hello Aya!')}" style="color: #3b82f6;">Send WhatsApp Message</a>
+                 </p>
               </div>
               
               <p style="color: #4b5563; margin-bottom: 0; line-height: 1.6;">
