@@ -180,15 +180,68 @@
     "generalEnglish": "General English",
     "spokenEnglish": "Spoken English", 
     "ieltsPreparation": "IELTS Preparation",
+    "contactMe": "Contact Me",
+    "contactMeNow": "Contact Me Now",
+    "contactFor": "Contact for {level}",
+    "duration": "Duration",
+    "whatYoullLearn": "What You'll Learn:",
+    "learningOutcomes": "Learning Outcomes:",
+    "englishLearningLevels": "English Learning Levels",
+    "structuredPrograms": "Structured programs designed to take you from your current level to confident, fluent English communication.",
     "beginnerTitle": "Beginner English",
     "beginnerSubtitle": "A1-A2 Level • Foundation Building",
     "beginnerDescription": "Start your English journey with confidence. Perfect for complete beginners or those who need to strengthen their basics.",
-    "intermediateTitle": "Intermediate English", 
-    "intermediateSubtitle": "B1-B2 Level • Skill Development",
-    "intermediateDescription": "Build fluency and confidence in real-world communication. Perfect for students ready to take their English to the next level.",
+    "beginnerFeatures": [
+      "Basic grammar structures and sentence formation",
+      "Essential vocabulary for daily conversations", 
+      "Pronunciation and listening skills development",
+      "Simple reading and writing exercises",
+      "Numbers, dates, and time expressions",
+      "Introductions and basic personal information"
+    ],
+    "beginnerOutcomes": [
+      "Understand and use basic English phrases",
+      "Introduce yourself and ask simple questions",
+      "Handle basic everyday situations", 
+      "Build confidence in speaking English"
+    ],
+    "beginnerDuration": "3-6 months",
+    "intermediateTitle": "Intermediate English",
+    "intermediateSubtitle": "B1-B2 Level • Skills Development", 
+    "intermediateDescription": "Develop fluency and confidence in everyday communication. Perfect for students ready to take their English to the next level.",
+    "intermediateFeatures": [
+      "Complex grammar patterns and tenses",
+      "Expanded vocabulary and idiomatic expressions",
+      "Conversational skills and discussion topics",
+      "Reading comprehension with longer texts",
+      "Email writing and formal communication",
+      "Listening to native speaker materials"
+    ],
+    "intermediateOutcomes": [
+      "Communicate fluently in most situations",
+      "Express opinions and participate in discussions",
+      "Understand movies, news, and podcasts",
+      "Write clear and detailed texts"
+    ],
+    "intermediateDuration": "4-8 months",
     "advancedTitle": "Advanced English",
-    "advancedSubtitle": "C1-C2 Level • Mastery & Refinement", 
-    "advancedDescription": "Achieve native-like fluency and sophisticated communication skills. Perfect for academic and professional excellence.",
+    "advancedSubtitle": "C1-C2 Level • Mastery & Fluency",
+    "advancedDescription": "Achieve near-native fluency and master complex language structures. Ideal for professional and academic purposes.",
+    "advancedFeatures": [
+      "Advanced grammar and complex structures",
+      "Sophisticated vocabulary and nuanced expressions",
+      "Business and academic English skills",
+      "Critical thinking and argumentation",
+      "Advanced writing techniques",
+      "Cultural context and native-like fluency"
+    ],
+    "advancedOutcomes": [
+      "Express yourself fluently and precisely",
+      "Handle complex professional situations",
+      "Understand implicit meaning and nuance",
+      "Produce sophisticated written work"
+    ],
+    "advancedDuration": "6-12 months",
     "ielts": {
       "title": "IELTS Preparation Program",
       "description": "Comprehensive IELTS training with a 95% success rate. Get the score you need for university admission, immigration, or career advancement.",
@@ -197,7 +250,51 @@
       "successRate": "95%",
       "successRateLabel": "Success Rate",
       "duration": "2-4",
-      "durationLabel": "Months to Target"
+      "durationLabel": "Months to Target",
+      "listeningTitle": "IELTS Listening",
+      "listeningDescription": "Master all four sections of the listening test with proven strategies.",
+      "listeningSkills": ["Note-taking techniques", "Predicting answers", "Understanding accents", "Time management"],
+      "readingTitle": "IELTS Reading", 
+      "readingDescription": "Develop speed and accuracy for both Academic and General Training.",
+      "readingSkills": ["Skimming and scanning", "Question types mastery", "Time allocation", "Vocabulary building"],
+      "writingTitle": "IELTS Writing",
+      "writingDescription": "Learn to write compelling essays and reports that score high bands.",
+      "writingSkills": ["Task achievement", "Coherence and cohesion", "Lexical resource", "Grammar accuracy"],
+      "speakingTitle": "IELTS Speaking",
+      "speakingDescription": "Build confidence and fluency for natural conversation with the examiner.",
+      "speakingSkills": ["Fluency development", "Pronunciation practice", "Vocabulary expansion", "Exam strategies"],
+      "successStories": "IELTS Success Stories",
+      "testimonialQuote": "Thanks to Aya's expert guidance, I improved from Band 6.0 to 8.0 in just 3 months. Her strategies for the Writing and Speaking modules were game-changers!",
+      "testimonialName": "Ahmed Al-Mansouri",
+      "testimonialScore": "From 6.0 → 8.0 Overall",
+      "programIncludes": "IELTS Program Includes:",
+      "programFeatures": [
+        "Full-length practice tests",
+        "Detailed feedback and scoring",
+        "Exam strategies and time management",
+        "Mock interviews and speaking practice",
+        "Writing samples and model answers",
+        "Ongoing support until test day"
+      ],
+      "contactForIelts": "Contact for IELTS Prep"
+    },
+    "specialized": {
+      "title": "Specialized Programs",
+      "subtitle": "Targeted programs designed for specific goals and professional needs.",
+      "businessTitle": "Business English",
+      "businessDescription": "Professional communication for the workplace",
+      "businessFeatures": ["Meeting participation", "Email writing", "Presentation skills", "Negotiation language"],
+      "academicTitle": "Academic English",
+      "academicDescription": "University-level language skills",
+      "academicFeatures": ["Essay writing", "Research skills", "Academic vocabulary", "Citation techniques"],
+      "conversationTitle": "Conversation Practice",
+      "conversationDescription": "Improve fluency and confidence in speaking",
+      "conversationFeatures": ["Natural conversation", "Pronunciation practice", "Idioms and expressions", "Cultural context"]
+    },
+    "cta": {
+      "title": "Ready to Begin Your English Journey?",
+      "subtitle": "Contact me to discuss your goals and find the perfect program for you.",
+      "supportText": "All programs include personalized lesson plans, progress tracking, and ongoing support."
     }
   },
   "testimonials": {

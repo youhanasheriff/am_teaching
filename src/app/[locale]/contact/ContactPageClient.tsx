@@ -6,24 +6,19 @@ import { Button } from '@/components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Input, Textarea, Label } from '@/components/ui/Input';
 import {
-  Mail,
   Clock,
   Globe,
   MessageCircle,
   Linkedin,
-  Youtube,
   Send,
-  Phone,
   MapPin,
   CheckCircle,
   AlertCircle,
 } from 'lucide-react';
 import {
-  CONTACT_INFO,
   createWhatsAppUrl,
   createEmailUrl,
   WHATSAPP_MESSAGES,
-  EMAIL_TEMPLATES,
 } from '@/lib/constants';
 
 interface FormData {
@@ -169,9 +164,7 @@ function ContactForm() {
           <Send className="h-6 w-6 text-brand" />
           <span>{tContact('sendMessage')}</span>
         </CardTitle>
-        <p className="text-gray-600">
-          {tContact('sendMessageDescription')}
-        </p>
+        <p className="text-gray-600">{tContact('sendMessageDescription')}</p>
       </CardHeader>
       <CardContent className="p-6">
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -279,10 +272,16 @@ function ContactForm() {
             >
               <option value="general">{tContact('lessonTypes.general')}</option>
               <option value="ielts">{tContact('lessonTypes.ielts')}</option>
-              <option value="individual">{tContact('lessonTypes.individual')}</option>
+              <option value="individual">
+                {tContact('lessonTypes.individual')}
+              </option>
               <option value="group">{tContact('lessonTypes.group')}</option>
-              <option value="business">{tContact('lessonTypes.business')}</option>
-              <option value="conversation">{tContact('lessonTypes.conversation')}</option>
+              <option value="business">
+                {tContact('lessonTypes.business')}
+              </option>
+              <option value="conversation">
+                {tContact('lessonTypes.conversation')}
+              </option>
               <option value="other">{tContact('lessonTypes.other')}</option>
             </select>
           </div>
@@ -318,7 +317,9 @@ function ContactForm() {
                 <span></span>
               )}
               <span className="text-xs text-gray-500">
-                {tContact('charactersCount', { count: formData.message.length })}
+                {tContact('charactersCount', {
+                  count: formData.message.length,
+                })}
               </span>
             </div>
           </div>
@@ -329,7 +330,11 @@ function ContactForm() {
             className="w-full md:w-auto flex items-center justify-center space-x-2 min-w-[200px]"
           >
             <Send className="h-4 w-4" />
-            <span>{isSubmitting ? tContact('form.sending') : tContact('form.submit')}</span>
+            <span>
+              {isSubmitting
+                ? tContact('form.sending')
+                : tContact('form.submit')}
+            </span>
           </Button>
         </form>
       </CardContent>
@@ -339,7 +344,7 @@ function ContactForm() {
 
 function ContactMethods() {
   const tContact = useTranslations('contact');
-  
+
   const handleWhatsAppContact = () => {
     window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.ABOUT_INQUIRY), '_blank');
   };
@@ -351,7 +356,9 @@ function ContactMethods() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">{tContact('getInTouch')}</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">
+          {tContact('getInTouch')}
+        </h2>
         <p className="text-gray-600 mb-6">
           {tContact('getInTouchDescription')}
         </p>
@@ -390,21 +397,31 @@ function ContactMethods() {
         <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
           <Clock className="h-6 w-6 text-brand" />
           <div>
-            <h4 className="font-semibold text-gray-900">{tContact('responseTime')}</h4>
-            <p className="text-sm text-gray-600">{tContact('responseTimeValue')}</p>
+            <h4 className="font-semibold text-gray-900">
+              {tContact('responseTime')}
+            </h4>
+            <p className="text-sm text-gray-600">
+              {tContact('responseTimeValue')}
+            </p>
           </div>
         </div>
         <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
           <Globe className="h-6 w-6 text-brand" />
           <div>
-            <h4 className="font-semibold text-gray-900">{tContact('availability')}</h4>
-            <p className="text-sm text-gray-600">{tContact('availabilityValue')}</p>
+            <h4 className="font-semibold text-gray-900">
+              {tContact('availability')}
+            </h4>
+            <p className="text-sm text-gray-600">
+              {tContact('availabilityValue')}
+            </p>
           </div>
         </div>
         <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
           <MapPin className="h-6 w-6 text-brand" />
           <div>
-            <h4 className="font-semibold text-gray-900">{tContact('location')}</h4>
+            <h4 className="font-semibold text-gray-900">
+              {tContact('location')}
+            </h4>
             <p className="text-sm text-gray-600">{tContact('locationValue')}</p>
           </div>
         </div>
@@ -415,11 +432,13 @@ function ContactMethods() {
 
 function ContactFormSection() {
   const tContact = useTranslations('contact');
-  
+
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">{tContact('contactForm')}</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">
+          {tContact('contactForm')}
+        </h2>
         <p className="text-gray-600 mb-6">
           {tContact('contactFormDescription')}
         </p>
@@ -432,7 +451,7 @@ function ContactFormSection() {
 function SocialLinks() {
   const tContact = useTranslations('contact');
   const tFooter = useTranslations('footer');
-  
+
   const socialLinks = [
     {
       name: tFooter('socialLinkedIn'),
@@ -474,7 +493,7 @@ function SocialLinks() {
 
 export default function ContactPageClient() {
   const tContact = useTranslations('contact');
-  
+
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="container">
