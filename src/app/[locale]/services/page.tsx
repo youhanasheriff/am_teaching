@@ -217,8 +217,8 @@ function IELTSSection() {
           </p>
           <div className="flex items-center justify-center space-x-8 pt-4">
             <div className="text-center">
-              <div className="text-2xl font-bold">Band 9</div>
-              <div className="text-blue-200 text-sm">Certified Teacher</div>
+              <div className="text-2xl font-bold">Band 8.5</div>
+              <div className="text-blue-200 text-sm">IELTS Score</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold">95%</div>

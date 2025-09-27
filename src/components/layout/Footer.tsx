@@ -1,38 +1,42 @@
 'use client';
 
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import { Mail, Globe, Clock, MessageCircle, Linkedin, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { CONTACT_INFO, createWhatsAppUrl, WHATSAPP_MESSAGES } from '@/lib/constants';
 
-const navigation = {
-  main: [
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' },
-  ],
-  legal: [
-    { name: 'Privacy Policy', href: '/privacy' },
-    { name: 'Terms of Service', href: '/terms' },
-  ],
-  social: [
-    {
-      name: 'LinkedIn',
-      href: '#',
-      icon: <Linkedin className="h-6 w-6" />,
-    },
-    {
-      name: 'YouTube',
-      href: '#',
-      icon: <Youtube className="h-6 w-6" />,
-    },
-  ],
-};
-
 export default function Footer() {
+  const t = useTranslations('navigation');
+  const tFooter = useTranslations('footer');
+  
+  const navigation = {
+    main: [
+      { name: t('about'), href: '/about' as const },
+      { name: t('services'), href: '/services' as const },
+      { name: t('blog'), href: '/blog' as const },
+      { name: t('contact'), href: '/contact' as const },
+    ],
+    legal: [
+      { name: 'Privacy Policy', href: '/privacy' as const },
+      { name: 'Terms of Service', href: '/terms' as const },
+    ],
+    social: [
+      {
+        name: 'LinkedIn',
+        href: '#',
+        icon: <Linkedin className="h-6 w-6" />,
+      },
+      {
+        name: 'YouTube',
+        href: '#',
+        icon: <Youtube className="h-6 w-6" />,
+      },
+    ],
+  };
+  
   const handleWhatsAppContact = () => {
-    window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.ABOUT_INQUIRY), '_blank');
+    window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.GENERAL_INQUIRY), '_blank');
   };
 
   return (
@@ -62,10 +66,10 @@ export default function Footer() {
             <div className="bg-green-900/30 border border-green-800 rounded-lg p-4">
               <div className="flex items-center space-x-3 mb-3">
                 <MessageCircle className="h-5 w-5 text-green-400" />
-                <span className="text-sm font-medium text-green-400">Quick Contact</span>
+                <span className="text-sm font-medium text-green-400">{tFooter('quickContact')}</span>
               </div>
               <p className="text-gray-300 text-sm mb-3">
-                Get instant responses via WhatsApp
+                {tFooter('quickContactDescription')}
               </p>
               <Button 
                 onClick={handleWhatsAppContact}
@@ -73,20 +77,22 @@ export default function Footer() {
                 className="bg-green-600 hover:bg-green-700 text-white flex items-center space-x-2"
               >
                 <MessageCircle className="h-4 w-4" />
-                <span>Message on WhatsApp</span>
+                <span>{tFooter('messageWhatsApp')}</span>
               </Button>
             </div>
 
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
-                <Link
+                <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-400 hover:text-brand transition-colors duration-200"
+                  className="text-gray-400 hover:text-brand transition-colors duration-200 cursor-pointer"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <span className="sr-only">{item.name}</span>
                   {item.icon}
-                </Link>
+                </a>
               ))}
             </div>
           </div>
@@ -94,7 +100,7 @@ export default function Footer() {
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold leading-6 text-white">Navigation</h3>
+                <h3 className="text-sm font-semibold leading-6 text-white">{tFooter('navigation')}</h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.main.map((item) => (
                     <li key={item.name}>

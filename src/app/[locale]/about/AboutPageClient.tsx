@@ -1,12 +1,16 @@
 'use client';
 
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { MessageCircle, GraduationCap, Award, Users, BookOpen, Target, CheckCircle, Rocket, Trophy } from 'lucide-react';
 import { createWhatsAppUrl, WHATSAPP_MESSAGES } from '@/lib/constants';
 
 function HeroSection() {
+  const t = useTranslations('about');
+  const tCommon = useTranslations('common');
+  
   const handleWhatsAppContact = () => {
     window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.ABOUT_INQUIRY), '_blank');
   };
@@ -18,11 +22,10 @@ function HeroSection() {
           <div className="space-y-6">
             <div className="space-y-4">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-                Meet <span className="text-brand">Aya Mohsen</span>
+                {t('title')}
               </h1>
               <p className="lead">
-                Passionate English educator with 8+ years of experience helping students 
-                from beginner to advanced levels achieve their language learning goals.
+                {t('description')}
               </p>
             </div>
             <div className="flex flex-col gap-4 sm:flex-row">
@@ -49,8 +52,8 @@ function HeroSection() {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-2xl font-semibold text-gray-900">Aya Mohsen</h3>
-                  <p className="text-gray-600 font-medium">M.A. Applied Linguistics</p>
-                  <p className="text-sm text-gray-500">IELTS Band 9 Certified</p>
+                  <p className="text-gray-600 font-medium">American Diploma Holder</p>
+                  <p className="text-sm text-gray-500">IELTS 8.5 • Licensed Teacher</p>
                 </div>
               </div>
             </div>
@@ -62,30 +65,32 @@ function HeroSection() {
 }
 
 function QualificationsSection() {
+  const t = useTranslations('about.qualifications');
+  
   const qualifications = [
     {
-      title: 'Master of Applied Linguistics',
-      institution: 'University of Edinburgh',
-      year: '2016',
+      title: t('americanDiploma'),
+      institution: t('americanDiplomaInstitution'),
+      year: t('certified'),
       icon: <GraduationCap className="h-8 w-8" />,
     },
     {
-      title: 'IELTS Band 9 Certificate',
-      institution: 'British Council',
-      year: '2015',
+      title: t('ieltsScore'),
+      institution: t('ieltsInstitution'),
+      year: t('certified'),
       icon: <Trophy className="h-8 w-8" />,
     },
     {
-      title: 'TESOL Certification',
-      institution: 'Cambridge Assessment',
-      year: '2015',
-      icon: <BookOpen className="h-8 w-8" />,
+      title: t('teachingLicense'),
+      institution: t('teachingLicenseInstitution'),
+      year: t('licensed'),
+      icon: <Award className="h-8 w-8" />,
     },
     {
-      title: 'Advanced Teaching Methodology',
-      institution: 'Oxford University Press',
-      year: '2017',
-      icon: <Award className="h-8 w-8" />,
+      title: t('specialist'),
+      institution: t('specialistInstitution'),
+      year: t('expert'),
+      icon: <BookOpen className="h-8 w-8" />,
     },
   ];
 
@@ -93,10 +98,9 @@ function QualificationsSection() {
     <section className="section">
       <div className="container">
         <div className="text-center space-y-4 mb-12">
-          <h2 className="section-title">Qualifications & Certifications</h2>
+          <h2 className="section-title">{t('title')}</h2>
           <p className="lead max-w-2xl mx-auto">
-            Academic excellence meets practical teaching experience to deliver 
-            exceptional language learning outcomes.
+            {t('subtitle')}
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">

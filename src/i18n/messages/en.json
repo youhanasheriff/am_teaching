@@ -1,0 +1,187 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About", 
+    "services": "Services",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "common": {
+    "contactMe": "Contact Me",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "bookLesson": "Book a Lesson",
+    "askQuestion": "Ask a Question",
+    "viewAllServices": "View All Services",
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "sendMessage": "Send Message",
+    "subscribe": "Subscribe",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  },
+  "hero": {
+    "title": "Master English with",
+    "subtitle": "Aya Mohsen",
+    "description": "Licensed English educator specializing in General English, Spoken English, and IELTS preparation. American Diploma holder with IELTS 8.5 score, helping students achieve their language learning goals.",
+    "cta1": "Start Learning Today",
+    "cta2": "Explore Services"
+  },
+  "about": {
+    "title": "Meet Aya Mohsen",
+    "description": "Licensed English educator specializing in General English, Spoken English, and IELTS preparation. American Diploma holder with IELTS 8.5 score and teaching license from Ain Shams University.",
+    "qualifications": {
+      "title": "Qualifications & Certifications",
+      "subtitle": "Academic excellence meets practical teaching experience to deliver exceptional language learning outcomes.",
+      "americanDiploma": "American Diploma",
+      "americanDiplomaInstitution": "American Education System",
+      "ieltsScore": "IELTS Score 8.5",
+      "ieltsInstitution": "British Council",
+      "teachingLicense": "Teaching License", 
+      "teachingLicenseInstitution": "Ain Shams University",
+      "specialist": "English Teaching Specialist",
+      "specialistInstitution": "General, Spoken & IELTS",
+      "certified": "Certified",
+      "licensed": "Licensed",
+      "expert": "Expert"
+    }
+  },
+  "services": {
+    "title": "English Learning Services",
+    "subtitle": "From beginner foundations to advanced fluency and IELTS mastery. Choose the perfect program to achieve your English learning goals.",
+    "generalEnglish": "General English",
+    "spokenEnglish": "Spoken English", 
+    "ieltsPreparation": "IELTS Preparation",
+    "ielts": {
+      "title": "IELTS Preparation Program",
+      "description": "Comprehensive IELTS training with a 95% success rate. Get the score you need for university admission, immigration, or career advancement.",
+      "score": "Band 8.5",
+      "scoreLabel": "IELTS Score",
+      "successRate": "95%",
+      "successRateLabel": "Success Rate",
+      "duration": "2-4",
+      "durationLabel": "Months to Target"
+    }
+  },
+  "contact": {
+    "title": "Contact Aya Mohsen",
+    "subtitle": "Have questions about English lessons or IELTS preparation? I'm here to help you succeed in your language learning journey.",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "lessonType": "What are you interested in?",
+      "message": "Message",
+      "required": "*",
+      "namePlaceholder": "Your full name",
+      "emailPlaceholder": "your.email@example.com",
+      "messagePlaceholder": "Tell me about your English learning goals, current level, or any specific questions you have...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "successTitle": "Message sent successfully!",
+      "successMessage": "I'll get back to you within 24 hours.",
+      "errorTitle": "Error sending message",
+      "errorMessage": "Please try again or contact me directly via WhatsApp."
+    },
+    "lessonTypes": {
+      "general": "General English Lessons",
+      "ielts": "IELTS Preparation", 
+      "individual": "Individual Lessons",
+      "group": "Group Lessons",
+      "business": "Business English",
+      "conversation": "Conversation Practice",
+      "other": "Other"
+    },
+    "methods": {
+      "whatsappTitle": "WhatsApp (Preferred)",
+      "whatsappSubtitle": "Instant messaging & quick responses",
+      "whatsappDescription": "Get answers within minutes, not hours",
+      "whatsappButton": "Start WhatsApp Conversation",
+      "emailTitle": "Email",
+      "emailSubtitle": "Professional email communication",
+      "emailButton": "Send Email"
+    }
+  },
+  "services": {
+    "title": "English Learning Services",
+    "subtitle": "From beginner foundations to advanced fluency and IELTS mastery. Choose the perfect program to achieve your English learning goals.",
+    "generalEnglish": "General English",
+    "spokenEnglish": "Spoken English", 
+    "ieltsPreparation": "IELTS Preparation",
+    "beginnerTitle": "Beginner English",
+    "beginnerSubtitle": "A1-A2 Level • Foundation Building",
+    "beginnerDescription": "Start your English journey with confidence. Perfect for complete beginners or those who need to strengthen their basics.",
+    "intermediateTitle": "Intermediate English", 
+    "intermediateSubtitle": "B1-B2 Level • Skill Development",
+    "intermediateDescription": "Build fluency and confidence in real-world communication. Perfect for students ready to take their English to the next level.",
+    "advancedTitle": "Advanced English",
+    "advancedSubtitle": "C1-C2 Level • Mastery & Refinement", 
+    "advancedDescription": "Achieve native-like fluency and sophisticated communication skills. Perfect for academic and professional excellence.",
+    "ielts": {
+      "title": "IELTS Preparation Program",
+      "description": "Comprehensive IELTS training with a 95% success rate. Get the score you need for university admission, immigration, or career advancement.",
+      "score": "Band 8.5",
+      "scoreLabel": "IELTS Score",
+      "successRate": "95%",
+      "successRateLabel": "Success Rate",
+      "duration": "2-4",
+      "durationLabel": "Months to Target"
+    }
+  },
+  "testimonials": {
+    "title": "What My Students Say",
+    "subtitle": "Real success stories from students who achieved their English learning goals",
+    "student1Quote": "Aya helped me jump from IELTS 5.5 to 7.5 in just two months! Her teaching methods are incredibly effective.",
+    "student1Name": "Mariam Al-Rashid",
+    "student1Role": "IELTS Student",
+    "student1Score": "7.5 IELTS",
+    "student2Quote": "Clear explanations and fun lessons. My speaking confidence soared after just a few sessions with Aya.",
+    "student2Name": "Omar Hassan", 
+    "student2Role": "Intermediate Student",
+    "student2Score": "Fluent Speaker",
+    "student3Quote": "Professional, patient, and results-driven. Aya's structured approach helped me pass my business English certification.",
+    "student3Name": "Sarah Johnson",
+    "student3Role": "Business Professional", 
+    "student3Score": "Certified"
+  },
+  "blog": {
+    "title": "English Learning Blog",
+    "subtitle": "Expert tips, strategies, and insights to accelerate your English learning journey",
+    "readMore": "Read More",
+    "categories": "Categories",
+    "latestPosts": "Latest Posts",
+    "allPosts": "All Posts",
+    "backToBlog": "← Back to Blog",
+    "relatedPosts": "Related Posts",
+    "topicsCovered": "Topics covered:",
+    "newsletter": {
+      "title": "Get Weekly English Tips",
+      "subtitle": "Join 1,000+ learners receiving expert advice directly in their inbox",
+      "placeholder": "Enter your email address",
+      "subscribe": "Subscribe Free",
+      "benefits": "✓ Weekly tips ✓ No spam ✓ Unsubscribe anytime"
+    },
+    "cta": {
+      "title": "Ready for Personalized Learning?",
+      "subtitle": "While these articles provide valuable insights, nothing beats personalized feedback and guidance tailored to your specific needs."
+    }
+  },
+  "stats": {
+    "studentsTitle": "Students Taught",
+    "studentsCount": "500+",
+    "successTitle": "IELTS Success Rate", 
+    "successCount": "95%",
+    "ratingTitle": "Average Rating",
+    "ratingCount": "5⭐"
+  },
+  "footer": {
+    "quickContact": "Quick Contact",
+    "quickContactDescription": "Get instant responses via WhatsApp",
+    "messageWhatsApp": "Message on WhatsApp",
+    "quickLinks": "Quick Links",
+    "navigation": "Navigation",
+    "followDescription": "Follow for English learning tips and updates",
+    "copyright": "© 2024 AM Teachings. All rights reserved."
+  }
+}

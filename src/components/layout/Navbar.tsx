@@ -1,24 +1,26 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { Link, usePathname } from '@/i18n/routing';
 import { Button } from '@/components/ui/Button';
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 import { Menu, X, MessageCircle } from 'lucide-react';
 import { createWhatsAppUrl, WHATSAPP_MESSAGES } from '@/lib/constants';
 
-const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Services', href: '/services' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'Contact', href: '/contact' },
-];
-
 export default function Navbar() {
+  const t = useTranslations('navigation');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  const navigation = [
+    { name: t('home'), href: '/' as const },
+    { name: t('about'), href: '/about' as const },
+    { name: t('services'), href: '/services' as const },
+    { name: t('blog'), href: '/blog' as const },
+    { name: t('contact'), href: '/contact' as const },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,11 +78,12 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Contact Buttons */}
+        {/* Contact Buttons & Language Switcher */}
         <div className="flex items-center space-x-4">
+          <LanguageSwitcher />
           <div className="hidden sm:flex items-center space-x-3">
             <Link href="/contact">
-              <Button size="sm">Contact Me</Button>
+              <Button size="sm">{t('contact')}</Button>
             </Link>
             <Button
               variant="outline"
@@ -131,8 +134,11 @@ export default function Navbar() {
               ))}
             </div>
             <div className="mt-6 pt-4 border-t border-gray-200 space-y-3">
+              <div className="mb-4">
+                <LanguageSwitcher />
+              </div>
               <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full justify-center">Contact Me</Button>
+                <Button className="w-full justify-center">{t('contact')}</Button>
               </Link>
               <Button
                 variant="outline"
@@ -143,7 +149,7 @@ export default function Navbar() {
                 }}
               >
                 <MessageCircle className="h-4 w-4" />
-                <span>WhatsApp Me</span>
+                <span>WhatsApp</span>
               </Button>
             </div>
           </div>

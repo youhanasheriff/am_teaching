@@ -3,11 +3,11 @@ import HomePageClient from './HomePageClient';
 
 export const metadata: Metadata = {
   title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
-  description: 'Master English and excel in IELTS with personalized lessons from expert teacher Aya Mohsen. Join 500+ successful students with 95% IELTS success rate.',
-  keywords: 'English lessons, IELTS preparation, online English tutor, Aya Mohsen, English learning, IELTS coaching, English teacher',
+  description: 'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.5 score and teaching license from Ain Shams University.',
+  keywords: 'English lessons, IELTS preparation, General English, Spoken English, Aya Mohsen, American Diploma, Ain Shams University, licensed teacher',
   openGraph: {
     title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
-    description: 'Master English and excel in IELTS with personalized lessons from expert teacher Aya Mohsen. Join 500+ successful students with 95% IELTS success rate.',
+    description: 'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.5 score.',
     type: 'website',
     images: [
       {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
-    description: 'Master English and excel in IELTS with personalized lessons from expert teacher Aya Mohsen.',
+    description: 'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen.',
     images: ['/og-image.jpg'],
   },
 };
@@ -31,14 +31,14 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
     "name": "AM Teachings",
-    "description": "Expert English and IELTS preparation with personalized lessons from Aya Mohsen",
+    "description": "General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen",
     "url": process.env.SITE_URL || "https://amteachings.com",
     "logo": `${process.env.SITE_URL || "https://amteachings.com"}/logo.png`,
     "founder": {
       "@type": "Person",
       "name": "Aya Mohsen",
-      "jobTitle": "English Teacher & IELTS Specialist",
-      "description": "Certified English teacher with 8+ years of experience"
+      "jobTitle": "Licensed English Teacher & IELTS Specialist",
+      "description": "American Diploma holder with IELTS 8.5 score and teaching license from Ain Shams University"
     },
     "offers": [
       {
