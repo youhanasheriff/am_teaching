@@ -1,7 +1,7 @@
 {
   "navigation": {
     "home": "الرئيسية",
-    "about": "عن آية", 
+    "about": "عن آية",
     "services": "الخدمات",
     "blog": "المدونة",
     "contact": "تواصل معي"
@@ -39,7 +39,7 @@
     "beginnerDescription": "بناء أسس قوية مع القواعد والمفردات ومهارات المحادثة الأساسية.",
     "intermediateTitle": "الإنجليزية المتوسطة",
     "intermediateDescription": "تطوير الطلاقة والثقة في التواصل اليومي والكتابة.",
-    "advancedTitle": "الإنجليزية المتقدمة", 
+    "advancedTitle": "الإنجليزية المتقدمة",
     "advancedDescription": "إتقان القواعد المعقدة والتعابير ومهارات التواصل المهني.",
     "ieltsTitle": "إعداد الآيلتس",
     "ieltsDescription": "إعداد شامل للاختبار مع استراتيجيات مثبتة لجميع المهارات الأربع."
@@ -65,7 +65,7 @@
     "experience": {
       "title": "الخبرة التدريسية",
       "subtitle": "سجل حافل مثبت في مساعدة الطلاب على تحقيق أهدافهم في تعلم الإنجليزية.",
-      "studentsTitle": "500+ طالب تم تدريسهم",
+      "studentsTitle": "15+ طالب تم تدريسهم",
       "studentsDescription": "إرشاد ناجح لطلاب من أكثر من 40 دولة",
       "successTitle": "95% معدل نجاح الآيلتس",
       "successDescription": "الطلاب يحققون درجاتهم المستهدفة باستمرار",
@@ -159,7 +159,7 @@
       "general": "دروس الإنجليزية العامة",
       "ielts": "إعداد الآيلتس",
       "individual": "دروس فردية",
-      "group": "دروس جماعية", 
+      "group": "دروس جماعية",
       "business": "الإنجليزية التجارية",
       "conversation": "ممارسة المحادثة",
       "other": "أخرى"
@@ -372,7 +372,7 @@
   },
   "stats": {
     "studentsTitle": "طلاب تم تدريسهم",
-    "studentsCount": "500+",
+    "studentsCount": "15+",
     "successTitle": "معدل نجاح الآيلتس",
     "successCount": "95%",
     "ratingTitle": "متوسط التقييم",

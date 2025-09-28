@@ -1,7 +1,7 @@
 {
   "navigation": {
     "home": "Home",
-    "about": "About", 
+    "about": "About",
     "services": "Services",
     "blog": "Blog",
     "contact": "Contact"
@@ -37,7 +37,7 @@
     "subtitle": "Whether you're starting your English journey or preparing for IELTS, I have the perfect program for you.",
     "beginnerTitle": "Beginner English",
     "beginnerDescription": "Build strong foundations with grammar, vocabulary, and basic conversation skills.",
-    "intermediateTitle": "Intermediate English", 
+    "intermediateTitle": "Intermediate English",
     "intermediateDescription": "Develop fluency and confidence in everyday communication and writing.",
     "advancedTitle": "Advanced English",
     "advancedDescription": "Master complex grammar, idioms, and professional communication skills.",
@@ -54,7 +54,7 @@
       "americanDiplomaInstitution": "American Education System",
       "ieltsScore": "IELTS Score 8.5",
       "ieltsInstitution": "British Council",
-      "teachingLicense": "Teaching License", 
+      "teachingLicense": "Teaching License",
       "teachingLicenseInstitution": "Ain Shams University",
       "specialist": "English Teaching Specialist",
       "specialistInstitution": "General, Spoken & IELTS",
@@ -65,7 +65,7 @@
     "experience": {
       "title": "Teaching Experience",
       "subtitle": "Proven track record of helping students achieve their English learning goals.",
-      "studentsTitle": "500+ Students Taught",
+      "studentsTitle": "15+ Students Taught",
       "studentsDescription": "Successfully guided students from 40+ countries",
       "successTitle": "95% IELTS Success Rate",
       "successDescription": "Students consistently achieve their target band scores",
@@ -79,13 +79,13 @@
       "personalizedDescription": "I believe that effective language learning happens when lessons are tailored to individual needs, interests, and learning styles. That's why I take time to understand each student's goals and create customized lesson plans.",
       "approachTitle": "My Approach:",
       "approach1": "Assess individual learning style and pace",
-      "approach2": "Set clear, achievable goals together", 
+      "approach2": "Set clear, achievable goals together",
       "approach3": "Adapt teaching methods to student preferences",
       "approach4": "Provide regular feedback and progress updates",
       "principlesTitle": "Core Principles:",
       "principle1": "Build confidence through small, achievable wins",
       "principle2": "Make learning enjoyable and relevant to real life",
-      "principle3": "Encourage mistakes as learning opportunities", 
+      "principle3": "Encourage mistakes as learning opportunities",
       "principle4": "Provide consistent support and constructive feedback",
       "confidenceTitle": "Confidence Through Practice",
       "confidenceDescription": "Language learning is a journey that requires patience, practice, and positive reinforcement. I create a supportive environment where students feel comfortable making mistakes and learning from them.",
@@ -122,7 +122,7 @@
     "whatsappUrgent": "WhatsApp for Urgent Help",
     "responseTime": "Response Time",
     "responseTimeValue": "Within 24 hours",
-    "availability": "Availability", 
+    "availability": "Availability",
     "availabilityValue": "7 days a week",
     "location": "Location",
     "locationValue": "Online worldwide",
@@ -157,7 +157,7 @@
     },
     "lessonTypes": {
       "general": "General English Lessons",
-      "ielts": "IELTS Preparation", 
+      "ielts": "IELTS Preparation",
       "individual": "Individual Lessons",
       "group": "Group Lessons",
       "business": "Business English",
@@ -178,7 +178,7 @@
     "title": "English Learning Services",
     "subtitle": "From beginner foundations to advanced fluency and IELTS mastery. Choose the perfect program to achieve your English learning goals.",
     "generalEnglish": "General English",
-    "spokenEnglish": "Spoken English", 
+    "spokenEnglish": "Spoken English",
     "ieltsPreparation": "IELTS Preparation",
     "contactMe": "Contact Me",
     "contactMeNow": "Contact Me Now",
@@ -193,7 +193,7 @@
     "beginnerDescription": "Start your English journey with confidence. Perfect for complete beginners or those who need to strengthen their basics.",
     "beginnerFeatures": [
       "Basic grammar structures and sentence formation",
-      "Essential vocabulary for daily conversations", 
+      "Essential vocabulary for daily conversations",
       "Pronunciation and listening skills development",
       "Simple reading and writing exercises",
       "Numbers, dates, and time expressions",
@@ -202,12 +202,12 @@
     "beginnerOutcomes": [
       "Understand and use basic English phrases",
       "Introduce yourself and ask simple questions",
-      "Handle basic everyday situations", 
+      "Handle basic everyday situations",
       "Build confidence in speaking English"
     ],
     "beginnerDuration": "3-6 months",
     "intermediateTitle": "Intermediate English",
-    "intermediateSubtitle": "B1-B2 Level • Skills Development", 
+    "intermediateSubtitle": "B1-B2 Level • Skills Development",
     "intermediateDescription": "Develop fluency and confidence in everyday communication. Perfect for students ready to take their English to the next level.",
     "intermediateFeatures": [
       "Complex grammar patterns and tenses",
@@ -253,16 +253,36 @@
       "durationLabel": "Months to Target",
       "listeningTitle": "IELTS Listening",
       "listeningDescription": "Master all four sections of the listening test with proven strategies.",
-      "listeningSkills": ["Note-taking techniques", "Predicting answers", "Understanding accents", "Time management"],
-      "readingTitle": "IELTS Reading", 
+      "listeningSkills": [
+        "Note-taking techniques",
+        "Predicting answers",
+        "Understanding accents",
+        "Time management"
+      ],
+      "readingTitle": "IELTS Reading",
       "readingDescription": "Develop speed and accuracy for both Academic and General Training.",
-      "readingSkills": ["Skimming and scanning", "Question types mastery", "Time allocation", "Vocabulary building"],
+      "readingSkills": [
+        "Skimming and scanning",
+        "Question types mastery",
+        "Time allocation",
+        "Vocabulary building"
+      ],
       "writingTitle": "IELTS Writing",
       "writingDescription": "Learn to write compelling essays and reports that score high bands.",
-      "writingSkills": ["Task achievement", "Coherence and cohesion", "Lexical resource", "Grammar accuracy"],
+      "writingSkills": [
+        "Task achievement",
+        "Coherence and cohesion",
+        "Lexical resource",
+        "Grammar accuracy"
+      ],
       "speakingTitle": "IELTS Speaking",
       "speakingDescription": "Build confidence and fluency for natural conversation with the examiner.",
-      "speakingSkills": ["Fluency development", "Pronunciation practice", "Vocabulary expansion", "Exam strategies"],
+      "speakingSkills": [
+        "Fluency development",
+        "Pronunciation practice",
+        "Vocabulary expansion",
+        "Exam strategies"
+      ],
       "successStories": "IELTS Success Stories",
       "testimonialQuote": "Thanks to Aya's expert guidance, I improved from Band 6.0 to 8.0 in just 3 months. Her strategies for the Writing and Speaking modules were game-changers!",
       "testimonialName": "Ahmed Al-Mansouri",
@@ -283,13 +303,28 @@
       "subtitle": "Targeted programs designed for specific goals and professional needs.",
       "businessTitle": "Business English",
       "businessDescription": "Professional communication for the workplace",
-      "businessFeatures": ["Meeting participation", "Email writing", "Presentation skills", "Negotiation language"],
+      "businessFeatures": [
+        "Meeting participation",
+        "Email writing",
+        "Presentation skills",
+        "Negotiation language"
+      ],
       "academicTitle": "Academic English",
       "academicDescription": "University-level language skills",
-      "academicFeatures": ["Essay writing", "Research skills", "Academic vocabulary", "Citation techniques"],
+      "academicFeatures": [
+        "Essay writing",
+        "Research skills",
+        "Academic vocabulary",
+        "Citation techniques"
+      ],
       "conversationTitle": "Conversation Practice",
       "conversationDescription": "Improve fluency and confidence in speaking",
-      "conversationFeatures": ["Natural conversation", "Pronunciation practice", "Idioms and expressions", "Cultural context"]
+      "conversationFeatures": [
+        "Natural conversation",
+        "Pronunciation practice",
+        "Idioms and expressions",
+        "Cultural context"
+      ]
     },
     "cta": {
       "title": "Ready to Begin Your English Journey?",
@@ -305,12 +340,12 @@
     "student1Role": "IELTS Student",
     "student1Score": "7.5 IELTS",
     "student2Quote": "Clear explanations and fun lessons. My speaking confidence soared after just a few sessions with Aya.",
-    "student2Name": "Omar Hassan", 
+    "student2Name": "Omar Hassan",
     "student2Role": "Intermediate Student",
     "student2Score": "Fluent Speaker",
     "student3Quote": "Finally, I understand phrasal verbs! Aya's structured approach made complex grammar simple.",
     "student3Name": "Sarah Ahmed",
-    "student3Role": "Advanced Student", 
+    "student3Role": "Advanced Student",
     "student3Score": "Grammar Master"
   },
   "blog": {
@@ -337,8 +372,8 @@
   },
   "stats": {
     "studentsTitle": "Students Taught",
-    "studentsCount": "500+",
-    "successTitle": "IELTS Success Rate", 
+    "studentsCount": "15+",
+    "successTitle": "IELTS Success Rate",
     "successCount": "95%",
     "ratingTitle": "Average Rating",
     "ratingCount": "5⭐"
@@ -379,14 +414,14 @@
     "readMore": "Read More",
     "viewPosts": "View {category} Posts →",
     "by": "By",
-    "expertTips": "Expert tips, proven strategies, and practical advice to help you master English and achieve your IELTS goals. Learn from my experience teaching 500+ students.",
+    "expertTips": "Expert tips, proven strategies, and practical advice to help you master English and achieve your IELTS goals. Learn from my experience teaching 15+ students.",
     "popularCategories": "Popular Categories",
     "exploreContent": "Explore our most helpful content organized by topic.",
     "latestArticles": "Latest Articles",
     "freshInsights": "Fresh insights and practical tips to accelerate your English learning journey.",
     "ieltsPreparation": "IELTS Preparation",
     "ieltsDescription": "Proven strategies and tips for all four IELTS modules",
-    "speakingSkills": "Speaking Skills", 
+    "speakingSkills": "Speaking Skills",
     "speakingDescription": "Build confidence and fluency in English conversation",
     "grammarGuide": "Grammar Guide",
     "grammarDescription": "Master English grammar from basic to advanced levels",

@@ -13,14 +13,16 @@ interface BlogPostPageProps {
 
 export async function generateStaticParams() {
   const posts = getBlogPosts();
-  return posts.map((post) => ({
+  return posts.map(post => ({
     slug: post.slug,
   }));
 }
 
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: BlogPostPageProps): Promise<Metadata> {
   const post = getBlogPostBySlug(params.slug);
-  
+
   if (!post) {
     return {
       title: 'Post Not Found | AM Teachings',
@@ -48,21 +50,36 @@ function renderContent(content: string) {
   // Basic markdown parsing - in a real app you'd use a proper markdown parser
   const html = content
     // Headers
-    .replace(/^### (.*$)/gim, '<h3 class="text-xl font-semibold text-gray-900 mb-4 mt-8">$1</h3>')
-    .replace(/^## (.*$)/gim, '<h2 class="text-2xl font-bold text-gray-900 mb-6 mt-10">$1</h2>')
-    .replace(/^# (.*$)/gim, '<h1 class="text-3xl font-bold text-gray-900 mb-8 mt-12">$1</h1>')
-    
+    .replace(
+      /^### (.*$)/gim,
+      '<h3 class="text-xl font-semibold text-gray-900 mb-4 mt-8">$1</h3>'
+    )
+    .replace(
+      /^## (.*$)/gim,
+      '<h2 class="text-2xl font-bold text-gray-900 mb-6 mt-10">$1</h2>'
+    )
+    .replace(
+      /^# (.*$)/gim,
+      '<h1 class="text-3xl font-bold text-gray-900 mb-8 mt-12">$1</h1>'
+    )
+
     // Bold and Italic
     .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>')
     .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
-    
+
     // Lists
     .replace(/^\- (.*$)/gim, '<li class="mb-2">$1</li>')
-    .replace(/(<li class="mb-2">.*<\/li>)/g, '<ul class="list-disc list-inside space-y-2 mb-4 ml-4">$1</ul>')
-    
+    .replace(
+      /(<li class="mb-2">.*<\/li>)/g,
+      '<ul class="list-disc list-inside space-y-2 mb-4 ml-4">$1</ul>'
+    )
+
     // Paragraphs
-    .replace(/^(?!<[h|u|l])(.*$)/gim, '<p class="mb-4 text-gray-700 leading-relaxed">$1</p>')
-    
+    .replace(
+      /^(?!<[h|u|l])(.*$)/gim,
+      '<p class="mb-4 text-gray-700 leading-relaxed">$1</p>'
+    )
+
     // Clean up empty paragraphs
     .replace(/<p class="mb-4 text-gray-700 leading-relaxed"><\/p>/g, '');
 
@@ -98,23 +115,25 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   {new Date(post.publishedAt).toLocaleDateString('en-US', {
                     month: 'long',
                     day: 'numeric',
-                    year: 'numeric'
+                    year: 'numeric',
                   })}
                 </span>
               </div>
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
                 {post.title}
               </h1>
-              <p className="lead max-w-2xl mx-auto">
-                {post.excerpt}
-              </p>
+              <p className="lead max-w-2xl mx-auto">{post.excerpt}</p>
               <div className="flex items-center justify-center space-x-3 pt-4">
                 <div className="w-12 h-12 bg-brand rounded-full flex items-center justify-center text-white font-bold">
                   AM
                 </div>
                 <div className="text-left">
-                  <div className="font-semibold text-gray-900">{post.author}</div>
-                  <div className="text-sm text-gray-600">English Teacher & IELTS Specialist</div>
+                  <div className="font-semibold text-gray-900">
+                    {post.author}
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    English Teacher & IELTS Specialist
+                  </div>
                 </div>
               </div>
             </div>
@@ -127,19 +146,23 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="prose prose-lg max-w-none">
-              <div 
-                dangerouslySetInnerHTML={{ __html: renderContent(post.content) }}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: renderContent(post.content),
+                }}
                 className="text-gray-700 leading-relaxed"
               />
             </div>
 
             {/* Tags */}
             <div className="border-t border-gray-200 pt-8 mt-12">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Topics covered:</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                Topics covered:
+              </h3>
               <div className="flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
-                  <span 
-                    key={tag} 
+                {post.tags.map(tag => (
+                  <span
+                    key={tag}
                     className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-brand hover:text-white transition-colors duration-200 cursor-pointer"
                   >
                     #{tag.toLowerCase()}
@@ -155,10 +178,14 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   AM
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Written by {post.author}</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Written by {post.author}
+                  </h3>
                   <p className="text-gray-600 mb-4">
-                    With over 8 years of experience teaching English and IELTS, I&apos;ve helped 500+ students 
-                    achieve their language learning goals. Ready to get personalized help with your English journey?
+                    With over 2+ years of experience teaching English and IELTS,
+                    I&apos;ve helped 15+ students achieve their language
+                    learning goals. Ready to get personalized help with your
+                    English journey?
                   </p>
                   <div className="flex flex-col gap-3 sm:flex-row">
                     <Link href="/booking">
@@ -184,7 +211,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 Continue Learning
               </h2>
               <div className="grid gap-6 md:grid-cols-3">
-                {otherPosts.map((relatedPost) => (
+                {otherPosts.map(relatedPost => (
                   <Card key={relatedPost.id} className="group bg-white">
                     <CardContent className="p-6">
                       <div className="mb-3">
@@ -193,7 +220,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                         </span>
                       </div>
                       <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors duration-200">
-                        <Link href={`/blog/${relatedPost.slug}`} className="line-clamp-2">
+                        <Link
+                          href={`/blog/${relatedPost.slug}`}
+                          className="line-clamp-2"
+                        >
                           {relatedPost.title}
                         </Link>
                       </h3>
@@ -202,7 +232,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                       </p>
                       <div className="flex items-center justify-between text-xs text-gray-500">
                         <span>{relatedPost.readingTime}</span>
-                        <Link 
+                        <Link
                           href={`/blog/${relatedPost.slug}`}
                           className="text-brand font-medium hover:text-brand-dark"
                         >
