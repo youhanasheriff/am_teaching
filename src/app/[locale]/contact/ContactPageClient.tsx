@@ -17,7 +17,6 @@ import {
 } from 'lucide-react';
 import {
   createWhatsAppUrl,
-  createEmailUrl,
   WHATSAPP_MESSAGES,
 } from '@/lib/constants';
 
@@ -117,7 +116,7 @@ function ContactForm() {
         setSubmitStatus('error');
         if (result.details) {
           const fieldErrors: FormErrors = {};
-          result.details.forEach((detail: any) => {
+          result.details.forEach((detail: { field: string; message: string }) => {
             fieldErrors[detail.field as keyof FormErrors] = detail.message;
           });
           setErrors(fieldErrors);
@@ -347,10 +346,6 @@ function ContactMethods() {
 
   const handleWhatsAppContact = () => {
     window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.ABOUT_INQUIRY), '_blank');
-  };
-
-  const handleEmailContact = () => {
-    window.open(createEmailUrl(), '_blank');
   };
 
   return (

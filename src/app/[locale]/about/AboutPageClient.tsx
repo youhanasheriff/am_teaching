@@ -9,7 +9,6 @@ import { createWhatsAppUrl, WHATSAPP_MESSAGES } from '@/lib/constants';
 
 function HeroSection() {
   const t = useTranslations('about');
-  const tCommon = useTranslations('common');
   
   const handleWhatsAppContact = () => {
     window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.ABOUT_INQUIRY), '_blank');

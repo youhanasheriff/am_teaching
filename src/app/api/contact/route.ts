@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
           {
             success: false,
             error: 'Validation failed',
-            details: validationError.issues.map((err: any) => ({
+            details: validationError.issues.map((err) => ({
               field: err.path.join('.'),
               message: err.message,
             })),
@@ -203,7 +203,7 @@ export async function POST(request: NextRequest) {
         warning: 'Email delivery may be delayed',
       });
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Contact form error:', error);
 
     return NextResponse.json(
@@ -212,7 +212,7 @@ export async function POST(request: NextRequest) {
         error:
           'An unexpected error occurred. Please try again or contact us directly.',
         details:
-          process.env.NODE_ENV === 'development' ? error?.message : undefined,
+          process.env.NODE_ENV === 'development' && error instanceof Error ? error.message : undefined,
       },
       { status: 500 }
     );

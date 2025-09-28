@@ -1,6 +1,5 @@
 'use client';
 
-import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 
 export default function TermsOfService() {
@@ -159,7 +158,7 @@ export default function TermsOfService() {
             
             <h3 className="text-xl font-medium text-gray-900 mb-3">9.1 Service Availability</h3>
             <p className="text-gray-700 mb-4">
-              While we strive to provide reliable services, we cannot guarantee uninterrupted access. Our services are provided "as is" without warranties of any kind.
+              While we strive to provide reliable services, we cannot guarantee uninterrupted access. Our services are provided &ldquo;as is&rdquo; without warranties of any kind.
             </p>
 
             <h3 className="text-xl font-medium text-gray-900 mb-3">9.2 Limitation of Damages</h3>
@@ -233,7 +232,7 @@ export default function TermsOfService() {
             </p>
             <ul className="list-disc pl-6 text-gray-700 mb-4">
               <li>Posting the updated Terms on our website</li>
-              <li>Updating the "Last updated" date</li>
+              <li>Updating the &ldquo;Last updated&rdquo; date</li>
               <li>Sending email notifications for significant changes</li>
             </ul>
             <p className="text-gray-700">

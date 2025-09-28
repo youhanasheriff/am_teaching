@@ -1,6 +1,5 @@
 'use client';
 
-import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 
 export default function PrivacyPolicy() {
@@ -142,7 +141,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">10. Children's Privacy</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">10. Children&apos;s Privacy</h2>
             <p className="text-gray-700">
               Our services are not directed to children under 13. We do not knowingly collect personal information from children under 13. If we become aware that we have collected such information, we will take steps to delete it promptly.
             </p>
@@ -151,7 +150,7 @@ export default function PrivacyPolicy() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">11. Changes to This Policy</h2>
             <p className="text-gray-700">
-              We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on our website and updating the "Last updated" date. Your continued use of our services after such changes constitutes acceptance of the updated policy.
+              We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on our website and updating the &quot;Last updated&quot; date. Your continued use of our services after such changes constitutes acceptance of the updated policy.
             </p>
           </section>
 
