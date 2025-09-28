@@ -1,25 +1,28 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import "../globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import '../globals.css';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: "AM Teachings | English & IELTS Excellence with Aya Mohsen",
-  description: "Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.5 score and teaching license from Ain Shams University.",
-  keywords: "English lessons, IELTS preparation, General English, Spoken English, Aya Mohsen, American Diploma, Ain Shams University, licensed teacher",
-  authors: [{ name: "Aya Mohsen" }],
-  creator: "AM Teachings",
-  publisher: "AM Teachings",
+  title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
+  description:
+    'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.5 score and teaching license from Ain Shams University.',
+  keywords:
+    'English lessons, IELTS preparation, General English, Spoken English, Aya Mohsen, American Diploma, Ain Shams University, licensed teacher',
+  authors: [{ name: 'Aya Mohsen' }],
+  creator: 'AM Teachings',
+  publisher: 'AM Teachings',
   metadataBase: new URL(process.env.SITE_URL || 'http://localhost:3000'),
   openGraph: {
-    title: "AM Teachings | English & IELTS Excellence",
-    description: "Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.5 score.",
+    title: 'AM Teachings | English & IELTS Excellence',
+    description:
+      'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.5 score.',
     url: process.env.SITE_URL || 'http://localhost:3000',
-    siteName: "AM Teachings",
+    siteName: 'AM Teachings',
     images: [
       {
         url: '/og-image.jpg',
@@ -33,21 +36,22 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "AM Teachings | English & IELTS Excellence with Aya Mohsen",
-    description: "Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen.",
+    title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
+    description:
+      'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen.',
     images: ['/og-image.jpg'],
   },
 };
 
 export default async function LocaleLayout({
   children,
-  params
+  params,
 }: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
   const { locale } = await params;
-  
+
   // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as any)) {
     notFound();
@@ -62,7 +66,7 @@ export default async function LocaleLayout({
       <body className="antialiased">
         <NextIntlClientProvider messages={messages}>
           <Navbar />
-          <main>{children}</main>
+          <main className="pt-4">{children}</main>
           <Footer />
         </NextIntlClientProvider>
       </body>

@@ -388,7 +388,7 @@ function ContactMethods() {
             className="w-full bg-green-600 hover:bg-green-700 flex items-center justify-center space-x-2 text-lg py-3"
           >
             <MessageCircle className="h-5 w-5" />
-            <span>Start WhatsApp Conversation</span>
+            <span>{tContact('methods.whatsappButton')}</span>
           </Button>
         </CardContent>
       </Card>
@@ -495,7 +495,7 @@ export default function ContactPageClient() {
   const tContact = useTranslations('contact');
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gray-50 py-12 pt-16">
       <div className="container">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">

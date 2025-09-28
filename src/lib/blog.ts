@@ -13,105 +13,12 @@ export interface BlogPost {
 
 // Sample blog posts for AM Teachings
 export const blogPosts: BlogPost[] = [
-  {
-    id: '1',
-    title: '10 Essential IELTS Writing Tips That Actually Work',
-    excerpt: 'Master IELTS Writing Task 1 and Task 2 with these proven strategies that have helped hundreds of my students achieve their target scores.',
-    content: `
-# 10 Essential IELTS Writing Tips That Actually Work
 
-As an IELTS specialist with over 8 years of experience, I've seen countless students struggle with the writing section. Here are the most effective strategies that have consistently helped my students improve their scores.
-
-## 1. Understand the Task Requirements
-
-Before you start writing, spend 2-3 minutes understanding exactly what the task is asking. For Task 1, identify the type of visual (graph, chart, diagram) and the key trends. For Task 2, identify the essay type (opinion, discussion, problem-solution, etc.).
-
-## 2. Plan Your Response
-
-Never start writing immediately. Spend 3-5 minutes planning your response:
-- **Task 1**: Identify key features, trends, and data points
-- **Task 2**: Brainstorm ideas, choose your position, plan your structure
-
-## 3. Master the Four Assessment Criteria
-
-IELTS Writing is marked on four criteria:
-- **Task Achievement/Response**: Answer the question completely
-- **Coherence and Cohesion**: Logical flow and clear connections
-- **Lexical Resource**: Vocabulary range and accuracy
-- **Grammar**: Sentence variety and accuracy
-
-## 4. Use the Right Structure
-
-### Task 1 Structure:
-1. Introduction (paraphrase the question)
-2. Overview (main trends/features)
-3. Body paragraphs (detailed analysis)
-
-### Task 2 Structure:
-1. Introduction with clear thesis
-2. Body paragraph 1 (main argument)
-3. Body paragraph 2 (supporting/contrasting point)
-4. Conclusion (summarize without new ideas)
-
-## 5. Develop Strong Vocabulary
-
-Don't use complex words incorrectly. Instead:
-- Use synonyms for key words from the question
-- Learn topic-specific vocabulary for common IELTS themes
-- Practice collocations (words that go together naturally)
-
-## 6. Vary Your Sentence Structures
-
-Mix simple, compound, and complex sentences:
-- Simple: "Online learning is popular."
-- Compound: "Online learning is popular, but it has limitations."
-- Complex: "Although online learning is popular, it has significant limitations for practical subjects."
-
-## 7. Connect Your Ideas Clearly
-
-Use linking words appropriately:
-- **Contrast**: However, nevertheless, on the other hand
-- **Addition**: Furthermore, moreover, in addition
-- **Cause/Effect**: Therefore, consequently, as a result
-
-## 8. Manage Your Time Effectively
-
-- **Task 1**: 20 minutes (150+ words)
-- **Task 2**: 40 minutes (250+ words)
-
-Set timers during practice to build time management skills.
-
-## 9. Check Your Work
-
-Reserve 2-3 minutes for proofreading:
-- Check for grammar errors
-- Ensure you've answered all parts of the question
-- Verify word count
-
-## 10. Practice Regularly with Feedback
-
-Consistent practice with expert feedback is crucial. I recommend:
-- Writing essays 2-3 times per week
-- Getting detailed feedback from a qualified teacher
-- Analyzing model answers to understand what works
-
-## Conclusion
-
-These strategies have helped over 500 of my students achieve their target IELTS Writing scores. Remember, improvement takes time and practice, but with the right approach, you can definitely reach your goals.
-
-*Need personalized help with IELTS Writing? Book a consultation to discuss your specific challenges and create a targeted improvement plan.*
-    `,
-    author: 'Aya Mohsen',
-    publishedAt: '2024-03-15',
-    readingTime: '8 min read',
-    category: 'IELTS Preparation',
-    tags: ['IELTS', 'Writing', 'Tips', 'Test Preparation'],
-    slug: 'ielts-writing-tips-that-work'
-  },
   {
     id: '2',
     title: 'How to Improve Your English Speaking Confidence in 30 Days',
-    excerpt: 'A practical 30-day plan to boost your speaking confidence, overcome fear, and start expressing yourself naturally in English.',
+    excerpt:
+      'A practical 30-day plan to boost your speaking confidence, overcome fear, and start expressing yourself naturally in English.',
     content: `
 # How to Improve Your English Speaking Confidence in 30 Days
 
@@ -256,12 +163,13 @@ The most important step? Start today. Your future confident English-speaking sel
     readingTime: '12 min read',
     category: 'Speaking Skills',
     tags: ['Speaking', 'Confidence', 'Practice', 'Fluency'],
-    slug: 'improve-english-speaking-confidence-30-days'
+    slug: 'improve-english-speaking-confidence-30-days',
   },
   {
     id: '3',
     title: 'The Ultimate Guide to English Grammar for Intermediate Learners',
-    excerpt: 'Master the most important grammar concepts that will take your English from good to great. A comprehensive guide for intermediate students.',
+    excerpt:
+      'Master the most important grammar concepts that will take your English from good to great. A comprehensive guide for intermediate students.',
     content: `
 # The Ultimate Guide to English Grammar for Intermediate Learners
 
@@ -449,12 +357,15 @@ Remember: Grammar is a tool for communication, not a goal in itself. The more yo
     readingTime: '15 min read',
     category: 'Grammar',
     tags: ['Grammar', 'Intermediate', 'English Learning', 'Language Skills'],
-    slug: 'ultimate-english-grammar-guide-intermediate'
-  }
+    slug: 'ultimate-english-grammar-guide-intermediate',
+  },
 ];
 
 export function getBlogPosts(): BlogPost[] {
-  return blogPosts.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+  return blogPosts.sort(
+    (a, b) =>
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  );
 }
 
 export function getBlogPostBySlug(slug: string): BlogPost | null {
