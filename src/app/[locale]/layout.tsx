@@ -63,7 +63,7 @@ export default async function LocaleLayout({
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <body className="antialiased">
         <NextIntlClientProvider messages={messages}>
-          {/* <SplashOverlay /> */}
+          <SplashOverlay />
           <Navbar />
           <main className="pt-4">{children}</main>
           <Footer />
