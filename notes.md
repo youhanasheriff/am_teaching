@@ -1,0 +1,9 @@
+- ILETS 8.0 score not 8.5 core. (Both in Arabic and English translations)
+- Change from whatsapp to telegram (@AyaMohsen52).
+- ILETS Specialist change it into Teaching Specialist. (Both in Arabic and English translations)
+- TEFL Training Certification, not Teaching License. No need to mention Ain Shams University. (Both in Arabic and English translations)
+- Remove licensed Teacher in the texts and bios. (Both in Arabic and English translations)
+- "Master all four sections of the listening test with proven strategies." change it into "Excel in every stage of the listening test with practical strategies." (Both in Arabic and English translations)
+- 100+ Students. it is not 15+ Students. (Both in Arabic and English translations)
+- 5+ years of experience not 8+ of experience. (Both in Arabic and English translations)
+- Removing Linkedin
