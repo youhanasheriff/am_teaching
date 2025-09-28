@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
           {
             success: false,
             error: 'Validation failed',
-            details: validationError.issues.map((err) => ({
+            details: validationError.issues.map(err => ({
               field: err.path.join('.'),
               message: err.message,
             })),
@@ -160,14 +160,14 @@ export async function POST(request: NextRequest) {
               <div style="background: #ecfdf5; border: 1px solid #d1fae5; padding: 20px; border-radius: 6px; margin: 25px 0;">
                 <h3 style="margin: 0 0 15px 0; color: #065f46;">Alternative Contact Methods:</h3>
                 <p style="margin: 0; color: #065f46; line-height: 1.6;">
-                   For faster responses, you can also reach me via:<br>
-                   📧 Email: <a href="mailto:${
-                     CONTACT_INFO.EMAIL
-                   }" style="color: #3b82f6;">${CONTACT_INFO.EMAIL}</a><br>
-                   💬 WhatsApp: <a href="${createWhatsAppUrl(
-                     'Hello Aya!'
-                   )}" style="color: #3b82f6;">Send WhatsApp Message</a>
-                 </p>
+                  For faster responses, you can also reach me via:<br>
+                  📧 Email: <a href="mailto:${
+                    CONTACT_INFO.EMAIL
+                  }" style="color: #3b82f6;">${CONTACT_INFO.EMAIL}</a><br>
+                  💬 WhatsApp: <a href="${createWhatsAppUrl(
+                    'Hello Aya!'
+                  )}" style="color: #3b82f6;">Send WhatsApp Message</a>
+                </p>
               </div>
               
               <p style="color: #4b5563; margin-bottom: 0; line-height: 1.6;">
@@ -212,7 +212,9 @@ export async function POST(request: NextRequest) {
         error:
           'An unexpected error occurred. Please try again or contact us directly.',
         details:
-          process.env.NODE_ENV === 'development' && error instanceof Error ? error.message : undefined,
+          process.env.NODE_ENV === 'development' && error instanceof Error
+            ? error.message
+            : undefined,
       },
       { status: 500 }
     );

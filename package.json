@@ -10,6 +10,11 @@
   },
   "dependencies": {
     "@react-email/render": "^1.2.3",
+    "@tsparticles/engine": "^3.9.1",
+    "@tsparticles/fireworks": "^3.9.1",
+    "@tsparticles/preset-fireworks": "^3.2.0",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.9.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",

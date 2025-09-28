@@ -6,11 +6,12 @@ import { routing } from '@/i18n/routing';
 import '../globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import SplashOverlay from '@/components/ui/SplashOverlay';
 
 export const metadata: Metadata = {
   title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
   description:
-    'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.5 score and teaching license from Ain Shams University.',
+    'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.0 score and teaching license from Ain Shams University.',
   keywords:
     'English lessons, IELTS preparation, General English, Spoken English, Aya Mohsen, American Diploma, Ain Shams University, licensed teacher',
   authors: [{ name: 'Aya Mohsen' }],
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'AM Teachings | English & IELTS Excellence',
     description:
-      'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.5 score.',
+      'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.0 score.',
     url: process.env.SITE_URL || 'http://localhost:3000',
     siteName: 'AM Teachings',
     images: [
@@ -52,19 +53,17 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
     notFound();
   }
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
 
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <body className="antialiased">
         <NextIntlClientProvider messages={messages}>
+          {/* <SplashOverlay /> */}
           <Navbar />
           <main className="pt-4">{children}</main>
           <Footer />

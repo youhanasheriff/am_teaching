@@ -7,13 +7,13 @@ export const CONTACT_INFO = {
   /**
    * Primary email address for Aya Mohsen
    */
-  EMAIL: 'ayamohsen57@gmail.com' as const,
-  
+  EMAIL: 'ayahmohsen97@gmail.com' as const,
+
   /**
    * WhatsApp phone number (replace with actual number)
    */
   WHATSAPP_NUMBER: '+1234567890' as const,
-  
+
   /**
    * Formatted WhatsApp number for display purposes
    */
@@ -24,12 +24,18 @@ export const CONTACT_INFO = {
  * Pre-defined WhatsApp message templates for different contexts
  */
 export const WHATSAPP_MESSAGES = {
-  GENERAL_INQUIRY: 'Hello! I\'m interested in English lessons. Could you please provide more information?',
-  SERVICES_INQUIRY: 'Hello! I\'m interested in your English learning services. Could you provide more information?',
-  ABOUT_INQUIRY: 'Hello Aya! I found your website and I\'m interested in learning more about your English teaching services.',
-  URGENT_HELP: 'Hello Aya! I need immediate assistance with English learning. Could you help me?',
-  HERO_CTA: 'Hello! I\'m interested in English lessons with AM Teachings. Could you please provide more information?',
-  READY_TO_START: 'Hello Aya! I\'m ready to start my English learning journey. Could you please provide more information about your teaching services?',
+  GENERAL_INQUIRY:
+    "Hello! I'm interested in English lessons. Could you please provide more information?",
+  SERVICES_INQUIRY:
+    "Hello! I'm interested in your English learning services. Could you provide more information?",
+  ABOUT_INQUIRY:
+    "Hello Aya! I found your website and I'm interested in learning more about your English teaching services.",
+  URGENT_HELP:
+    'Hello Aya! I need immediate assistance with English learning. Could you help me?',
+  HERO_CTA:
+    "Hello! I'm interested in English lessons with AM Teachings. Could you please provide more information?",
+  READY_TO_START:
+    "Hello Aya! I'm ready to start my English learning journey. Could you please provide more information about your teaching services?",
 } as const;
 
 /**
@@ -37,7 +43,7 @@ export const WHATSAPP_MESSAGES = {
  */
 export const EMAIL_TEMPLATES = {
   SUBJECT: 'English Lessons Inquiry',
-  BODY: 'Hello Aya,\n\nI\'m interested in learning more about your English teaching services.\n\nBest regards,',
+  BODY: "Hello Aya,\n\nI'm interested in learning more about your English teaching services.\n\nBest regards,",
 } as const;
 
 /**
