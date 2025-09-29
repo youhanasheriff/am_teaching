@@ -220,7 +220,7 @@ export default function SplashOverlay() {
 
           {phase === 'flowers' && (
             <h2 className="splash-subtitle">
-              Wishing you joy, light, and love
+              Wishing you joy, light, and love. (and Jannah)
             </h2>
           )}
 
