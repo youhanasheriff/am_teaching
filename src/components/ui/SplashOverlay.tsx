@@ -179,7 +179,7 @@ export default function SplashOverlay() {
               <span
                 key={i}
                 className="splash-dot"
-                style={{ ['--i' as any]: i + 1 }}
+                style={{ '--i': i + 1 } as React.CSSProperties}
               />
             ))}
           </div>
@@ -194,12 +194,12 @@ export default function SplashOverlay() {
                 key={i}
                 className="petal"
                 style={{
-                  ['--d' as any]: 1 + Math.random() * 5,
+                  '--d': 1 + Math.random() * 5,
                   left: `${Math.random() * 100}%`,
                   animationDelay: `${Math.random() * 5}s`,
                   transform: `scale(${0.5 + Math.random() * 0.5}) rotate(${Math.random() * 360}deg)`,
                   backgroundColor: `hsl(${Math.random() * 30 + 330}, 80%, 70%)`,
-                }}
+                } as React.CSSProperties}
               />
             ))}
           </div>
