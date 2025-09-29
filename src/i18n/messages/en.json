@@ -25,7 +25,7 @@
   "hero": {
     "title": "Master English with",
     "subtitle": "Aya Mohsen",
-    "description": "Licensed English educator specializing in General English, Spoken English, and IELTS preparation. American Diploma holder with IELTS 8.0 score, helping students achieve their language learning goals.",
+    "description": "English educator specializing in General English, Spoken English, and IELTS preparation. American Diploma holder with IELTS 8.0 score, helping students achieve their language learning goals.",
     "cta1": "Start Learning Today",
     "cta2": "Explore Services",
     "teacherName": "Aya Mohsen",
@@ -46,7 +46,7 @@
   },
   "about": {
     "title": "Meet Aya Mohsen",
-    "description": "Licensed English educator specializing in General English, Spoken English, and IELTS preparation. American Diploma holder with IELTS 8.0 score and TEFL Training Certification.",
+    "description": "English educator specializing in General English, Spoken English, and IELTS preparation. American Diploma holder with IELTS 8.0 score and TEFL Training Certification.",
     "qualifications": {
       "title": "Qualifications & Certifications",
       "subtitle": "Academic excellence meets practical teaching experience to deliver exceptional language learning outcomes.",
@@ -59,7 +59,7 @@
       "specialist": "English Teaching Specialist",
       "specialistInstitution": "General, Spoken & IELTS",
       "certified": "Certified",
-      "licensed": "Licensed",
+      "licensed": "TEFL Certified",
       "expert": "Expert"
     },
     "experience": {
@@ -251,7 +251,7 @@
     "advancedDuration": "6-12 months",
     "ielts": {
       "title": "IELTS Preparation Program",
-      "description": "Comprehensive IELTS training with a 95% success rate. Get the score you need for university admission, immigration, or career advancement.",
+      "description": "Comprehensive IELTS training with a 95% success rate. Get the score you need for academic admission, immigration, or career advancement.",
       "score": "Band 8.0",
       "scoreLabel": "IELTS Score",
       "successRate": "95%",
@@ -317,7 +317,7 @@
         "Negotiation language"
       ],
       "academicTitle": "Academic English",
-      "academicDescription": "University-level language skills",
+      "academicDescription": "Academic-level language skills",
       "academicFeatures": [
         "Essay writing",
         "Research skills",

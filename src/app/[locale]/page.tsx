@@ -3,11 +3,11 @@ import HomePageClient from './HomePageClient';
 
 export const metadata: Metadata = {
   title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
-  description: 'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.0 score and TEFL Training Certification.',
-  keywords: 'English lessons, IELTS preparation, General English, Spoken English, Aya Mohsen, American Diploma, TEFL Training, licensed teacher',
+  description: 'Learn General English, Spoken English, and IELTS preparation with Aya Mohsen. American Diploma holder with IELTS 8.0 score and TEFL Training Certification.',
+  keywords: 'English lessons, IELTS preparation, General English, Spoken English, Aya Mohsen, American Diploma, TEFL Training, English teacher',
   openGraph: {
     title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
-    description: 'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.0 score.',
+    description: 'Learn General English, Spoken English, and IELTS preparation with Aya Mohsen. American Diploma holder with IELTS 8.0 score.',
     type: 'website',
     images: [
       {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
-    description: 'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen.',
+    description: 'Learn General English, Spoken English, and IELTS preparation with Aya Mohsen.',
     images: ['/og-image.jpg'],
   },
 };
@@ -31,13 +31,13 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
     "name": "AM Teachings",
-    "description": "General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen",
+    "description": "General English, Spoken English, and IELTS preparation with Aya Mohsen",
     "url": process.env.SITE_URL || "https://amteachings.com",
     "logo": `${process.env.SITE_URL || "https://amteachings.com"}/logo.png`,
     "founder": {
       "@type": "Person",
       "name": "Aya Mohsen",
-      "jobTitle": "Licensed English Teacher & Teaching Specialist",
+      "jobTitle": "English Teacher & Teaching Specialist",
       "description": "American Diploma holder with IELTS 8.0 score and TEFL Training Certification"
     },
     "offers": [

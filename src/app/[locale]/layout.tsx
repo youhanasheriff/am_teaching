@@ -10,9 +10,9 @@ import Footer from '@/components/layout/Footer';
 export const metadata: Metadata = {
   title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
   description:
-    'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.0 score and TEFL Training Certification.',
+    'Learn General English, Spoken English, and IELTS preparation with Aya Mohsen. American Diploma holder with IELTS 8.0 score and TEFL Training Certification.',
   keywords:
-    'English lessons, IELTS preparation, General English, Spoken English, Aya Mohsen, American Diploma, TEFL Training, licensed teacher',
+    'English lessons, IELTS preparation, General English, Spoken English, Aya Mohsen, American Diploma, TEFL Training, English teacher',
   authors: [{ name: 'Aya Mohsen' }],
   creator: 'AM Teachings',
   publisher: 'AM Teachings',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'AM Teachings | English & IELTS Excellence',
     description:
-      'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.0 score.',
+      'Learn General English, Spoken English, and IELTS preparation with Aya Mohsen. American Diploma holder with IELTS 8.0 score.',
     url: process.env.SITE_URL || 'http://localhost:3000',
     siteName: 'AM Teachings',
     images: [
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
     description:
-      'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen.',
+      'Learn General English, Spoken English, and IELTS preparation with Aya Mohsen.',
     images: ['/og-image.jpg'],
   },
 };
