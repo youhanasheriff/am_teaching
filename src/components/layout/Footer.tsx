@@ -7,7 +7,6 @@ import {
   Globe,
   Clock,
   MessageCircle,
-  Linkedin,
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import {
@@ -31,13 +30,11 @@ export default function Footer() {
       { name: tFooter('privacyPolicy'), href: '/privacy' as const },
       { name: tFooter('termsOfService'), href: '/terms' as const },
     ],
-    social: [
-      {
-        name: tFooter('socialLinkedIn'),
-        href: '#',
-        icon: <Linkedin className="h-6 w-6" />,
-      },
-    ],
+    social: [] as Array<{
+      name: string;
+      href: string;
+      icon: React.ReactNode;
+    }>,
   };
 
   const handleWhatsAppContact = () => {

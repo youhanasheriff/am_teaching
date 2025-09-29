@@ -132,7 +132,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                     {post.author}
                   </div>
                   <div className="text-sm text-gray-600">
-                    English Teacher & IELTS Specialist
+                    English Teacher & Teaching Specialist
                   </div>
                 </div>
               </div>
@@ -183,7 +183,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   </h3>
                   <p className="text-gray-600 mb-4">
                     With over 2+ years of experience teaching English and IELTS,
-                    I&apos;ve helped 15+ students achieve their language
+                    I&apos;ve helped 100+ students achieve their language
                     learning goals. Ready to get personalized help with your
                     English journey?
                   </p>

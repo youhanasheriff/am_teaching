@@ -8,7 +8,7 @@
   },
   "common": {
     "contactMe": "Contact Me",
-    "whatsapp": "WhatsApp",
+    "whatsapp": "Telegram",
     "email": "Email",
     "bookLesson": "Book a Lesson",
     "askQuestion": "Ask a Question",
@@ -25,12 +25,12 @@
   "hero": {
     "title": "Master English with",
     "subtitle": "Aya Mohsen",
-    "description": "Licensed English educator specializing in General English, Spoken English, and IELTS preparation. American Diploma holder with IELTS 8.5 score, helping students achieve their language learning goals.",
+    "description": "Licensed English educator specializing in General English, Spoken English, and IELTS preparation. American Diploma holder with IELTS 8.0 score, helping students achieve their language learning goals.",
     "cta1": "Start Learning Today",
     "cta2": "Explore Services",
     "teacherName": "Aya Mohsen",
     "teacherTitle": "Certified English Teacher",
-    "teacherExperience": "IELTS Specialist • 8+ Years Experience"
+    "teacherExperience": "Teaching Specialist • 5+ Years Experience"
   },
   "servicesPreview": {
     "title": "Choose Your Learning Path",
@@ -46,16 +46,16 @@
   },
   "about": {
     "title": "Meet Aya Mohsen",
-    "description": "Licensed English educator specializing in General English, Spoken English, and IELTS preparation. American Diploma holder with IELTS 8.5 score and teaching license from Ain Shams University.",
+    "description": "Licensed English educator specializing in General English, Spoken English, and IELTS preparation. American Diploma holder with IELTS 8.0 score and TEFL Training Certification.",
     "qualifications": {
       "title": "Qualifications & Certifications",
       "subtitle": "Academic excellence meets practical teaching experience to deliver exceptional language learning outcomes.",
       "americanDiploma": "American Diploma",
       "americanDiplomaInstitution": "American Education System",
-      "ieltsScore": "IELTS Score 8.5",
+      "ieltsScore": "IELTS Score 8.0",
       "ieltsInstitution": "British Council",
-      "teachingLicense": "Teaching License",
-      "teachingLicenseInstitution": "Ain Shams University",
+      "teachingLicense": "TEFL Training Certification",
+      "teachingLicenseInstitution": "Professional Development",
       "specialist": "English Teaching Specialist",
       "specialistInstitution": "General, Spoken & IELTS",
       "certified": "Certified",
@@ -65,11 +65,11 @@
     "experience": {
       "title": "Teaching Experience",
       "subtitle": "Proven track record of helping students achieve their English learning goals.",
-      "studentsTitle": "15+ Students Taught",
+      "studentsTitle": "100+ Students Taught",
       "studentsDescription": "Successfully guided students from 40+ countries",
       "successTitle": "95% IELTS Success Rate",
       "successDescription": "Students consistently achieve their target band scores",
-      "yearsTitle": "8+ Years Teaching",
+      "yearsTitle": "5+ Years Teaching",
       "yearsDescription": "Extensive experience in online and classroom settings"
     },
     "philosophy": {
@@ -118,8 +118,8 @@
     "contactFormDescription": "Prefer to send a detailed message? Use the form below and I'll respond via email.",
     "connectSocial": "Connect on Social Media",
     "needImmediate": "Need Immediate Assistance?",
-    "needImmediateDescription": "For urgent questions or quick clarifications, WhatsApp is the fastest way to reach me.",
-    "whatsappUrgent": "WhatsApp for Urgent Help",
+    "needImmediateDescription": "For urgent questions or quick clarifications, Telegram is the fastest way to reach me.",
+    "whatsappUrgent": "Telegram for Urgent Help",
     "responseTime": "Response Time",
     "responseTimeValue": "Within 24 hours",
     "availability": "Availability",
@@ -130,18 +130,23 @@
     "form": {
       "name": "Full Name",
       "email": "Email Address",
+      "phone": "Phone Number",
+      "telegram": "Telegram Username",
       "lessonType": "What are you interested in?",
       "message": "Message",
       "required": "*",
+      "optional": "(optional)",
       "namePlaceholder": "Your full name",
       "emailPlaceholder": "your.email@example.com",
+      "phonePlaceholder": "+1234567890",
+      "telegramPlaceholder": "@username",
       "messagePlaceholder": "Tell me about your English learning goals, current level, or any specific questions you have...",
       "submit": "Send Message",
       "sending": "Sending...",
       "successTitle": "Message sent successfully!",
       "successMessage": "I'll get back to you within 24 hours.",
       "errorTitle": "Error sending message",
-      "errorMessage": "Please try again or contact me directly via WhatsApp.",
+      "errorMessage": "Please try again or contact me directly via Telegram.",
       "validation": {
         "nameRequired": "Name is required",
         "nameMinLength": "Name must be at least 2 characters",
@@ -150,6 +155,8 @@
         "emailRequired": "Email is required",
         "emailInvalid": "Please enter a valid email address",
         "emailTooLong": "Email is too long",
+        "phoneInvalid": "Please enter a valid phone number",
+        "telegramInvalid": "Please enter a valid Telegram username (e.g., @username)",
         "messageRequired": "Message is required",
         "messageMinLength": "Message must be at least 10 characters",
         "messageTooLong": "Message is too long (max 2000 characters)"
@@ -165,10 +172,10 @@
       "other": "Other"
     },
     "methods": {
-      "whatsappTitle": "WhatsApp (Preferred)",
+      "whatsappTitle": "Telegram (Preferred)",
       "whatsappSubtitle": "Instant messaging & quick responses",
       "whatsappDescription": "Get answers within minutes, not hours",
-      "whatsappButton": "Start WhatsApp Conversation",
+      "whatsappButton": "Start Telegram Conversation",
       "emailTitle": "Email",
       "emailSubtitle": "Professional email communication",
       "emailButton": "Send Email"
@@ -245,14 +252,14 @@
     "ielts": {
       "title": "IELTS Preparation Program",
       "description": "Comprehensive IELTS training with a 95% success rate. Get the score you need for university admission, immigration, or career advancement.",
-      "score": "Band 8.5",
+      "score": "Band 8.0",
       "scoreLabel": "IELTS Score",
       "successRate": "95%",
       "successRateLabel": "Success Rate",
       "duration": "2-4",
       "durationLabel": "Months to Target",
       "listeningTitle": "IELTS Listening",
-      "listeningDescription": "Master all four sections of the listening test with proven strategies.",
+      "listeningDescription": "Excel in every stage of the listening test with practical strategies.",
       "listeningSkills": [
         "Note-taking techniques",
         "Predicting answers",
@@ -372,7 +379,7 @@
   },
   "stats": {
     "studentsTitle": "Students Taught",
-    "studentsCount": "15+",
+    "studentsCount": "100+",
     "successTitle": "IELTS Success Rate",
     "successCount": "95%",
     "ratingTitle": "Average Rating",
@@ -381,14 +388,14 @@
   "cta": {
     "title": "Ready to Transform Your English?",
     "subtitle": "Join hundreds of successful students and start your journey to English mastery today.",
-    "startWhatsApp": "Start with WhatsApp",
+    "startWhatsApp": "Start with Telegram",
     "emailForm": "Email Contact Form"
   },
   "footer": {
     "description": "Empowering students to achieve fluency in English and excel in IELTS exams through personalized, effective teaching methods with Aya Mohsen.",
     "quickContact": "Quick Contact",
-    "quickContactDescription": "Get instant responses via WhatsApp",
-    "messageWhatsApp": "Message on WhatsApp",
+    "quickContactDescription": "Get instant responses via Telegram",
+    "messageWhatsApp": "Message on Telegram",
     "quickLinks": "Quick Links",
     "navigation": "Navigation",
     "contact": "Contact",
@@ -404,17 +411,16 @@
     "footerHeading": "Footer",
     "brandName": "AM Teachings",
     "brandTagline": "English & IELTS Excellence",
-    "availableSchedule": "Available 7 days a week",
-    "socialLinkedIn": "LinkedIn"
+    "availableSchedule": "Available 7 days a week"
   },
   "ui": {
     "openMainMenu": "Open main menu",
-    "whatsapp": "WhatsApp",
+    "whatsapp": "Telegram",
     "lastUpdated": "Last updated:",
     "readMore": "Read More",
     "viewPosts": "View {category} Posts →",
     "by": "By",
-    "expertTips": "Expert tips, proven strategies, and practical advice to help you master English and achieve your IELTS goals. Learn from my experience teaching 15+ students.",
+    "expertTips": "Expert tips, proven strategies, and practical advice to help you master English and achieve your IELTS goals. Learn from my experience teaching 100+ students.",
     "popularCategories": "Popular Categories",
     "exploreContent": "Explore our most helpful content organized by topic.",
     "latestArticles": "Latest Articles",

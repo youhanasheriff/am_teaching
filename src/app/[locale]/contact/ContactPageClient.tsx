@@ -9,20 +9,18 @@ import {
   Clock,
   Globe,
   MessageCircle,
-  Linkedin,
   Send,
   MapPin,
   CheckCircle,
   AlertCircle,
 } from 'lucide-react';
-import {
-  createWhatsAppUrl,
-  WHATSAPP_MESSAGES,
-} from '@/lib/constants';
+import { createWhatsAppUrl, WHATSAPP_MESSAGES } from '@/lib/constants';
 
 interface FormData {
   name: string;
   email: string;
+  phone: string;
+  telegram: string;
   lessonType: string;
   message: string;
 }
@@ -30,6 +28,8 @@ interface FormData {
 interface FormErrors {
   name?: string;
   email?: string;
+  phone?: string;
+  telegram?: string;
   message?: string;
   general?: string;
 }
@@ -39,6 +39,8 @@ function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
+    phone: '',
+    telegram: '',
     lessonType: 'general',
     message: '',
   });
@@ -68,6 +70,22 @@ function ContactForm() {
       newErrors.email = tContact('form.validation.emailInvalid');
     } else if (formData.email.length > 255) {
       newErrors.email = tContact('form.validation.emailTooLong');
+    }
+
+    // Optional phone validation
+    if (
+      formData.phone.trim() &&
+      !/^[\+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/[\s\-\(\)]/g, ''))
+    ) {
+      newErrors.phone = tContact('form.validation.phoneInvalid');
+    }
+
+    // Optional telegram validation
+    if (
+      formData.telegram.trim() &&
+      !/^@?[a-zA-Z0-9_]{5,32}$/.test(formData.telegram.trim())
+    ) {
+      newErrors.telegram = tContact('form.validation.telegramInvalid');
     }
 
     if (!formData.message.trim()) {
@@ -109,6 +127,8 @@ function ContactForm() {
         setFormData({
           name: '',
           email: '',
+          phone: '',
+          telegram: '',
           lessonType: 'general',
           message: '',
         });
@@ -116,9 +136,11 @@ function ContactForm() {
         setSubmitStatus('error');
         if (result.details) {
           const fieldErrors: FormErrors = {};
-          result.details.forEach((detail: { field: string; message: string }) => {
-            fieldErrors[detail.field as keyof FormErrors] = detail.message;
-          });
+          result.details.forEach(
+            (detail: { field: string; message: string }) => {
+              fieldErrors[detail.field as keyof FormErrors] = detail.message;
+            }
+          );
           setErrors(fieldErrors);
         } else {
           setErrors({
@@ -250,6 +272,62 @@ function ContactForm() {
                 <p className="mt-1 text-sm text-red-600 flex items-center space-x-1">
                   <AlertCircle className="h-3 w-3" />
                   <span>{errors.email}</span>
+                </p>
+              )}
+            </div>
+
+            <div>
+              <Label
+                htmlFor="phone"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                {tContact('form.phone')} {tContact('form.optional')}
+              </Label>
+              <Input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className={`w-full ${
+                  errors.phone
+                    ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                    : ''
+                }`}
+                placeholder={tContact('form.phonePlaceholder')}
+              />
+              {errors.phone && (
+                <p className="mt-1 text-sm text-red-600 flex items-center space-x-1">
+                  <AlertCircle className="h-3 w-3" />
+                  <span>{errors.phone}</span>
+                </p>
+              )}
+            </div>
+
+            <div>
+              <Label
+                htmlFor="telegram"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                {tContact('form.telegram')} {tContact('form.optional')}
+              </Label>
+              <Input
+                type="text"
+                id="telegram"
+                name="telegram"
+                value={formData.telegram}
+                onChange={handleChange}
+                className={`w-full ${
+                  errors.telegram
+                    ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                    : ''
+                }`}
+                placeholder={tContact('form.telegramPlaceholder')}
+              />
+              {errors.telegram && (
+                <p className="mt-1 text-sm text-red-600 flex items-center space-x-1">
+                  <AlertCircle className="h-3 w-3" />
+                  <span>{errors.telegram}</span>
                 </p>
               )}
             </div>
@@ -443,49 +521,6 @@ function ContactFormSection() {
   );
 }
 
-function SocialLinks() {
-  const tContact = useTranslations('contact');
-  const tFooter = useTranslations('footer');
-
-  const socialLinks = [
-    {
-      name: tFooter('socialLinkedIn'),
-      href: '#',
-      icon: <Linkedin className="h-6 w-6" />,
-      color: 'hover:text-blue-600 hover:bg-blue-50',
-      description: 'Professional network',
-    },
-  ];
-
-  return (
-    <Card className="shadow-lg">
-      <CardContent className="pt-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
-          {tContact('connectSocial')}
-        </h3>
-        <div className="flex justify-center space-x-4">
-          {socialLinks.map(link => (
-            <a
-              key={link.name}
-              href={link.href}
-              className={`p-4 bg-gray-100 rounded-xl text-gray-600 transition-all duration-200 ${link.color} group cursor-pointer`}
-              aria-label={link.name}
-              title={link.description}
-            >
-              <div className="group-hover:scale-110 transition-transform duration-200">
-                {link.icon}
-              </div>
-            </a>
-          ))}
-        </div>
-        <p className="text-center text-sm text-gray-500 mt-4">
-          Follow for English learning tips and updates
-        </p>
-      </CardContent>
-    </Card>
-  );
-}
-
 export default function ContactPageClient() {
   const tContact = useTranslations('contact');
 
@@ -511,11 +546,6 @@ export default function ContactPageClient() {
           <div>
             <ContactFormSection />
           </div>
-        </div>
-
-        {/* Social Links */}
-        <div className="max-w-md mx-auto mt-12">
-          <SocialLinks />
         </div>
 
         {/* Additional Help Section */}

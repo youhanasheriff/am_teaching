@@ -34,7 +34,7 @@ function HeroSection() {
                 onClick={handleWhatsAppContact}
               >
                 <MessageCircle className="h-5 w-5" />
-                <span>WhatsApp Me</span>
+                <span>Telegram Me</span>
               </Button>
               <Link href="/contact">
                 <Button variant="outline" size="lg" className="w-full sm:w-auto">
@@ -52,7 +52,7 @@ function HeroSection() {
                 <div className="space-y-2">
                   <h3 className="text-2xl font-semibold text-gray-900">Aya Mohsen</h3>
                   <p className="text-gray-600 font-medium">American Diploma Holder</p>
-                  <p className="text-sm text-gray-500">IELTS 8.5 • Licensed Teacher</p>
+                  <p className="text-sm text-gray-500">IELTS 8.0 • Licensed Teacher</p>
                 </div>
               </div>
             </div>

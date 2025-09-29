@@ -3,11 +3,11 @@ import HomePageClient from './HomePageClient';
 
 export const metadata: Metadata = {
   title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
-  description: 'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.5 score and teaching license from Ain Shams University.',
-  keywords: 'English lessons, IELTS preparation, General English, Spoken English, Aya Mohsen, American Diploma, Ain Shams University, licensed teacher',
+  description: 'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.0 score and TEFL Training Certification.',
+  keywords: 'English lessons, IELTS preparation, General English, Spoken English, Aya Mohsen, American Diploma, TEFL Training, licensed teacher',
   openGraph: {
     title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
-    description: 'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.5 score.',
+    description: 'Learn General English, Spoken English, and IELTS preparation with licensed teacher Aya Mohsen. American Diploma holder with IELTS 8.0 score.',
     type: 'website',
     images: [
       {
@@ -37,8 +37,8 @@ export default function Home() {
     "founder": {
       "@type": "Person",
       "name": "Aya Mohsen",
-      "jobTitle": "Licensed English Teacher & IELTS Specialist",
-      "description": "American Diploma holder with IELTS 8.5 score and teaching license from Ain Shams University"
+      "jobTitle": "Licensed English Teacher & Teaching Specialist",
+      "description": "American Diploma holder with IELTS 8.0 score and TEFL Training Certification"
     },
     "offers": [
       {

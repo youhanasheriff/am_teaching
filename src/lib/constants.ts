@@ -10,20 +10,20 @@ export const CONTACT_INFO = {
   EMAIL: 'ayamohsen57@gmail.com' as const,
   
   /**
-   * WhatsApp phone number (replace with actual number)
+   * Telegram username
    */
-  WHATSAPP_NUMBER: '+1234567890' as const,
+  TELEGRAM_USERNAME: '@AyaMohsen52' as const,
   
   /**
-   * Formatted WhatsApp number for display purposes
+   * Telegram username for display purposes (without @)
    */
-  WHATSAPP_DISPLAY: '+1 (234) 567-8890' as const,
+  TELEGRAM_DISPLAY: 'AyaMohsen52' as const,
 } as const;
 
 /**
- * Pre-defined WhatsApp message templates for different contexts
+ * Pre-defined Telegram message templates for different contexts
  */
-export const WHATSAPP_MESSAGES = {
+export const TELEGRAM_MESSAGES = {
   GENERAL_INQUIRY: 'Hello! I\'m interested in English lessons. Could you please provide more information?',
   SERVICES_INQUIRY: 'Hello! I\'m interested in your English learning services. Could you provide more information?',
   ABOUT_INQUIRY: 'Hello Aya! I found your website and I\'m interested in learning more about your English teaching services.',
@@ -41,12 +41,19 @@ export const EMAIL_TEMPLATES = {
 } as const;
 
 /**
- * Helper function to create WhatsApp URL with message
+ * Helper function to create Telegram URL with message
  */
-export const createWhatsAppUrl = (message: string): string => {
+export const createTelegramUrl = (message: string): string => {
   const encodedMessage = encodeURIComponent(message);
-  return `https://wa.me/${CONTACT_INFO.WHATSAPP_NUMBER}?text=${encodedMessage}`;
+  return `https://t.me/${CONTACT_INFO.TELEGRAM_DISPLAY}?text=${encodedMessage}`;
 };
+
+/**
+ * Backward compatibility - WhatsApp functions now redirect to Telegram
+ * @deprecated Use createTelegramUrl instead
+ */
+export const createWhatsAppUrl = createTelegramUrl;
+export const WHATSAPP_MESSAGES = TELEGRAM_MESSAGES;
 
 /**
  * Helper function to create mailto URL with subject and body
@@ -61,5 +68,5 @@ export const createEmailUrl = (subject?: string, body?: string): string => {
  * Type definitions for contact information
  */
 export type ContactInfo = typeof CONTACT_INFO;
-export type WhatsAppMessages = typeof WHATSAPP_MESSAGES;
+export type TelegramMessages = typeof TELEGRAM_MESSAGES;
 export type EmailTemplates = typeof EMAIL_TEMPLATES;

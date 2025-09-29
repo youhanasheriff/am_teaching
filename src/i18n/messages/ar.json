@@ -8,7 +8,7 @@
   },
   "common": {
     "contactMe": "تواصل معي",
-    "whatsapp": "واتساب",
+    "whatsapp": "تيليجرام",
     "email": "البريد الإلكتروني",
     "bookLesson": "احجز درس",
     "askQuestion": "اسأل سؤال",
@@ -25,12 +25,12 @@
   "hero": {
     "title": "أتقن الإنجليزية مع",
     "subtitle": "آية محسن",
-    "description": "مدرسة إنجليزية مرخصة متخصصة في الإنجليزية العامة والمحادثة وإعداد الآيلتس. حاصلة على دبلوم أمريكي ودرجة 8.5 في الآيلتس، أساعد الطلاب على تحقيق أهدافهم في تعلم اللغة.",
+    "description": "مدرسة إنجليزية مرخصة متخصصة في الإنجليزية العامة والمحادثة وإعداد الآيلتس. حاصلة على دبلوم أمريكي ودرجة 8.0 في الآيلتس، أساعد الطلاب على تحقيق أهدافهم في تعلم اللغة.",
     "cta1": "ابدأ التعلم اليوم",
     "cta2": "استكشف الخدمات",
     "teacherName": "آية محسن",
     "teacherTitle": "مدرسة إنجليزية معتمدة",
-    "teacherExperience": "متخصصة آيلتس • خبرة 8+ سنوات"
+    "teacherExperience": "متخصصة تدريس • خبرة 5+ سنوات"
   },
   "servicesPreview": {
     "title": "اختر مسار التعلم الخاص بك",
@@ -46,16 +46,16 @@
   },
   "about": {
     "title": "تعرف على آية محسن",
-    "description": "مدرسة إنجليزية مرخصة متخصصة في الإنجليزية العامة والمحادثة وإعداد الآيلتس. حاصلة على دبلوم أمريكي ودرجة 8.5 في الآيلتس ورخصة تدريس من جامعة عين شمس.",
+    "description": "مدرسة إنجليزية مرخصة متخصصة في الإنجليزية العامة والمحادثة وإعداد الآيلتس. حاصلة على دبلوم أمريكي ودرجة 8.0 في الآيلتس وشهادة تدريب TEFL.",
     "qualifications": {
       "title": "المؤهلات والشهادات",
       "subtitle": "التميز الأكاديمي يلتقي مع الخبرة العملية في التدريس لتقديم نتائج استثنائية في تعلم اللغة.",
       "americanDiploma": "دبلوم أمريكي",
       "americanDiplomaInstitution": "النظام التعليمي الأمريكي",
-      "ieltsScore": "درجة آيلتس 8.5",
+      "ieltsScore": "درجة آيلتس 8.0",
       "ieltsInstitution": "المجلس الثقافي البريطاني",
-      "teachingLicense": "رخصة تدريس",
-      "teachingLicenseInstitution": "جامعة عين شمس",
+      "teachingLicense": "شهادة تدريب TEFL",
+      "teachingLicenseInstitution": "التطوير المهني",
       "specialist": "متخصصة في تدريس الإنجليزية",
       "specialistInstitution": "عامة، محادثة، وآيلتس",
       "certified": "معتمدة",
@@ -65,11 +65,11 @@
     "experience": {
       "title": "الخبرة التدريسية",
       "subtitle": "سجل حافل مثبت في مساعدة الطلاب على تحقيق أهدافهم في تعلم الإنجليزية.",
-      "studentsTitle": "15+ طالب تم تدريسهم",
+      "studentsTitle": "100+ طالب تم تدريسهم",
       "studentsDescription": "إرشاد ناجح لطلاب من أكثر من 40 دولة",
       "successTitle": "95% معدل نجاح الآيلتس",
       "successDescription": "الطلاب يحققون درجاتهم المستهدفة باستمرار",
-      "yearsTitle": "8+ سنوات تدريس",
+      "yearsTitle": "5+ سنوات تدريس",
       "yearsDescription": "خبرة واسعة في البيئات الإلكترونية والفصول التقليدية"
     },
     "philosophy": {
@@ -118,8 +118,8 @@
     "contactFormDescription": "تفضل إرسال رسالة مفصلة؟ استخدم النموذج أدناه وسأرد عبر البريد الإلكتروني.",
     "connectSocial": "تواصل عبر وسائل التواصل الاجتماعي",
     "needImmediate": "تحتاج مساعدة فورية؟",
-    "needImmediateDescription": "للأسئلة العاجلة أو التوضيحات السريعة، الواتساب هو أسرع طريقة للوصول إلي.",
-    "whatsappUrgent": "واتساب للمساعدة العاجلة",
+    "needImmediateDescription": "للأسئلة العاجلة أو التوضيحات السريعة، تيليجرام هو أسرع طريقة للوصول إلي.",
+    "whatsappUrgent": "تيليجرام للمساعدة العاجلة",
     "responseTime": "وقت الاستجابة",
     "responseTimeValue": "خلال 24 ساعة",
     "availability": "التوفر",
@@ -130,11 +130,16 @@
     "form": {
       "name": "الاسم الكامل",
       "email": "عنوان البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "telegram": "اسم المستخدم في تيليجرام",
       "lessonType": "ما الذي تهتم به؟",
       "message": "الرسالة",
       "required": "*",
+      "optional": "(اختياري)",
       "namePlaceholder": "اسمك الكامل",
       "emailPlaceholder": "your.email@example.com",
+      "phonePlaceholder": "+1234567890",
+      "telegramPlaceholder": "@AyaMohsen52",
       "messagePlaceholder": "أخبرني عن أهدافك في تعلم الإنجليزية، مستواك الحالي، أو أي أسئلة محددة لديك...",
       "submit": "إرسال رسالة",
       "sending": "جاري الإرسال...",
@@ -150,6 +155,8 @@
         "emailRequired": "البريد الإلكتروني مطلوب",
         "emailInvalid": "يرجى إدخال عنوان بريد إلكتروني صحيح",
         "emailTooLong": "البريد الإلكتروني طويل جداً",
+        "phoneInvalid": "يرجى إدخال رقم هاتف صحيح",
+        "telegramInvalid": "يرجى إدخال اسم مستخدم تيليجرام صحيح (مثل: @username)",
         "messageRequired": "الرسالة مطلوبة",
         "messageMinLength": "يجب أن تكون الرسالة على الأقل 10 أحرف",
         "messageTooLong": "الرسالة طويلة جداً (الحد الأقصى 2000 حرف)"
@@ -165,10 +172,10 @@
       "other": "أخرى"
     },
     "methods": {
-      "whatsappTitle": "واتساب (المفضل)",
+      "whatsappTitle": "تيليجرام (المفضل)",
       "whatsappSubtitle": "رسائل فورية وردود سريعة",
       "whatsappDescription": "احصل على إجابات خلال دقائق، وليس ساعات",
-      "whatsappButton": "بدء محادثة واتساب",
+      "whatsappButton": "بدء محادثة تيليجرام",
       "emailTitle": "البريد الإلكتروني",
       "emailSubtitle": "تواصل مهني عبر البريد الإلكتروني",
       "emailButton": "إرسال بريد إلكتروني"
@@ -245,14 +252,14 @@
     "ielts": {
       "title": "برنامج إعداد الآيلتس",
       "description": "تدريب شامل على الآيلتس بنسبة نجاح 95%. احصل على الدرجة التي تحتاجها للقبول الجامعي أو الهجرة أو التقدم المهني.",
-      "score": "درجة 8.5",
+      "score": "درجة 8.0",
       "scoreLabel": "درجة آيلتس",
       "successRate": "95%",
       "successRateLabel": "معدل النجاح",
       "duration": "2-4",
       "durationLabel": "أشهر للهدف",
       "listeningTitle": "استماع الآيلتس",
-      "listeningDescription": "أتقن جميع الأقسام الأربعة لاختبار الاستماع بإستراتيجيات مثبتة.",
+      "listeningDescription": "تفوق في كل مرحلة من مراحل اختبار الاستماع بإستراتيجيات عملية.",
       "listeningSkills": [
         "تقنيات تدوين الملاحظات",
         "توقع الإجابات",
@@ -372,7 +379,7 @@
   },
   "stats": {
     "studentsTitle": "طلاب تم تدريسهم",
-    "studentsCount": "15+",
+    "studentsCount": "100+",
     "successTitle": "معدل نجاح الآيلتس",
     "successCount": "95%",
     "ratingTitle": "متوسط التقييم",
@@ -381,14 +388,14 @@
   "cta": {
     "title": "مستعد لتحويل إنجليزيتك؟",
     "subtitle": "انضم لمئات الطلاب الناجحين وابدأ رحلتك لإتقان الإنجليزية اليوم.",
-    "startWhatsApp": "ابدأ مع الواتساب",
+    "startWhatsApp": "ابدأ مع تيليجرام",
     "emailForm": "نموذج التواصل بالبريد الإلكتروني"
   },
   "footer": {
     "description": "تمكين الطلاب من تحقيق الطلاقة في الإنجليزية والتفوق في امتحانات الآيلتس من خلال طرق تدريس شخصية وفعالة مع آية محسن.",
     "quickContact": "تواصل سريع",
-    "quickContactDescription": "احصل على ردود فورية عبر الواتساب",
-    "messageWhatsApp": "راسلني على الواتساب",
+    "quickContactDescription": "احصل على ردود فورية عبر تيليجرام",
+    "messageWhatsApp": "راسلني على تيليجرام",
     "quickLinks": "روابط سريعة",
     "navigation": "التنقل",
     "contact": "تواصل",
@@ -404,12 +411,11 @@
     "footerHeading": "تذييل الصفحة",
     "brandName": "AM Teachings",
     "brandTagline": "التميز في الإنجليزية والآيلتس",
-    "availableSchedule": "متاح 7 أيام في الأسبوع",
-    "socialLinkedIn": "لينكد إن"
+    "availableSchedule": "متاح 7 أيام في الأسبوع"
   },
   "ui": {
     "openMainMenu": "فتح القائمة الرئيسية",
-    "whatsapp": "واتساب",
+    "whatsapp": "تيليجرام",
     "lastUpdated": "آخر تحديث:",
     "readMore": "اقرأ المزيد",
     "viewPosts": "عرض مقالات {category} ←",

@@ -14,6 +14,18 @@ const contactSchema = z.object({
     .string()
     .email('Invalid email address')
     .max(255, 'Email is too long'),
+  phone: z
+    .string()
+    .optional()
+    .refine((val) => !val || val.trim().length === 0 || /^[\+]?[1-9][\d]{0,15}$/.test(val.replace(/[\s\-\(\)]/g, '')), {
+      message: 'Please enter a valid phone number',
+    }),
+  telegram: z
+    .string()
+    .optional()
+    .refine((val) => !val || val.trim().length === 0 || /^@?[a-zA-Z0-9_]{5,32}$/.test(val.trim()), {
+      message: 'Please enter a valid Telegram username (e.g., @username)',
+    }),
   lessonType: z.string().min(1, 'Please select a lesson type'),
   message: z
     .string()
@@ -49,7 +61,7 @@ export async function POST(request: NextRequest) {
       throw validationError;
     }
 
-    const { name, email, lessonType, message } = validatedData;
+    const { name, email, phone, telegram, lessonType, message } = validatedData;
 
     // Primary email address as specified
     const teacherEmail = CONTACT_INFO.EMAIL;
@@ -98,6 +110,14 @@ export async function POST(request: NextRequest) {
                     <td style="padding: 8px 0; font-weight: bold; color: #374151;">Email:</td>
                     <td style="padding: 8px 0; color: #6b7280;">${email}</td>
                   </tr>
+                  ${phone ? `<tr>
+                    <td style="padding: 8px 0; font-weight: bold; color: #374151;">Phone:</td>
+                    <td style="padding: 8px 0; color: #6b7280;">${phone}</td>
+                  </tr>` : ''}
+                  ${telegram ? `<tr>
+                    <td style="padding: 8px 0; font-weight: bold; color: #374151;">Telegram:</td>
+                    <td style="padding: 8px 0; color: #6b7280;">${telegram}</td>
+                  </tr>` : ''}
                   <tr>
                     <td style="padding: 8px 0; font-weight: bold; color: #374151;">Interested in:</td>
                     <td style="padding: 8px 0; color: #6b7280;">${lessonType}</td>
@@ -114,9 +134,9 @@ export async function POST(request: NextRequest) {
                 <p style="margin: 0; color: #065f46; font-size: 14px;">
                    <strong>Quick Actions:</strong><br>
                    • Reply via email: <a href="mailto:${email}" style="color: #3b82f6;">${email}</a><br>
-                   • Contact via WhatsApp: <a href="${createWhatsAppUrl(
+                   • Contact via Telegram: <a href="${createWhatsAppUrl(
                      `Hello ${name}!`
-                   )}" style="color: #3b82f6;">Send WhatsApp Message</a>
+                   )}" style="color: #3b82f6;">Send Telegram Message</a>
                  </p>
               </div>
               
@@ -164,16 +184,16 @@ export async function POST(request: NextRequest) {
                    📧 Email: <a href="mailto:${
                      CONTACT_INFO.EMAIL
                    }" style="color: #3b82f6;">${CONTACT_INFO.EMAIL}</a><br>
-                   💬 WhatsApp: <a href="${createWhatsAppUrl(
+                   💬 Telegram: <a href="${createWhatsAppUrl(
                      'Hello Aya!'
-                   )}" style="color: #3b82f6;">Send WhatsApp Message</a>
+                   )}" style="color: #3b82f6;">Send Telegram Message</a>
                  </p>
               </div>
               
               <p style="color: #4b5563; margin-bottom: 0; line-height: 1.6;">
                 Looking forward to helping you achieve your English learning goals!<br><br>
                 <strong>Aya Mohsen</strong><br>
-                <span style="color: #6b7280;">English Teacher & IELTS Specialist</span><br>
+                <span style="color: #6b7280;">English Teacher & Teaching Specialist</span><br>
                 <span style="color: #6b7280;">AM Teachings</span>
               </p>
             </div>
