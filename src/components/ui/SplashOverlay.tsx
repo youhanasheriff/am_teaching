@@ -2,7 +2,9 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { initParticlesEngine, Particles } from '@tsparticles/react';
-import { loadFireworksPreset } from '@tsparticles/preset-fireworks'; // v3 preset loader <mcreference link="https://www.npmjs.com/package/@tsparticles/preset-fireworks" index="2">2</mcreference>
+import { loadFireworksPreset } from '@tsparticles/preset-fireworks';
+
+import './splash.css';
 
 type Phase =
   | 'introParticles'
@@ -33,7 +35,7 @@ export default function SplashOverlay() {
     const seen =
       typeof window !== 'undefined' && localStorage.getItem('ayaSplashSeen');
     if (seen) {
-      // setVisible(false);
+      // setVisible(false); // Uncomment to re-enable one-time splash
       document.documentElement.classList.remove('no-scroll');
     } else {
       document.documentElement.classList.add('no-scroll');
@@ -67,10 +69,10 @@ export default function SplashOverlay() {
 
     schedule([
       { phase: 'spaceStars', ms: 1500 },
-      { phase: 'flowers', ms: 3500 },
-      { phase: 'fireworks', ms: 3500 },
-      { phase: 'arabicWish', ms: 3500 },
-      { phase: 'exit', ms: 1000 },
+      { phase: 'flowers', ms: 5000 },
+      { phase: 'fireworks', ms: 5000 },
+      { phase: 'arabicWish', ms: 5000 },
+      { phase: 'exit', ms: 5000 },
     ]);
 
     return () => timers.forEach(t => clearTimeout(t));
@@ -93,15 +95,60 @@ export default function SplashOverlay() {
   const showIntroText = phase === 'introParticles' || phase === 'spaceStars';
   const showArabicWish = phase === 'arabicWish';
 
-  const fireworksOptions = useMemo(
+  const fireworksOptions: Parameters<typeof Particles>[0]['options'] = useMemo(
     () => ({
       preset: 'fireworks',
       fullScreen: {
-        enable: false,
+        enable: true,
+        zIndex: 1, // Ensure it's behind text
       },
       background: {
         color: {
-          value: 'transparent',
+          value: '#0d0124', // Match the deep space background color
+        },
+      },
+      // ✨ MODIFICATIONS FOR BRIGHTER FIREWORKS ✨
+      particles: {
+        number: {
+          value: 0, // Emitters control particle creation
+        },
+        color: {
+          value: ['#ffc0cb', '#ff69b4', '#ff1493', '#c71585'], // Pink/Magenta theme
+        },
+        opacity: {
+          value: { min: 0.5, max: 1 },
+          animation: {
+            enable: true,
+            speed: 2,
+            startValue: 'max',
+            destroy: 'min',
+          },
+        },
+        // Add twinkle to make particles shimmer and appear brighter
+        twinkle: {
+          particles: {
+            enable: true,
+            frequency: 0.05,
+            opacity: 1,
+          },
+        },
+      },
+      sounds: {
+        enable: true, // Enable sound for a more immersive experience
+        volume: {
+          min: 10,
+          max: 30,
+        },
+      },
+      emitters: {
+        life: {
+          count: 0, // infinite loop
+          duration: 0.1,
+          delay: 0.4,
+        },
+        rate: {
+          delay: 0.15,
+          quantity: 5,
         },
       },
     }),
@@ -113,18 +160,19 @@ export default function SplashOverlay() {
   return (
     <div className={`splash-overlay ${exiting ? 'splash-exit' : ''}`}>
       <div className="splash-container">
-        {/* Layer: gradient bg for elegance */}
         <div className="splash-gradient" />
 
-        {/* Phase: Space stars CSS layer */}
         {(phase === 'spaceStars' ||
           phase === 'flowers' ||
           phase === 'fireworks' ||
           phase === 'arabicWish') && (
-          <div className="splash-stars" aria-hidden="true" />
+          <div className="splash-stars-container">
+            <div className="splash-stars" />
+            <div className="splash-stars-2" />
+            <div className="splash-stars-3" />
+          </div>
         )}
 
-        {/* Phase: Intro particles (CSS floating dots) */}
         {showIntroText && (
           <div className="splash-particles" aria-hidden="true">
             {Array.from({ length: 36 }).map((_, i) => (
@@ -137,30 +185,30 @@ export default function SplashOverlay() {
           </div>
         )}
 
-        {/* Phase: Falling flowers (CSS petals) */}
         {(phase === 'flowers' ||
           phase === 'fireworks' ||
           phase === 'arabicWish') && (
           <div className="splash-petals" aria-hidden="true">
-            {Array.from({ length: 24 }).map((_, i) => (
+            {Array.from({ length: 100 }).map((_, i) => (
               <span
                 key={i}
                 className="petal"
                 style={{
-                  ['--d' as any]: (i % 6) + 1,
-                  left: `${(i * 100) / 24}%`,
+                  ['--d' as any]: 1 + Math.random() * 5,
+                  left: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 5}s`,
+                  transform: `scale(${0.5 + Math.random() * 0.5}) rotate(${Math.random() * 360}deg)`,
+                  backgroundColor: `hsl(${Math.random() * 30 + 330}, 80%, 70%)`,
                 }}
               />
             ))}
           </div>
         )}
 
-        {/* Phase: Fireworks using tsParticles */}
         {(phase === 'fireworks' || phase === 'arabicWish') && engineReady && (
           <Particles id="fireworks" options={fireworksOptions} />
         )}
 
-        {/* Text overlays */}
         <div className="splash-center">
           {showIntroText && (
             <h1 className="splash-title" aria-live="polite">

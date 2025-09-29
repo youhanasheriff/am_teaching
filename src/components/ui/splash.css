@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Aref+Ruqaa&display=swap');
+
+/* ========================================================================== */
+/* SPLASH SCREEN STYLES                                                       */
+/* ========================================================================== */
+
+/* Main overlay container */
+.splash-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  overflow: hidden;
+  background-color: #0d0124; /* Base dark background */
+  transition: opacity 0.8s ease-out;
+}
+
+.splash-overlay.splash-exit {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.splash-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(30, 0, 50, 0.2) 0%,
+    rgba(10, 0, 20, 0.5) 70%,
+    #0d0124 100%
+  );
+  z-index: 1;
+}
+
+/* ✨ NEW GALAXY & STARFIELD STYLES ✨ */
+.splash-stars-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  transform: rotateZ(45deg);
+  animation: twinkle 10s linear infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.splash-stars,
+.splash-stars-2,
+.splash-stars-3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.splash-stars {
+  width: 1px;
+  height: 1px;
+  box-shadow:
+    1963px 1486px #fff,
+    125px 1208px #fff,
+    1224px 1019px #fff,
+    54px 127px #fff,
+    1217px 77px #fff,
+    1782px 1438px #fff,
+    1599px 1334px #fff,
+    89px 1247px #fff,
+    1205px 1195px #fff,
+    1019px 731px #fff,
+    1928px 1735px #fff,
+    290px 1032px #fff,
+    1500px 500px #fff,
+    100px 1800px #fff,
+    1963px 1486px #fff,
+    125px 1208px #fff,
+    1224px 1019px #fff,
+    54px 127px #fff,
+    1217px 77px #fff,
+    1782px 1438px #fff,
+    1599px 1334px #fff,
+    89px 1247px #fff,
+    1205px 1195px #fff,
+    1019px 731px #fff,
+    1928px 1735px #fff,
+    290px 1032px #fff,
+    1500px 500px #fff,
+    100px 1800px #fff;
+  animation: star-anim 50s linear infinite;
+}
+.splash-stars-2 {
+  width: 2px;
+  height: 2px;
+  box-shadow:
+    1726px 1653px #fff,
+    137px 1827px #fff,
+    1381px 1874px #fff,
+    1832px 1318px #fff,
+    451px 409px #fff,
+    1140px 1111px #fff,
+    1378px 1993px #fff,
+    1110px 1884px #fff,
+    1383px 136px #fff,
+    133px 1819px #fff,
+    719px 1682px #fff,
+    1980px 177px #fff,
+    250px 750px #fff,
+    800px 1200px #fff;
+  animation: star-anim 100s linear infinite;
+}
+.splash-stars-3 {
+  width: 3px;
+  height: 3px;
+  box-shadow:
+    144px 121px #fff,
+    1806px 1006px #fff,
+    1016px 195px #fff,
+    483px 1618px #fff,
+    1515px 180px #fff,
+    400px 900px #fff,
+    1600px 300px #fff;
+  animation: star-anim 150s linear infinite;
+}
+
+@keyframes star-anim {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+/* Intro floating particles */
+.splash-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+.splash-dot {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  opacity: 0;
+  animation: floating-dot 15s linear infinite;
+  animation-delay: calc(var(--i) * 0.4s);
+  transform: scale(calc(0.5 + var(--i) * 0.05));
+}
+@keyframes floating-dot {
+  0% {
+    transform: translate(calc(var(--i) * 5px), -10vh)
+      scale(calc(0.5 + var(--i) * 0.05));
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(calc(var(--i) * -10px), 110vh)
+      scale(calc(0.5 + var(--i) * 0.05));
+    opacity: 0;
+  }
+}
+
+/* Falling petals layer */
+.splash-petals {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 3;
+}
+.petal {
+  position: absolute;
+  top: -10vh;
+  background-color: #ffc0cb;
+  width: 15px;
+  height: 15px;
+  border-radius: 50% 10% 50% 10%;
+  opacity: 0;
+  animation: fall-petal 10s linear infinite;
+  filter: blur(0.5px);
+}
+@keyframes fall-petal {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate3d(calc(var(--d, 1) * 10vw), 110vh, 0)
+      rotate(calc(var(--d, 1) * 360deg));
+    opacity: 0;
+  }
+}
+
+/* Centered text content */
+.splash-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 5;
+  color: #ffffff;
+  pointer-events: none;
+  width: 90%;
+}
+.splash-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: normal;
+  margin-bottom: 1rem;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.7),
+    0 0 20px rgba(255, 200, 255, 0.5);
+  animation: text-fade-in 1.2s ease-out forwards;
+}
+.splash-subtitle {
+  font-family: var(--font-sans);
+  font-size: clamp(1.2rem, 3vw, 1.75rem);
+  font-weight: 400;
+  opacity: 0;
+  animation: text-fade-in 1.2s ease-out 0.5s forwards;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+.splash-title.rtl {
+  direction: rtl;
+  font-family: 'Aref Ruqaa', serif;
+}
+@keyframes text-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Prevent background scroll */
+.no-scroll,
+.no-scroll body {
+  overflow: hidden !important;
+}
