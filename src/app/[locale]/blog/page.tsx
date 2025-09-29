@@ -19,9 +19,7 @@ export default function BlogPage() {
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
               {tBlog('title')}
             </h1>
-            <p className="lead">
-              {tUi('expertTips')}
-            </p>
+            <p className="lead">{tUi('expertTips')}</p>
           </div>
         </div>
       </section>
@@ -30,18 +28,20 @@ export default function BlogPage() {
         <div className="container">
           <div className="text-center space-y-4 mb-12">
             <h2 className="section-title">{tUi('latestArticles')}</h2>
-            <p className="lead max-w-2xl mx-auto">
-              {tUi('freshInsights')}
-            </p>
+            <p className="lead max-w-2xl mx-auto">{tUi('freshInsights')}</p>
           </div>
           <div className="grid gap-8 lg:grid-cols-2 xl:grid-cols-3">
-            {posts.map((post) => (
+            {posts.map(post => (
               <Card key={post.id} className="group overflow-hidden bg-white">
                 <div className="p-2">
                   <div className="aspect-[16/10] bg-gradient-to-br from-brand/10 to-accent/5 rounded-lg flex items-center justify-center">
                     <div className="text-brand/30">
-                      {post.category === 'Speaking Skills' && <MessageSquare className="h-16 w-16" />}
-                      {post.category === 'Grammar' && <BookOpen className="h-16 w-16" />}
+                      {post.category === 'Speaking Skills' && (
+                        <MessageSquare className="h-16 w-16" />
+                      )}
+                      {post.category === 'Grammar' && (
+                        <BookOpen className="h-16 w-16" />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -53,9 +53,7 @@ export default function BlogPage() {
                     <span>{post.readingTime}</span>
                   </div>
                   <CardTitle className="group-hover:text-brand transition-colors duration-200 line-clamp-2">
-                    <Link href={`/blog/${post.slug}`}>
-                      {post.title}
-                    </Link>
+                    <Link href={`/en/blog/${post.slug}`}>{post.title}</Link>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0">
@@ -65,20 +63,27 @@ export default function BlogPage() {
                   <div className="flex items-center justify-start">
                     <div className="text-sm text-gray-500 flex items-center space-x-1">
                       <User className="h-3 w-3" />
-                      <span>{tUi('by')} {post.author}</span>
+                      <span>
+                        {tUi('by')} {post.author}
+                      </span>
                       <span>•</span>
                       <Calendar className="h-3 w-3" />
-                      <span>{new Date(post.publishedAt).toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric'
-                      })}</span>
+                      <span>
+                        {new Date(post.publishedAt).toLocaleDateString(
+                          'en-US',
+                          {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric',
+                          }
+                        )}
+                      </span>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2 mt-4">
-                    {post.tags.slice(0, 3).map((tag) => (
-                      <span 
-                        key={tag} 
+                    {post.tags.slice(0, 3).map(tag => (
+                      <span
+                        key={tag}
                         className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full"
                       >
                         #{tag.toLowerCase()}
