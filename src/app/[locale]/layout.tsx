@@ -6,7 +6,7 @@ import { routing } from '@/i18n/routing';
 import '../globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import SplashOverlay from '@/components/ui/SplashOverlay';
+// import SplashOverlay from '@/components/ui/SplashOverlay';
 
 export const metadata: Metadata = {
   title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
@@ -66,7 +66,7 @@ export default async function LocaleLayout({
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <body className="antialiased">
         <NextIntlClientProvider messages={messages}>
-          <SplashOverlay />
+          {/* <SplashOverlay /> */}
           <Navbar />
           <main className="pt-4">{children}</main>
           <Footer />
