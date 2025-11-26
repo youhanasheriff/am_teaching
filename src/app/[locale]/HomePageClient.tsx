@@ -163,29 +163,11 @@ function ServicesPreview() {
   );
 }
 
+import TestimonialsList from '@/components/testimonials/TestimonialsList';
+import { Suspense } from 'react';
+
 function TestimonialsSection() {
   const tTestimonials = useTranslations('testimonials');
-
-  const testimonials = [
-    {
-      quote: tTestimonials('student1Quote'),
-      name: tTestimonials('student1Name'),
-      role: tTestimonials('student1Role'),
-      score: tTestimonials('student1Score'),
-    },
-    {
-      quote: tTestimonials('student2Quote'),
-      name: tTestimonials('student2Name'),
-      role: tTestimonials('student2Role'),
-      score: tTestimonials('student2Score'),
-    },
-    {
-      quote: tTestimonials('student3Quote'),
-      name: tTestimonials('student3Name'),
-      role: tTestimonials('student3Role'),
-      score: tTestimonials('student3Score'),
-    },
-  ];
 
   return (
     <section className="section bg-gray-50">
@@ -194,37 +176,21 @@ function TestimonialsSection() {
           <h2 className="section-title">{tTestimonials('title')}</h2>
           <p className="lead">{tTestimonials('subtitle')}</p>
         </div>
-        <div className="grid gap-8 md:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="group">
-              <CardContent className="pt-6">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 text-yellow-400 fill-current"
-                    />
-                  ))}
-                </div>
-                <blockquote className="text-gray-700 mb-4">
-                  &ldquo;{testimonial.quote}&rdquo;
-                </blockquote>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="font-medium text-gray-900">
-                      {testimonial.name}
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      {testimonial.role}
-                    </div>
-                  </div>
-                  <div className="text-sm font-medium text-brand bg-brand-light px-3 py-1 rounded-full">
-                    {testimonial.score}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+        <Suspense
+          fallback={
+            <div className="text-center py-12">
+              <p className="text-gray-500">Loading testimonials...</p>
+            </div>
+          }
+        >
+          <TestimonialsList />
+        </Suspense>
+        <div className="text-center mt-12">
+          <Link href="/testimonials">
+            <Button variant="outline" size="lg">
+              {tTestimonials('shareYourStory')}
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

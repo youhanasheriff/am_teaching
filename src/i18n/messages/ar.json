@@ -342,6 +342,7 @@
   "testimonials": {
     "title": "ماذا يقول طلابي",
     "subtitle": "قصص نجاح حقيقية من طلاب حققوا أهدافهم في تعلم الإنجليزية",
+    "shareYourStory": "شارك قصة نجاحك",
     "student1Quote": "ساعدتني آية في الانتقال من آيلتس 5.5 إلى 7.5 في شهرين فقط! طرق تدريسها فعالة بشكل لا يصدق.",
     "student1Name": "مريم الراشد",
     "student1Role": "طالبة آيلتس",
@@ -354,6 +355,21 @@
     "student3Name": "سارة أحمد",
     "student3Role": "طالبة متقدمة",
     "student3Score": "خبيرة قواعد"
+  },
+  "testimonialForm": {
+    "title": "شارك قصة نجاحك",
+    "nameLabel": "اسمك",
+    "emailLabel": "عنوان البريد الإلكتروني",
+    "profilePictureLabel": "صورة الملف الشخصي (اختياري)",
+    "profilePictureHint": "ارفع صورة (بحد أقصى 5 ميجابايت، JPG/PNG)",
+    "roleLabel": "مستواك/دورتك",
+    "scoreLabel": "إنجازك",
+    "quoteLabel": "شهادتك",
+    "ratingLabel": "التقييم",
+    "submitButton": "إرسال الشهادة",
+    "successMessage": "شكراً لك! تم إرسال شهادتك وهي قيد الموافقة.",
+    "errorMessage": "فشل الإرسال. يرجى المحاولة مرة أخرى.",
+    "imageError": "صورة غير صالحة. يرجى رفع JPG أو PNG بحجم أقل من 5 ميجابايت."
   },
   "blog": {
     "title": "مدونة تعلم الإنجليزية",

@@ -20,7 +20,7 @@ export const routing = defineRouting({
       ar: '/about'
     },
     '/services': {
-      en: '/services', 
+      en: '/services',
       ar: '/services'
     },
     '/blog': {
@@ -42,6 +42,10 @@ export const routing = defineRouting({
     '/terms': {
       en: '/terms',
       ar: '/terms'
+    },
+    '/testimonials': {
+      en: '/testimonials',
+      ar: '/testimonials'
     }
   }
 });
