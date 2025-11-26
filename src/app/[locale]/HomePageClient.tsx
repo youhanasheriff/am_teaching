@@ -11,6 +11,7 @@ import {
   Rocket,
   Target,
   Trophy,
+  ArrowRight,
 } from 'lucide-react';
 import { createWhatsAppUrl, WHATSAPP_MESSAGES } from '@/lib/constants';
 
@@ -47,9 +48,10 @@ function HeroSection() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-full sm:w-auto"
+                  className="w-full sm:w-auto flex items-center gap-2"
                 >
-                  {t('cta2')} →
+                  {t('cta2')}
+                  <ArrowRight className="h-5 w-5 rtl:rotate-180" />
                 </Button>
               </Link>
             </div>
