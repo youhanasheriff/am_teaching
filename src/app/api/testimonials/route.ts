@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { client } from '@/lib/sanity/client';
 import { approvedTestimonialsQuery } from '@/lib/sanity/queries';
 

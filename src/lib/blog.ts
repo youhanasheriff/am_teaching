@@ -13,7 +13,6 @@ export interface BlogPost {
 
 // Sample blog posts for AM Teachings
 export const blogPosts: BlogPost[] = [
-
   {
     id: '2',
     title: 'How to Improve Your English Speaking Confidence in 30 Days',

@@ -6,9 +6,9 @@ import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -18,9 +18,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({
-  params,
-}: BlogPostPageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: BlogPostPageProps
+): Promise<Metadata> {
+  const params = await props.params;
   const post = getBlogPostBySlug(params.slug);
 
   if (!post) {
@@ -86,7 +87,8 @@ function renderContent(content: string) {
   return html;
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
+export default async function BlogPostPage(props: BlogPostPageProps) {
+  const params = await props.params;
   const post = getBlogPostBySlug(params.slug);
 
   if (!post) {
