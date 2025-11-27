@@ -6,11 +6,11 @@ import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import {
   MessageCircle,
-  Star,
   Sprout,
   Rocket,
   Target,
   Trophy,
+  ArrowRight,
 } from 'lucide-react';
 import { createWhatsAppUrl, WHATSAPP_MESSAGES } from '@/lib/constants';
 
@@ -47,9 +47,10 @@ function HeroSection() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-full sm:w-auto"
+                  className="w-full sm:w-auto flex items-center gap-2"
                 >
-                  {t('cta2')} →
+                  {t('cta2')}
+                  <ArrowRight className="h-5 w-5 rtl:rotate-180" />
                 </Button>
               </Link>
             </div>
@@ -161,120 +162,13 @@ function ServicesPreview() {
   );
 }
 
-function TestimonialsSection() {
-  const tTestimonials = useTranslations('testimonials');
 
-  const testimonials = [
-    {
-      quote: tTestimonials('student1Quote'),
-      name: tTestimonials('student1Name'),
-      role: tTestimonials('student1Role'),
-      score: tTestimonials('student1Score'),
-    },
-    {
-      quote: tTestimonials('student2Quote'),
-      name: tTestimonials('student2Name'),
-      role: tTestimonials('student2Role'),
-      score: tTestimonials('student2Score'),
-    },
-    {
-      quote: tTestimonials('student3Quote'),
-      name: tTestimonials('student3Name'),
-      role: tTestimonials('student3Role'),
-      score: tTestimonials('student3Score'),
-    },
-  ];
-
-  return (
-    <section className="section bg-gray-50">
-      <div className="container">
-        <div className="text-center space-y-4 mb-12">
-          <h2 className="section-title">{tTestimonials('title')}</h2>
-          <p className="lead">{tTestimonials('subtitle')}</p>
-        </div>
-        <div className="grid gap-8 md:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="group">
-              <CardContent className="pt-6">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 text-yellow-400 fill-current"
-                    />
-                  ))}
-                </div>
-                <blockquote className="text-gray-700 mb-4">
-                  &ldquo;{testimonial.quote}&rdquo;
-                </blockquote>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="font-medium text-gray-900">
-                      {testimonial.name}
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      {testimonial.role}
-                    </div>
-                  </div>
-                  <div className="text-sm font-medium text-brand bg-brand-light px-3 py-1 rounded-full">
-                    {testimonial.score}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CTASection() {
-  const tCta = useTranslations('cta');
-
-  const handleWhatsAppContact = () => {
-    window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.READY_TO_START), '_blank');
-  };
-
-  return (
-    <section className="section bg-brand text-white">
-      <div className="container text-center">
-        <div className="max-w-3xl mx-auto space-y-6">
-          <h2 className="text-3xl font-bold sm:text-4xl">{tCta('title')}</h2>
-          <p className="text-xl text-blue-100">{tCta('subtitle')}</p>
-          <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Button
-              size="lg"
-              variant="secondary"
-              className="w-full sm:w-auto bg-white text-brand hover:bg-gray-50 flex items-center space-x-2"
-              onClick={handleWhatsAppContact}
-            >
-              <MessageCircle className="h-5 w-5" />
-              <span>{tCta('startWhatsApp')}</span>
-            </Button>
-            <Link href="/contact">
-              <Button
-                size="lg"
-                variant="ghost"
-                className="w-full sm:w-auto text-white border-white hover:bg-white/10 hover:text-white"
-              >
-                {tCta('emailForm')}
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 export default function HomePageClient() {
   return (
     <>
       <HeroSection />
       <ServicesPreview />
-      <TestimonialsSection />
-      <CTASection />
     </>
   );
 }

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import HomePageClient from './HomePageClient';
+import TestimonialsSection from '@/components/testimonials/TestimonialsSection';
+import CTASection from '@/components/home/CTASection';
 
 export const metadata: Metadata = {
   title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
@@ -51,7 +53,7 @@ export default function Home() {
         }
       },
       {
-        "@type": "Service", 
+        "@type": "Service",
         "name": "IELTS Preparation",
         "description": "Comprehensive IELTS preparation with 95% success rate",
         "provider": {
@@ -81,6 +83,8 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <HomePageClient />
+      <TestimonialsSection />
+      <CTASection />
     </>
   );
 }

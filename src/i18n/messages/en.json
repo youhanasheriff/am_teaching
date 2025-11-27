@@ -342,6 +342,7 @@
   "testimonials": {
     "title": "What My Students Say",
     "subtitle": "Real success stories from students who achieved their English learning goals",
+    "shareYourStory": "Share Your Success Story",
     "student1Quote": "Aya helped me jump from IELTS 5.5 to 7.5 in just two months! Her teaching methods are incredibly effective.",
     "student1Name": "Mariam Al-Rashid",
     "student1Role": "IELTS Student",
@@ -354,6 +355,21 @@
     "student3Name": "Sarah Ahmed",
     "student3Role": "Advanced Student",
     "student3Score": "Grammar Master"
+  },
+  "testimonialForm": {
+    "title": "Share Your Success Story",
+    "nameLabel": "Your Name",
+    "emailLabel": "Email Address",
+    "profilePictureLabel": "Profile Picture (Optional)",
+    "profilePictureHint": "Upload a photo (max 5MB, JPG/PNG)",
+    "roleLabel": "Your Level/Course",
+    "scoreLabel": "Your Achievement",
+    "quoteLabel": "Your Testimonial",
+    "ratingLabel": "Rating",
+    "submitButton": "Submit Testimonial",
+    "successMessage": "Thank you! Your testimonial has been submitted and is pending approval.",
+    "errorMessage": "Failed to submit. Please try again.",
+    "imageError": "Invalid image. Please upload a JPG or PNG under 5MB."
   },
   "blog": {
     "title": "English Learning Blog",
