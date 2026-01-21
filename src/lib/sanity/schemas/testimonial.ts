@@ -37,11 +37,22 @@ export const testimonial = defineType({
             type: 'string',
             description: 'e.g., "Band 7.5", "Advanced Level"',
         }),
+        // REPLACED single 'quote' with dual language fields
         defineField({
-            name: 'quote',
-            title: 'Testimonial',
+            name: 'quote_en',
+            title: 'Testimonial (English)',
             type: 'text',
             validation: (Rule) => Rule.required(),
+            rows: 3
+        }),
+        defineField({
+            name: 'quote_ar',
+            title: 'Testimonial (Arabic)',
+            type: 'text',
+            validation: (Rule) => Rule.required(),
+            rows: 3,
+            // Optional: Helper to ensure RTL text direction in Studio if needed, 
+            // though Sanity handles Arabic string display well automatically.
         }),
         defineField({
             name: 'rating',
@@ -74,14 +85,17 @@ export const testimonial = defineType({
     preview: {
         select: {
             title: 'name',
-            subtitle: 'quote',
+            // Preview the English quote by default, or fallback to Arabic
+            subtitle: 'quote_en',
+            subtitle_ar: 'quote_ar',
             media: 'profilePicture',
             approved: 'approved',
         },
-        prepare({ title, subtitle, media, approved }) {
+        prepare({ title, subtitle, subtitle_ar, media, approved }) {
+            const previewText = subtitle || subtitle_ar;
             return {
                 title: `${title} ${approved ? '✓' : '⏳'}`,
-                subtitle: subtitle?.substring(0, 60) + '...',
+                subtitle: previewText ? previewText.substring(0, 60) + '...' : 'No content',
                 media,
             };
         },

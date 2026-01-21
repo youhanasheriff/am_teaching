@@ -15,13 +15,18 @@ interface Testimonial {
     };
     role?: string;
     score?: string;
-    quote: string;
+    quote_en: string;
+    quote_ar: string;
     rating: number;
     submittedAt: string;
     approvedAt?: string;
 }
 
-export default async function TestimonialsList() {
+interface TestimonialsListProps {
+    locale?: string;
+}
+
+export default async function TestimonialsList({ locale = 'en' }: TestimonialsListProps) {
     const testimonials: Testimonial[] = await client.fetch(approvedTestimonialsQuery, {}, {
         next: { revalidate: 60 }, // Revalidate every 60 seconds
     });
@@ -34,62 +39,71 @@ export default async function TestimonialsList() {
         );
     }
 
+    const isRTL = locale === 'ar';
+
     return (
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {testimonials.map((testimonial) => (
-                <Card key={testimonial._id} className="group">
-                    <CardContent className="pt-6">
-                        {/* Profile Picture */}
-                        <div className="flex items-center gap-4 mb-4">
-                            <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
-                                {testimonial.profilePicture ? (
-                                    <Image
-                                        src={urlFor(testimonial.profilePicture).width(64).height(64).url()}
-                                        alt={testimonial.name}
-                                        fill
-                                        className="object-cover"
+            {testimonials.map((testimonial) => {
+                const quote = locale === 'ar' ? testimonial.quote_ar : testimonial.quote_en;
+
+                return (
+                    <Card key={testimonial._id} className="group">
+                        <CardContent className="pt-6">
+                            {/* Profile Picture */}
+                            <div className={`flex items-center gap-4 mb-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                                <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
+                                    {testimonial.profilePicture ? (
+                                        <Image
+                                            src={urlFor(testimonial.profilePicture).width(64).height(64).url()}
+                                            alt={testimonial.name}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    ) : (
+                                        <div className="w-full h-full flex items-center justify-center bg-brand text-white font-semibold text-xl">
+                                            {testimonial.name.charAt(0).toUpperCase()}
+                                        </div>
+                                    )}
+                                </div>
+                                <div className={isRTL ? 'text-right' : ''}>
+                                    <div className="font-medium text-gray-900">{testimonial.name}</div>
+                                    {testimonial.role && (
+                                        <div className="text-sm text-gray-500">{testimonial.role}</div>
+                                    )}
+                                </div>
+                            </div>
+
+                            {/* Rating */}
+                            <div className={`flex mb-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                                {[...Array(5)].map((_, i) => (
+                                    <Star
+                                        key={i}
+                                        className={`w-5 h-5 ${i < testimonial.rating
+                                                ? 'text-yellow-400 fill-current'
+                                                : 'text-gray-300'
+                                            }`}
                                     />
-                                ) : (
-                                    <div className="w-full h-full flex items-center justify-center bg-brand text-white font-semibold text-xl">
-                                        {testimonial.name.charAt(0).toUpperCase()}
-                                    </div>
-                                )}
+                                ))}
                             </div>
-                            <div>
-                                <div className="font-medium text-gray-900">{testimonial.name}</div>
-                                {testimonial.role && (
-                                    <div className="text-sm text-gray-500">{testimonial.role}</div>
-                                )}
-                            </div>
-                        </div>
 
-                        {/* Rating */}
-                        <div className="flex mb-4">
-                            {[...Array(5)].map((_, i) => (
-                                <Star
-                                    key={i}
-                                    className={`w-5 h-5 ${i < testimonial.rating
-                                            ? 'text-yellow-400 fill-current'
-                                            : 'text-gray-300'
-                                        }`}
-                                />
-                            ))}
-                        </div>
+                            {/* Quote */}
+                            <blockquote
+                                className={`text-gray-700 mb-4 italic ${isRTL ? 'text-right' : ''}`}
+                                dir={isRTL ? 'rtl' : 'ltr'}
+                            >
+                                &ldquo;{quote}&rdquo;
+                            </blockquote>
 
-                        {/* Quote */}
-                        <blockquote className="text-gray-700 mb-4 italic">
-                            &ldquo;{testimonial.quote}&rdquo;
-                        </blockquote>
-
-                        {/* Score Badge */}
-                        {testimonial.score && (
-                            <div className="inline-block text-sm font-medium text-brand bg-brand-light px-3 py-1 rounded-full">
-                                {testimonial.score}
-                            </div>
-                        )}
-                    </CardContent>
-                </Card>
-            ))}
+                            {/* Score Badge */}
+                            {testimonial.score && (
+                                <div className={`inline-block text-sm font-medium text-brand bg-brand-light px-3 py-1 rounded-full ${isRTL ? 'float-right' : ''}`}>
+                                    {testimonial.score}
+                                </div>
+                            )}
+                        </CardContent>
+                    </Card>
+                );
+            })}
         </div>
     );
 }

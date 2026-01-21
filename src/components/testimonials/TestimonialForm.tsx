@@ -14,7 +14,8 @@ export default function TestimonialForm() {
         email: '',
         role: '',
         score: '',
-        quote: '',
+        quote_en: '',
+        quote_ar: '',
         rating: 5,
     });
     const [profilePicture, setProfilePicture] = useState<File | null>(null);
@@ -70,7 +71,8 @@ export default function TestimonialForm() {
             formDataToSend.append('email', formData.email);
             formDataToSend.append('role', formData.role);
             formDataToSend.append('score', formData.score);
-            formDataToSend.append('quote', formData.quote);
+            formDataToSend.append('quote_en', formData.quote_en);
+            formDataToSend.append('quote_ar', formData.quote_ar);
             formDataToSend.append('rating', formData.rating.toString());
 
             if (profilePicture) {
@@ -87,7 +89,7 @@ export default function TestimonialForm() {
             if (response.ok) {
                 setMessage({ type: 'success', text: t('successMessage') });
                 // Reset form
-                setFormData({ name: '', email: '', role: '', score: '', quote: '', rating: 5 });
+                setFormData({ name: '', email: '', role: '', score: '', quote_en: '', quote_ar: '', rating: 5 });
                 setProfilePicture(null);
                 setPreviewUrl(null);
             } else {
@@ -245,19 +247,39 @@ export default function TestimonialForm() {
                         </div>
                     </div>
 
-                    {/* Quote */}
+                    {/* Quote English */}
                     <div>
-                        <label htmlFor="quote" className="block text-sm font-medium text-gray-700 mb-1">
-                            {t('quoteLabel')} *
+                        <label htmlFor="quote_en" className="block text-sm font-medium text-gray-700 mb-1">
+                            {t('quoteLabelEn')} *
                         </label>
                         <textarea
-                            id="quote"
-                            name="quote"
+                            id="quote_en"
+                            name="quote_en"
                             required
                             rows={4}
-                            value={formData.quote}
+                            value={formData.quote_en}
                             onChange={handleInputChange}
+                            dir="ltr"
+                            placeholder="Write your testimonial in English..."
                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent resize-none"
+                        />
+                    </div>
+
+                    {/* Quote Arabic */}
+                    <div>
+                        <label htmlFor="quote_ar" className="block text-sm font-medium text-gray-700 mb-1">
+                            {t('quoteLabelAr')} *
+                        </label>
+                        <textarea
+                            id="quote_ar"
+                            name="quote_ar"
+                            required
+                            rows={4}
+                            value={formData.quote_ar}
+                            onChange={handleInputChange}
+                            dir="rtl"
+                            placeholder="اكتب شهادتك بالعربية..."
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent resize-none text-right"
                         />
                     </div>
 

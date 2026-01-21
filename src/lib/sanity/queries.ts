@@ -9,7 +9,8 @@ export const approvedTestimonialsQuery = groq`
     profilePicture,
     role,
     score,
-    quote,
+    quote_en,
+    quote_ar,
     rating,
     submittedAt,
     approvedAt
@@ -25,7 +26,8 @@ export const pendingTestimonialsQuery = groq`
     profilePicture,
     role,
     score,
-    quote,
+    quote_en,
+    quote_ar,
     rating,
     submittedAt
   }
@@ -40,7 +42,8 @@ export const testimonialByIdQuery = groq`
     profilePicture,
     role,
     score,
-    quote,
+    quote_en,
+    quote_ar,
     rating,
     approved,
     submittedAt,

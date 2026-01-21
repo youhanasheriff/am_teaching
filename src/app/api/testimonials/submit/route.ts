@@ -7,7 +7,8 @@ const testimonialSchema = z.object({
     email: z.string().email('Invalid email address'),
     role: z.string().optional(),
     score: z.string().optional(),
-    quote: z.string().min(10, 'Testimonial must be at least 10 characters'),
+    quote_en: z.string().min(10, 'English testimonial must be at least 10 characters'),
+    quote_ar: z.string().min(10, 'Arabic testimonial must be at least 10 characters'),
     rating: z.number().min(1).max(5),
 });
 
@@ -21,7 +22,8 @@ export async function POST(request: NextRequest) {
             email: formData.get('email') as string,
             role: formData.get('role') as string,
             score: formData.get('score') as string,
-            quote: formData.get('quote') as string,
+            quote_en: formData.get('quote_en') as string,
+            quote_ar: formData.get('quote_ar') as string,
             rating: Number(formData.get('rating')),
         };
 
@@ -67,7 +69,8 @@ export async function POST(request: NextRequest) {
             email: validatedData.email,
             role: validatedData.role || '',
             score: validatedData.score || '',
-            quote: validatedData.quote,
+            quote_en: validatedData.quote_en,
+            quote_ar: validatedData.quote_ar,
             rating: validatedData.rating,
             approved: false,
             submittedAt: new Date().toISOString(),

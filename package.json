@@ -6,10 +6,12 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "upload-testimonials": "npx tsx scripts/upload-testimonials.ts"
   },
   "dependencies": {
     "@react-email/render": "^1.2.3",
+    "@sanity/client": "^7.14.0",
     "@sanity/image-url": "^1.2.0",
     "@sanity/vision": "^4.19.0",
     "@tsparticles/preset-fireworks": "^3.2.0",
