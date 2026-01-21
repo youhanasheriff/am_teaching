@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { createClient } from '@sanity/client';
 import * as fs from 'fs';
 import * as path from 'path';
