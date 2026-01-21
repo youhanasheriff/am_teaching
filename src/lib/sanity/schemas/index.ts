@@ -1,3 +1,3 @@
-import { testimonial } from './testimonial';
+import { testimonial } from "./testimonial";
 
 export const schemaTypes = [testimonial];

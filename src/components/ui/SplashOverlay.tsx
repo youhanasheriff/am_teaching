@@ -1,26 +1,26 @@
-'use client';
+"use client";
 
-import { useEffect, useMemo, useState } from 'react';
-import { initParticlesEngine, Particles } from '@tsparticles/react';
-import { loadFireworksPreset } from '@tsparticles/preset-fireworks';
+import { useEffect, useMemo, useState } from "react";
+import { initParticlesEngine, Particles } from "@tsparticles/react";
+import { loadFireworksPreset } from "@tsparticles/preset-fireworks";
 
-import './splash.css';
+import "./splash.css";
 
 type Phase =
-  | 'introParticles'
-  | 'spaceStars'
-  | 'flowers'
-  | 'fireworks'
-  | 'arabicWish'
-  | 'exit';
+  | "introParticles"
+  | "spaceStars"
+  | "flowers"
+  | "fireworks"
+  | "arabicWish"
+  | "exit";
 
 const PHASE_ORDER: Phase[] = [
-  'introParticles',
-  'spaceStars',
-  'flowers',
-  'fireworks',
-  'arabicWish',
-  'exit',
+  "introParticles",
+  "spaceStars",
+  "flowers",
+  "fireworks",
+  "arabicWish",
+  "exit",
 ];
 
 export default function SplashOverlay() {
@@ -28,25 +28,25 @@ export default function SplashOverlay() {
   const [currentPhaseIndex, setCurrentPhaseIndex] = useState(0);
   const phase = PHASE_ORDER[currentPhaseIndex];
   // Derived state for exiting animation
-  const exiting = phase === 'exit';
+  const exiting = phase === "exit";
   const [engineReady, setEngineReady] = useState(false);
 
   // Show only on first visit (persist across visits)
   useEffect(() => {
     const seen =
-      typeof window !== 'undefined' && localStorage.getItem('ayaSplashSeen');
+      typeof window !== "undefined" && localStorage.getItem("ayaSplashSeen");
     if (seen) {
       // setVisible(false); // Uncomment to re-enable one-time splash
-      document.documentElement.classList.remove('no-scroll');
+      document.documentElement.classList.remove("no-scroll");
     } else {
-      document.documentElement.classList.add('no-scroll');
+      document.documentElement.classList.add("no-scroll");
     }
   }, []);
 
   // Initialize fireworks preset
   useEffect(() => {
     if (!visible) return;
-    initParticlesEngine(async engine => {
+    initParticlesEngine(async (engine) => {
       await loadFireworksPreset(engine);
     }).then(() => setEngineReady(true));
   }, [visible]);
@@ -58,7 +58,7 @@ export default function SplashOverlay() {
 
     const schedule = (durations: { phase: Phase; ms: number }[]) => {
       let acc = 0;
-      durations.forEach(d => {
+      durations.forEach((d) => {
         acc += d.ms;
         timers.push(
           window.setTimeout(() => {
@@ -69,41 +69,41 @@ export default function SplashOverlay() {
     };
 
     schedule([
-      { phase: 'spaceStars', ms: 1500 },
-      { phase: 'flowers', ms: 5000 },
-      { phase: 'fireworks', ms: 5000 },
-      { phase: 'arabicWish', ms: 5000 },
-      { phase: 'exit', ms: 5000 },
+      { phase: "spaceStars", ms: 1500 },
+      { phase: "flowers", ms: 5000 },
+      { phase: "fireworks", ms: 5000 },
+      { phase: "arabicWish", ms: 5000 },
+      { phase: "exit", ms: 5000 },
     ]);
 
-    return () => timers.forEach(t => clearTimeout(t));
+    return () => timers.forEach((t) => clearTimeout(t));
   }, [visible]);
 
   // Handle exit: fade out and reveal page
   useEffect(() => {
-    if (visible && phase === 'exit') {
-      localStorage.setItem('ayaSplashSeen', 'true');
+    if (visible && phase === "exit") {
+      localStorage.setItem("ayaSplashSeen", "true");
       const t = setTimeout(() => {
         setVisible(false);
-        document.documentElement.classList.remove('no-scroll');
+        document.documentElement.classList.remove("no-scroll");
       }, 800); // match CSS fade duration
       return () => clearTimeout(t);
     }
   }, [phase, visible]);
 
-  const showIntroText = phase === 'introParticles' || phase === 'spaceStars';
-  const showArabicWish = phase === 'arabicWish';
+  const showIntroText = phase === "introParticles" || phase === "spaceStars";
+  const showArabicWish = phase === "arabicWish";
 
-  const fireworksOptions: Parameters<typeof Particles>[0]['options'] = useMemo(
+  const fireworksOptions: Parameters<typeof Particles>[0]["options"] = useMemo(
     () => ({
-      preset: 'fireworks',
+      preset: "fireworks",
       fullScreen: {
         enable: true,
         zIndex: 1, // Ensure it's behind text
       },
       background: {
         color: {
-          value: '#0d0124', // Match the deep space background color
+          value: "#0d0124", // Match the deep space background color
         },
       },
       // ✨ MODIFICATIONS FOR BRIGHTER FIREWORKS ✨
@@ -112,15 +112,15 @@ export default function SplashOverlay() {
           value: 0, // Emitters control particle creation
         },
         color: {
-          value: ['#ffc0cb', '#ff69b4', '#ff1493', '#c71585'], // Pink/Magenta theme
+          value: ["#ffc0cb", "#ff69b4", "#ff1493", "#c71585"], // Pink/Magenta theme
         },
         opacity: {
           value: { min: 0.5, max: 1 },
           animation: {
             enable: true,
             speed: 2,
-            startValue: 'max',
-            destroy: 'min',
+            startValue: "max",
+            destroy: "min",
           },
         },
         // Add twinkle to make particles shimmer and appear brighter
@@ -154,7 +154,9 @@ export default function SplashOverlay() {
     []
   );
 
-  const [petals, setPetals] = useState<{ id: number; style: React.CSSProperties }[]>([]);
+  const [petals, setPetals] = useState<
+    { id: number; style: React.CSSProperties }[]
+  >([]);
 
   useEffect(() => {
     // Use setTimeout to avoid synchronous setState in effect warning
@@ -163,7 +165,7 @@ export default function SplashOverlay() {
         Array.from({ length: 100 }).map((_, i) => ({
           id: i,
           style: {
-            '--d': 1 + Math.random() * 5,
+            "--d": 1 + Math.random() * 5,
             left: `${Math.random() * 100}%`,
             animationDelay: `${Math.random() * 5}s`,
             transform: `scale(${0.5 + Math.random() * 0.5}) rotate(${Math.random() * 360}deg)`,
@@ -178,20 +180,20 @@ export default function SplashOverlay() {
   if (!visible) return null;
 
   return (
-    <div className={`splash-overlay ${exiting ? 'splash-exit' : ''}`}>
+    <div className={`splash-overlay ${exiting ? "splash-exit" : ""}`}>
       <div className="splash-container">
         <div className="splash-gradient" />
 
-        {(phase === 'spaceStars' ||
-          phase === 'flowers' ||
-          phase === 'fireworks' ||
-          phase === 'arabicWish') && (
-            <div className="splash-stars-container">
-              <div className="splash-stars" />
-              <div className="splash-stars-2" />
-              <div className="splash-stars-3" />
-            </div>
-          )}
+        {(phase === "spaceStars" ||
+          phase === "flowers" ||
+          phase === "fireworks" ||
+          phase === "arabicWish") && (
+          <div className="splash-stars-container">
+            <div className="splash-stars" />
+            <div className="splash-stars-2" />
+            <div className="splash-stars-3" />
+          </div>
+        )}
 
         {showIntroText && (
           <div className="splash-particles" aria-hidden="true">
@@ -199,27 +201,23 @@ export default function SplashOverlay() {
               <span
                 key={i}
                 className="splash-dot"
-                style={{ '--i': i + 1 } as React.CSSProperties}
+                style={{ "--i": i + 1 } as React.CSSProperties}
               />
             ))}
           </div>
         )}
 
-        {(phase === 'flowers' ||
-          phase === 'fireworks' ||
-          phase === 'arabicWish') && (
-            <div className="splash-petals" aria-hidden="true">
-              {petals.map((petal) => (
-                <span
-                  key={petal.id}
-                  className="petal"
-                  style={petal.style}
-                />
-              ))}
-            </div>
-          )}
+        {(phase === "flowers" ||
+          phase === "fireworks" ||
+          phase === "arabicWish") && (
+          <div className="splash-petals" aria-hidden="true">
+            {petals.map((petal) => (
+              <span key={petal.id} className="petal" style={petal.style} />
+            ))}
+          </div>
+        )}
 
-        {(phase === 'fireworks' || phase === 'arabicWish') && engineReady && (
+        {(phase === "fireworks" || phase === "arabicWish") && engineReady && (
           <Particles id="fireworks" options={fireworksOptions} />
         )}
 
@@ -230,7 +228,7 @@ export default function SplashOverlay() {
             </h1>
           )}
 
-          {phase === 'flowers' && (
+          {phase === "flowers" && (
             <h2 className="splash-subtitle">
               Wishing you joy, light, and love. (and Jannah)
             </h2>

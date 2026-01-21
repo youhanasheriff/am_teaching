@@ -1,9 +1,9 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { getBlogPostBySlug, getBlogPosts } from '@/lib/blog';
-import { Button } from '@/components/ui/Button';
-import { Card, CardContent } from '@/components/ui/Card';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { getBlogPostBySlug, getBlogPosts } from "@/lib/blog";
+import { Button } from "@/components/ui/Button";
+import { Card, CardContent } from "@/components/ui/Card";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -13,7 +13,7 @@ interface BlogPostPageProps {
 
 export async function generateStaticParams() {
   const posts = getBlogPosts();
-  return posts.map(post => ({
+  return posts.map((post) => ({
     slug: post.slug,
   }));
 }
@@ -26,19 +26,19 @@ export async function generateMetadata(
 
   if (!post) {
     return {
-      title: 'Post Not Found | AM Teachings',
+      title: "Post Not Found | AM Teachings",
     };
   }
 
   return {
     title: `${post.title} | AM Teachings Blog`,
     description: post.excerpt,
-    keywords: post.tags.join(', '),
+    keywords: post.tags.join(", "),
     authors: [{ name: post.author }],
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      type: 'article',
+      type: "article",
       publishedTime: post.publishedAt,
       authors: [post.author],
       tags: post.tags,
@@ -82,7 +82,7 @@ function renderContent(content: string) {
     )
 
     // Clean up empty paragraphs
-    .replace(/<p class="mb-4 text-gray-700 leading-relaxed"><\/p>/g, '');
+    .replace(/<p class="mb-4 text-gray-700 leading-relaxed"><\/p>/g, "");
 
   return html;
 }
@@ -96,7 +96,7 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
   }
 
   const otherPosts = getBlogPosts()
-    .filter(p => p.id !== post.id)
+    .filter((p) => p.id !== post.id)
     .slice(0, 3);
 
   return (
@@ -114,10 +114,10 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
                 <span>{post.readingTime}</span>
                 <span>•</span>
                 <span>
-                  {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                    month: 'long',
-                    day: 'numeric',
-                    year: 'numeric',
+                  {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
                   })}
                 </span>
               </div>
@@ -162,7 +162,7 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
                 Topics covered:
               </h3>
               <div className="flex flex-wrap gap-2">
-                {post.tags.map(tag => (
+                {post.tags.map((tag) => (
                   <span
                     key={tag}
                     className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-brand hover:text-white transition-colors duration-200 cursor-pointer"
@@ -213,7 +213,7 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
                 Continue Learning
               </h2>
               <div className="grid gap-6 md:grid-cols-3">
-                {otherPosts.map(relatedPost => (
+                {otherPosts.map((relatedPost) => (
                   <Card key={relatedPost.id} className="group bg-white">
                     <CardContent className="p-6">
                       <div className="mb-3">

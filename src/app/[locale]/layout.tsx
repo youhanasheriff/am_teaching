@@ -1,46 +1,46 @@
-import type { Metadata } from 'next';
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import { routing } from '@/i18n/routing';
-import '../globals.css';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
+import type { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+import "../globals.css";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 // import SplashOverlay from '@/components/ui/SplashOverlay';
 
 export const metadata: Metadata = {
-  title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
+  title: "AM Teachings | English & IELTS Excellence with Aya Mohsen",
   description:
-    'Learn General English, Spoken English, and IELTS preparation with Aya Mohsen. American Diploma holder with IELTS 8.0 score and TEFL Training Certification.',
+    "Learn General English, Spoken English, and IELTS preparation with Aya Mohsen. American Diploma holder with IELTS 8.0 score and TEFL Training Certification.",
   keywords:
-    'English lessons, IELTS preparation, General English, Spoken English, Aya Mohsen, American Diploma, TEFL Training, English teacher',
-  authors: [{ name: 'Aya Mohsen' }],
-  creator: 'AM Teachings',
-  publisher: 'AM Teachings',
-  metadataBase: new URL(process.env.SITE_URL || 'http://localhost:3000'),
+    "English lessons, IELTS preparation, General English, Spoken English, Aya Mohsen, American Diploma, TEFL Training, English teacher",
+  authors: [{ name: "Aya Mohsen" }],
+  creator: "AM Teachings",
+  publisher: "AM Teachings",
+  metadataBase: new URL(process.env.SITE_URL || "http://localhost:3000"),
   openGraph: {
-    title: 'AM Teachings | English & IELTS Excellence',
+    title: "AM Teachings | English & IELTS Excellence",
     description:
-      'Learn General English, Spoken English, and IELTS preparation with Aya Mohsen. American Diploma holder with IELTS 8.0 score.',
-    url: process.env.SITE_URL || 'http://localhost:3000',
-    siteName: 'AM Teachings',
+      "Learn General English, Spoken English, and IELTS preparation with Aya Mohsen. American Diploma holder with IELTS 8.0 score.",
+    url: process.env.SITE_URL || "http://localhost:3000",
+    siteName: "AM Teachings",
     images: [
       {
-        url: '/og-image.jpg',
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: 'AM Teachings - English & IELTS Excellence',
+        alt: "AM Teachings - English & IELTS Excellence",
       },
     ],
-    locale: 'en_US',
-    type: 'website',
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'AM Teachings | English & IELTS Excellence with Aya Mohsen',
+    card: "summary_large_image",
+    title: "AM Teachings | English & IELTS Excellence with Aya Mohsen",
     description:
-      'Learn General English, Spoken English, and IELTS preparation with Aya Mohsen.',
-    images: ['/og-image.jpg'],
+      "Learn General English, Spoken English, and IELTS preparation with Aya Mohsen.",
+    images: ["/og-image.jpg"],
   },
 };
 
@@ -63,7 +63,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body className="antialiased">
         <NextIntlClientProvider messages={messages}>
           {/* <SplashOverlay /> */}

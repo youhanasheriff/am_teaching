@@ -1,27 +1,27 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
-import { Link, usePathname } from '@/i18n/routing';
-import { Button } from '@/components/ui/Button';
-import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
-import { Menu, X, MessageCircle } from 'lucide-react';
-import { createWhatsAppUrl, WHATSAPP_MESSAGES } from '@/lib/constants';
+import React, { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/routing";
+import { Button } from "@/components/ui/Button";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
+import { Menu, X, MessageCircle } from "lucide-react";
+import { createWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
 
 export default function Navbar() {
-  const t = useTranslations('navigation');
-  const tFooter = useTranslations('footer');
-  const tUi = useTranslations('ui');
+  const t = useTranslations("navigation");
+  const tFooter = useTranslations("footer");
+  const tUi = useTranslations("ui");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
   const navigation = [
-    { name: t('home'), href: '/' as const },
-    { name: t('about'), href: '/about' as const },
-    { name: t('services'), href: '/services' as const },
-    { name: t('blog'), href: '/blog' as const },
-    { name: t('contact'), href: '/contact' as const },
+    { name: t("home"), href: "/" as const },
+    { name: t("about"), href: "/about" as const },
+    { name: t("services"), href: "/services" as const },
+    { name: t("blog"), href: "/blog" as const },
+    { name: t("contact"), href: "/contact" as const },
   ];
 
   useEffect(() => {
@@ -29,8 +29,8 @@ export default function Navbar() {
       setScrolled(window.scrollY > 10);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const isActive = (href: string) => {
@@ -38,15 +38,15 @@ export default function Navbar() {
   };
 
   const handleWhatsAppContact = () => {
-    window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.GENERAL_INQUIRY), '_blank');
+    window.open(createWhatsAppUrl(WHATSAPP_MESSAGES.GENERAL_INQUIRY), "_blank");
   };
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200'
-          : 'bg-white/70 backdrop-blur-sm'
+          ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
+          : "bg-white/70 backdrop-blur-sm"
       }`}
     >
       <nav className="container flex items-center justify-between py-4">
@@ -57,22 +57,24 @@ export default function Navbar() {
           </div>
           <div className="hidden sm:block">
             <span className="text-xl font-bold text-gray-900">
-              {tFooter('brandName')}
+              {tFooter("brandName")}
             </span>
-            <p className="text-sm text-gray-500 -mt-1">{tFooter('brandTagline')}</p>
+            <p className="text-sm text-gray-500 -mt-1">
+              {tFooter("brandTagline")}
+            </p>
           </div>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center space-x-8">
-          {navigation.map(item => (
+          {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
               className={`text-sm font-medium transition-colors duration-200 ${
                 isActive(item.href)
-                  ? 'text-brand'
-                  : 'text-gray-600 hover:text-brand'
+                  ? "text-brand"
+                  : "text-gray-600 hover:text-brand"
               }`}
             >
               {item.name}
@@ -85,7 +87,7 @@ export default function Navbar() {
           <LanguageSwitcher />
           <div className="hidden sm:flex items-center space-x-3">
             <Link href="/contact">
-              <Button size="sm">{t('contact')}</Button>
+              <Button size="sm">{t("contact")}</Button>
             </Link>
             <Button
               variant="outline"
@@ -94,7 +96,7 @@ export default function Navbar() {
               className="flex items-center space-x-2"
             >
               <MessageCircle className="h-4 w-4" />
-              <span>{tUi('whatsapp')}</span>
+              <span>{tUi("whatsapp")}</span>
             </Button>
           </div>
 
@@ -105,7 +107,7 @@ export default function Navbar() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded="false"
           >
-            <span className="sr-only">{tUi('openMainMenu')}</span>
+            <span className="sr-only">{tUi("openMainMenu")}</span>
             {mobileMenuOpen ? (
               <X className="h-6 w-6" />
             ) : (
@@ -120,14 +122,14 @@ export default function Navbar() {
         <div className="lg:hidden">
           <div className="border-t border-gray-200 bg-white px-4 pb-6 pt-4 shadow-lg">
             <div className="space-y-1">
-              {navigation.map(item => (
+              {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
                   className={`block rounded-lg px-3 py-3 text-base font-medium transition-colors duration-200 ${
                     isActive(item.href)
-                      ? 'bg-brand-light text-brand'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-brand'
+                      ? "bg-brand-light text-brand"
+                      : "text-gray-600 hover:bg-gray-50 hover:text-brand"
                   }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -140,7 +142,9 @@ export default function Navbar() {
                 <LanguageSwitcher />
               </div>
               <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full justify-center">{t('contact')}</Button>
+                <Button className="w-full justify-center">
+                  {t("contact")}
+                </Button>
               </Link>
               <Button
                 variant="outline"
@@ -151,7 +155,7 @@ export default function Navbar() {
                 }}
               >
                 <MessageCircle className="h-4 w-4" />
-                <span>{tUi('whatsapp')}</span>
+                <span>{tUi("whatsapp")}</span>
               </Button>
             </div>
           </div>

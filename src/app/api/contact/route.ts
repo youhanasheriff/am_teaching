@@ -1,36 +1,48 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
-import { z } from 'zod';
-import { CONTACT_INFO, createWhatsAppUrl } from '@/lib/constants';
+import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
+import { z } from "zod";
+import { CONTACT_INFO, createWhatsAppUrl } from "@/lib/constants";
 
 // Enhanced validation schema for contact form
 const contactSchema = z.object({
   name: z
     .string()
-    .min(1, 'Name is required')
-    .max(100, 'Name is too long')
-    .regex(/^[a-zA-Z\s]+$/, 'Name can only contain letters and spaces'),
+    .min(1, "Name is required")
+    .max(100, "Name is too long")
+    .regex(/^[a-zA-Z\s]+$/, "Name can only contain letters and spaces"),
   email: z
     .string()
-    .email('Invalid email address')
-    .max(255, 'Email is too long'),
+    .email("Invalid email address")
+    .max(255, "Email is too long"),
   phone: z
     .string()
     .optional()
-    .refine((val) => !val || val.trim().length === 0 || /^[\+]?[1-9][\d]{0,15}$/.test(val.replace(/[\s\-\(\)]/g, '')), {
-      message: 'Please enter a valid phone number',
-    }),
+    .refine(
+      (val) =>
+        !val ||
+        val.trim().length === 0 ||
+        /^[\+]?[1-9][\d]{0,15}$/.test(val.replace(/[\s\-\(\)]/g, "")),
+      {
+        message: "Please enter a valid phone number",
+      }
+    ),
   telegram: z
     .string()
     .optional()
-    .refine((val) => !val || val.trim().length === 0 || /^@?[a-zA-Z0-9_]{5,32}$/.test(val.trim()), {
-      message: 'Please enter a valid Telegram username (e.g., @username)',
-    }),
-  lessonType: z.string().min(1, 'Please select a lesson type'),
+    .refine(
+      (val) =>
+        !val ||
+        val.trim().length === 0 ||
+        /^@?[a-zA-Z0-9_]{5,32}$/.test(val.trim()),
+      {
+        message: "Please enter a valid Telegram username (e.g., @username)",
+      }
+    ),
+  lessonType: z.string().min(1, "Please select a lesson type"),
   message: z
     .string()
-    .min(10, 'Message must be at least 10 characters long')
-    .max(2000, 'Message is too long'),
+    .min(10, "Message must be at least 10 characters long")
+    .max(2000, "Message is too long"),
 });
 
 // Initialize Resend
@@ -49,9 +61,9 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            error: 'Validation failed',
+            error: "Validation failed",
             details: validationError.issues.map((err) => ({
-              field: err.path.join('.'),
+              field: err.path.join("."),
               message: err.message,
             })),
           },
@@ -65,12 +77,12 @@ export async function POST(request: NextRequest) {
 
     // Primary email address as specified
     const teacherEmail = CONTACT_INFO.EMAIL;
-    const fromEmail = process.env.CONTACT_FROM_EMAIL || 'noreply@sheriax.com';
+    const fromEmail = process.env.CONTACT_FROM_EMAIL || "noreply@sheriax.com";
 
     // Check if Resend is configured
     if (!process.env.RESEND_API_KEY) {
       // If Resend is not configured, log the message and return success
-      console.log('Contact form submission (Resend not configured):', {
+      console.log("Contact form submission (Resend not configured):", {
         name,
         email,
         lessonType,
@@ -80,7 +92,7 @@ export async function POST(request: NextRequest) {
 
       return NextResponse.json({
         success: true,
-        message: 'Thank you for your message! I will get back to you soon.',
+        message: "Thank you for your message! I will get back to you soon.",
       });
     }
 
@@ -110,14 +122,22 @@ export async function POST(request: NextRequest) {
                     <td style="padding: 8px 0; font-weight: bold; color: #374151;">Email:</td>
                     <td style="padding: 8px 0; color: #6b7280;">${email}</td>
                   </tr>
-                  ${phone ? `<tr>
+                  ${
+                    phone
+                      ? `<tr>
                     <td style="padding: 8px 0; font-weight: bold; color: #374151;">Phone:</td>
                     <td style="padding: 8px 0; color: #6b7280;">${phone}</td>
-                  </tr>` : ''}
-                  ${telegram ? `<tr>
+                  </tr>`
+                      : ""
+                  }
+                  ${
+                    telegram
+                      ? `<tr>
                     <td style="padding: 8px 0; font-weight: bold; color: #374151;">Telegram:</td>
                     <td style="padding: 8px 0; color: #6b7280;">${telegram}</td>
-                  </tr>` : ''}
+                  </tr>`
+                      : ""
+                  }
                   <tr>
                     <td style="padding: 8px 0; font-weight: bold; color: #374151;">Interested in:</td>
                     <td style="padding: 8px 0; color: #6b7280;">${lessonType}</td>
@@ -153,7 +173,7 @@ export async function POST(request: NextRequest) {
       const userEmailResult = await resend.emails.send({
         from: fromEmail,
         to: email,
-        subject: 'Thank you for contacting AM Teachings!',
+        subject: "Thank you for contacting AM Teachings!",
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <div style="background: #3b82f6; color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
@@ -185,7 +205,7 @@ export async function POST(request: NextRequest) {
                      CONTACT_INFO.EMAIL
                    }" style="color: #3b82f6;">${CONTACT_INFO.EMAIL}</a><br>
                    💬 Telegram: <a href="${createWhatsAppUrl(
-                     'Hello Aya!'
+                     "Hello Aya!"
                    )}" style="color: #3b82f6;">Send Telegram Message</a>
                  </p>
               </div>
@@ -202,7 +222,7 @@ export async function POST(request: NextRequest) {
       });
 
       // Log successful email sending
-      console.log('Contact form emails sent successfully:', {
+      console.log("Contact form emails sent successfully:", {
         teacherEmailId: teacherEmailResult.data?.id,
         userEmailId: userEmailResult.data?.id,
         timestamp: new Date().toISOString(),
@@ -211,28 +231,30 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({
         success: true,
         message:
-          'Thank you for your message! I will get back to you within 24 hours.',
+          "Thank you for your message! I will get back to you within 24 hours.",
       });
     } catch (emailError) {
-      console.error('Error sending emails:', emailError);
+      console.error("Error sending emails:", emailError);
 
       // Return success even if email fails, but log the issue
       return NextResponse.json({
         success: true,
-        message: 'Thank you for your message! I will get back to you soon.',
-        warning: 'Email delivery may be delayed',
+        message: "Thank you for your message! I will get back to you soon.",
+        warning: "Email delivery may be delayed",
       });
     }
   } catch (error: unknown) {
-    console.error('Contact form error:', error);
+    console.error("Contact form error:", error);
 
     return NextResponse.json(
       {
         success: false,
         error:
-          'An unexpected error occurred. Please try again or contact us directly.',
+          "An unexpected error occurred. Please try again or contact us directly.",
         details:
-          process.env.NODE_ENV === 'development' && error instanceof Error ? error.message : undefined,
+          process.env.NODE_ENV === "development" && error instanceof Error
+            ? error.message
+            : undefined,
       },
       { status: 500 }
     );

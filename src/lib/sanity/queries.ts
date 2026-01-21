@@ -1,4 +1,4 @@
-import { groq } from 'next-sanity';
+import { groq } from "next-sanity";
 
 // Fetch all approved testimonials, ordered by approval date (newest first)
 export const approvedTestimonialsQuery = groq`

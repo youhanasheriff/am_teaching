@@ -239,7 +239,7 @@
   width: 90%;
 }
 .splash-title {
-  font-family: 'Great Vibes', cursive;
+  font-family: "Great Vibes", cursive;
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: normal;
   margin-bottom: 1rem;
@@ -258,7 +258,7 @@
 }
 .splash-title.rtl {
   direction: rtl;
-  font-family: 'Aref Ruqaa', serif;
+  font-family: "Aref Ruqaa", serif;
 }
 @keyframes text-fade-in {
   from {

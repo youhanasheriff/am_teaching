@@ -14,10 +14,10 @@ export interface BlogPost {
 // Sample blog posts for AM Teachings
 export const blogPosts: BlogPost[] = [
   {
-    id: '2',
-    title: 'How to Improve Your English Speaking Confidence in 30 Days',
+    id: "2",
+    title: "How to Improve Your English Speaking Confidence in 30 Days",
     excerpt:
-      'A practical 30-day plan to boost your speaking confidence, overcome fear, and start expressing yourself naturally in English.',
+      "A practical 30-day plan to boost your speaking confidence, overcome fear, and start expressing yourself naturally in English.",
     content: `
 # How to Improve Your English Speaking Confidence in 30 Days
 
@@ -157,18 +157,18 @@ The most important step? Start today. Your future confident English-speaking sel
 
 *Ready to take your speaking to the next level? Book a conversation practice session to work on your specific challenges with personalized feedback.*
     `,
-    author: 'Aya Mohsen',
-    publishedAt: '2024-03-10',
-    readingTime: '12 min read',
-    category: 'Speaking Skills',
-    tags: ['Speaking', 'Confidence', 'Practice', 'Fluency'],
-    slug: 'improve-english-speaking-confidence-30-days',
+    author: "Aya Mohsen",
+    publishedAt: "2024-03-10",
+    readingTime: "12 min read",
+    category: "Speaking Skills",
+    tags: ["Speaking", "Confidence", "Practice", "Fluency"],
+    slug: "improve-english-speaking-confidence-30-days",
   },
   {
-    id: '3',
-    title: 'The Ultimate Guide to English Grammar for Intermediate Learners',
+    id: "3",
+    title: "The Ultimate Guide to English Grammar for Intermediate Learners",
     excerpt:
-      'Master the most important grammar concepts that will take your English from good to great. A comprehensive guide for intermediate students.',
+      "Master the most important grammar concepts that will take your English from good to great. A comprehensive guide for intermediate students.",
     content: `
 # The Ultimate Guide to English Grammar for Intermediate Learners
 
@@ -351,12 +351,12 @@ Remember: Grammar is a tool for communication, not a goal in itself. The more yo
 
 *Want personalized grammar help? Book a lesson to work on your specific grammar challenges with targeted exercises and immediate feedback.*
     `,
-    author: 'Aya Mohsen',
-    publishedAt: '2024-03-05',
-    readingTime: '15 min read',
-    category: 'Grammar',
-    tags: ['Grammar', 'Intermediate', 'English Learning', 'Language Skills'],
-    slug: 'ultimate-english-grammar-guide-intermediate',
+    author: "Aya Mohsen",
+    publishedAt: "2024-03-05",
+    readingTime: "15 min read",
+    category: "Grammar",
+    tags: ["Grammar", "Intermediate", "English Learning", "Language Skills"],
+    slug: "ultimate-english-grammar-guide-intermediate",
   },
 ];
 
@@ -368,13 +368,13 @@ export function getBlogPosts(): BlogPost[] {
 }
 
 export function getBlogPostBySlug(slug: string): BlogPost | null {
-  return blogPosts.find(post => post.slug === slug) || null;
+  return blogPosts.find((post) => post.slug === slug) || null;
 }
 
 export function getBlogPostsByCategory(category: string): BlogPost[] {
-  return blogPosts.filter(post => post.category === category);
+  return blogPosts.filter((post) => post.category === category);
 }
 
 export function getBlogPostsByTag(tag: string): BlogPost[] {
-  return blogPosts.filter(post => post.tags.includes(tag));
+  return blogPosts.filter((post) => post.tags.includes(tag));
 }
