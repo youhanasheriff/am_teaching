@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "upload-testimonials": "npx tsx scripts/upload-testimonials.ts"
+    "upload-testimonials": "npx tsx scripts/upload-testimonials.ts",
+    "update-testimonials": "npx tsx scripts/update-testimonials.ts"
   },
   "dependencies": {
     "@react-email/render": "^1.2.3",
