@@ -12,7 +12,6 @@ import {
   Trophy,
   ArrowRight,
   Star,
-  CheckCircle,
 } from "lucide-react";
 import { createWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
 

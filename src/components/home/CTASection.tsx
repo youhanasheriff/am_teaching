@@ -26,7 +26,7 @@ export default function CTASection() {
       <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
 
       <div className="container relative z-10 text-center">
-        <div className="max-w-3xl mx-auto space-y-8 glass p-10 rounded-3xl shadow-2xl border-white/20">
+        <div className="max-w-3xl mx-auto space-y-8 bg-white/10 backdrop-blur-md p-10 rounded-3xl shadow-2xl border border-white/20">
           <div className="inline-flex items-center rounded-full bg-white/20 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm border border-white/30 mb-2">
             <Sparkles className="mr-2 h-4 w-4 text-yellow-300" /> 
             <span>Start your journey today</span>

@@ -11,45 +11,114 @@ function HeroSection() {
   return (
     <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
        {/* Animated Background */}
-       <div className="absolute inset-0 bg-gradient-to-br from-brand-light via-white to-brand-secondary/5"></div>
-       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand/10 rounded-full blur-[100px] animate-float opacity-70 pointer-events-none"></div>
-       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-secondary/10 rounded-full blur-[100px] animate-pulse-soft opacity-70 pointer-events-none"></div>
+       <div className="absolute inset-0 bg-gradient-hero pointer-events-none"></div>
+       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand/5 rounded-full blur-[100px] animate-float opacity-70 pointer-events-none"></div>
+       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-secondary/5 rounded-full blur-[100px] animate-pulse-soft opacity-70 pointer-events-none"></div>
        
-       <div className="container relative z-10 text-center">
-        <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up">
-          <div className="inline-flex items-center rounded-full bg-brand/10 px-4 py-1.5 text-sm font-medium text-brand border border-brand/10 backdrop-blur-sm">
-            <Rocket className="mr-2 h-4 w-4" />
-            <span>Elevate Your English Skills</span>
+       <div className="container relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          {/* Left Column: Content */}
+          <div className="max-w-2xl space-y-8 animate-fade-in-up text-center lg:text-left">
+            <div className="inline-flex items-center rounded-full bg-brand/10 px-4 py-1.5 text-sm font-medium text-brand border border-brand/10 backdrop-blur-sm self-start">
+              <Rocket className="mr-2 h-4 w-4" />
+              <span>{tServices("hero.tagline")}</span>
+            </div>
+            
+            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl leading-tight">
+              {tServices("title")}
+            </h1>
+            <p className="lead text-gray-600 text-xl leading-relaxed">
+              {tServices("subtitle")}
+            </p>
+            <div className="flex flex-col gap-4 sm:flex-row pt-6 justify-center lg:justify-start">
+              <Link href="/contact">
+                <Button
+                  size="lg"
+                  variant="gradient"
+                  className="w-full sm:w-auto flex items-center space-x-2 text-lg px-8 shadow-lg shadow-brand/20"
+                >
+                  <div className="flex items-center gap-2">
+                    <MessageCircle className="h-5 w-5" />
+                    <span>{tServices("contactMe")}</span>
+                  </div>
+                </Button>
+              </Link>
+              <a href="#levels">
+                 <Button
+                  size="lg"
+                  variant="outline" 
+                  className="w-full sm:w-auto text-gray-700 border-gray-200 hover:bg-white hover:text-brand hover:border-brand/30 hover:shadow-md"
+                >
+                  {tServices("hero.exploreLevels")} <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="pt-8 flex items-center justify-center lg:justify-start gap-6 text-sm text-gray-500">
+               <div className="flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4 text-green-500" />
+                  <span>{tServices("hero.trust.certified")}</span>
+               </div>
+               <div className="flex items-center gap-2">
+                  <Trophy className="h-4 w-4 text-orange-500" />
+                  <span>{tServices("hero.trust.proven")}</span>
+               </div>
+               <div className="flex items-center gap-2">
+                  <BookOpen className="h-4 w-4 text-blue-500" />
+                  <span>{tServices("hero.trust.custom")}</span>
+               </div>
+            </div>
           </div>
-          
-          <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-7xl">
-            {tServices("title")}
-          </h1>
-          <p className="lead text-gray-600 max-w-2xl mx-auto text-xl leading-relaxed">
-            {tServices("subtitle")}
-          </p>
-          <div className="flex flex-col gap-4 sm:flex-row sm:justify-center pt-6">
-            <Link href="/contact">
-              <Button
-                size="lg"
-                variant="gradient"
-                className="w-full sm:w-auto flex items-center space-x-2 text-lg px-8 shadow-lg shadow-brand/20"
-              >
-                <div className="flex items-center gap-2">
-                  <MessageCircle className="h-5 w-5" />
-                  <span>{tServices("contactMe")}</span>
+
+          {/* Right Column: Visual Composition */}
+          <div className="relative hidden lg:block perspective-1000">
+             <div className="relative w-full aspect-square max-w-[500px] mx-auto">
+                {/* Main Card */}
+                <div className="absolute inset-4 glass rounded-[2.5rem] shadow-2xl border-white/50 flex flex-col items-center justify-center p-8 z-20 animate-float">
+                   <div className="w-24 h-24 bg-gradient-to-br from-brand to-brand-secondary rounded-3xl flex items-center justify-center mb-6 shadow-lg shadow-brand/30">
+                      <Target className="h-12 w-12 text-white" />
+                   </div>
+                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{tServices("hero.card.title")}</h3>
+                   <p className="text-gray-500 text-center">{tServices("hero.card.subtitle")}</p>
+                   
+                   {/* Floating Elements */}
+                   <div className="absolute -top-6 -right-6 glass-dark p-4 rounded-2xl shadow-xl animate-float-delayed">
+                      <div className="flex items-center gap-3">
+                         <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white font-bold">
+                            98%
+                         </div>
+                         <div className="text-xs text-white/90">
+                            <div className="font-bold">Success</div>
+                            <div>Rate</div>
+                         </div>
+                      </div>
+                   </div>
+
+                   <div className="absolute -bottom-8 -left-8 bg-white p-4 rounded-2xl shadow-xl animate-float border border-gray-100">
+                      <div className="flex items-center gap-3">
+                         <div className="flex -space-x-3">
+                            <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-gray-200">
+                              <img src="https://i.pravatar.cc/100?img=1" alt="Student" className="w-full h-full object-cover" />
+                            </div>
+                            <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-gray-200">
+                              <img src="https://i.pravatar.cc/100?img=5" alt="Student" className="w-full h-full object-cover" />
+                            </div>
+                            <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-gray-200">
+                              <img src="https://i.pravatar.cc/100?img=8" alt="Student" className="w-full h-full object-cover" />
+                            </div>
+                         </div>
+                         <div className="text-xs font-bold text-gray-700">
+                            {tServices("hero.card.students")}
+                         </div>
+                      </div>
+                   </div>
                 </div>
-              </Button>
-            </Link>
-            <a href="#levels">
-               <Button
-                size="lg"
-                variant="outline" 
-                className="w-full sm:w-auto text-gray-700 border-gray-200 hover:bg-gray-50 hover:text-brand"
-              >
-                Explore Levels <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </a>
+                
+                {/* Background Shapes */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-secondary/20 rounded-full blur-3xl -z-10"></div>
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand/20 rounded-full blur-3xl -z-10"></div>
+             </div>
           </div>
         </div>
       </div>
