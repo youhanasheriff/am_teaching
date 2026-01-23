@@ -184,6 +184,21 @@
   "services": {
     "title": "English Learning Services",
     "subtitle": "From beginner foundations to advanced fluency and IELTS mastery. Choose the perfect program to achieve your English learning goals.",
+    "hero": {
+      "tagline": "Elevate Your English Skills",
+      "exploreLevels": "Explore Levels",
+      "trust": {
+        "certified": "Certified Teachers",
+        "proven": "Proven Results",
+        "custom": "Custom Curriculum"
+      },
+      "card": {
+        "title": "Goal Oriented",
+        "subtitle": "We track your progress every step of the way",
+        "successRate": "Success Rate",
+        "students": "100+ Students"
+      }
+    },
     "generalEnglish": "General English",
     "spokenEnglish": "Spoken English",
     "ieltsPreparation": "IELTS Preparation",
@@ -342,6 +357,7 @@
   "testimonials": {
     "title": "What My Students Say",
     "subtitle": "Real success stories from students who achieved their English learning goals",
+    "ctaText": "Join hundreds of successful students",
     "shareYourStory": "Share Your Success Story",
     "viewMore": "View More",
     "showLess": "Show Less",
