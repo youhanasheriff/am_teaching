@@ -4,16 +4,34 @@ import { cn } from "@/lib/utils";
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   hover?: boolean;
+  glass?: boolean;
+  gradient?: boolean;
 }
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ className, children, hover = true, ...props }, ref) => {
+  ({ className, children, hover = true, glass = false, gradient = false, ...props }, ref) => {
+    const baseStyles = "rounded-2xl p-6 transition-all duration-300";
+    
+    const glassStyles = glass
+      ? "bg-white/70 backdrop-blur-xl border border-white/50 shadow-lg"
+      : "bg-white border border-gray-100 shadow-lg";
+    
+    const gradientStyles = gradient
+      ? "bg-gradient-to-br from-white to-gray-50"
+      : "";
+    
+    const hoverStyles = hover
+      ? "hover:shadow-xl hover:shadow-brand/10 hover:-translate-y-1"
+      : "";
+
     return (
       <div
         ref={ref}
         className={cn(
-          "rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-200 transition-all duration-200",
-          hover && "hover:shadow-xl hover:ring-gray-300",
+          baseStyles,
+          glassStyles,
+          gradientStyles,
+          hoverStyles,
           className
         )}
         {...props}
@@ -45,7 +63,7 @@ const CardTitle = React.forwardRef<
   <h3
     ref={ref}
     className={cn(
-      "font-semibold text-xl text-gray-900 leading-none tracking-tight",
+      "font-bold text-xl text-gray-900 leading-none tracking-tight",
       className
     )}
     {...props}
@@ -57,7 +75,7 @@ const CardDescription = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (
-  <p ref={ref} className={cn("text-gray-600", className)} {...props} />
+  <p ref={ref} className={cn("text-gray-500 text-sm", className)} {...props} />
 ));
 CardDescription.displayName = "CardDescription";
 

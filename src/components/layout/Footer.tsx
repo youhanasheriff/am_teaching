@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
-import { Mail, Globe, Clock, MessageCircle } from "lucide-react";
+import { Mail, Globe, Clock, MessageCircle, ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import {
   CONTACT_INFO,
@@ -37,72 +37,67 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-900" aria-labelledby="footer-heading">
+    <footer className="bg-gray-900 overflow-hidden relative" aria-labelledby="footer-heading">
+      {/* Background decorations */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent opacity-50"></div>
+      <div className="absolute -top-40 -right-40 w-96 h-96 bg-brand/10 rounded-full blur-3xl opacity-30"></div>
+      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-brand-secondary/10 rounded-full blur-3xl opacity-30"></div>
+
       <h2 id="footer-heading" className="sr-only">
         {tFooter("footerHeading")}
       </h2>
-      <div className="container py-12 lg:py-16">
+      <div className="container py-12 lg:py-16 relative z-10">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
             {/* Logo and description */}
-            <div className="flex items-center space-x-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand text-white font-bold text-lg">
-                AM
+            <Link href="/" className="flex items-center space-x-3 group">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand to-brand-secondary text-white font-bold text-lg shadow-lg shadow-brand/25 group-hover:scale-105 transition-transform duration-300">
+                <Sparkles className="h-5 w-5" />
               </div>
               <div>
                 <span className="text-xl font-bold text-white">
                   {tFooter("brandName")}
                 </span>
-                <p className="text-sm text-gray-400 -mt-1">
+                <p className="text-sm text-gray-400 -mt-0.5">
                   {tFooter("brandTagline")}
                 </p>
               </div>
-            </div>
-            <p className="text-gray-400 text-sm max-w-md">
+            </Link>
+            <p className="text-gray-400 text-sm max-w-md leading-relaxed">
               {tFooter("description")}
             </p>
 
             {/* WhatsApp Contact */}
-            <div className="bg-green-900/30 border border-green-800 rounded-lg p-4">
+            <div className="bg-gray-800/50 border border-gray-700/50 backdrop-blur-sm rounded-2xl p-5 hover:border-gray-600 transition-colors duration-300">
               <div className="flex items-center space-x-3 mb-3">
-                <MessageCircle className="h-5 w-5 text-green-400" />
+                <div className="bg-green-500/10 p-2 rounded-lg">
+                  <MessageCircle className="h-5 w-5 text-green-400" />
+                </div>
                 <span className="text-sm font-medium text-green-400">
                   {tFooter("quickContact")}
                 </span>
               </div>
-              <p className="text-gray-300 text-sm mb-3">
+              <p className="text-gray-300 text-sm mb-4">
                 {tFooter("quickContactDescription")}
               </p>
               <Button
                 onClick={handleWhatsAppContact}
                 size="sm"
-                className="bg-green-600 hover:bg-green-700 text-white flex items-center space-x-2"
+                className="w-full bg-green-600 hover:bg-green-500 text-white border-none shadow-lg shadow-green-900/20 group"
               >
-                <MessageCircle className="h-4 w-4" />
-                <span>{tFooter("messageWhatsApp")}</span>
+                <div className="flex items-center justify-center space-x-2">
+                  <MessageCircle className="h-4 w-4" />
+                  <span>{tFooter("messageWhatsApp")}</span>
+                  <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                </div>
               </Button>
-            </div>
-
-            <div className="flex space-x-6">
-              {navigation.social.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-400 hover:text-brand transition-colors duration-200 cursor-pointer"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="sr-only">{item.name}</span>
-                  {item.icon}
-                </a>
-              ))}
             </div>
           </div>
 
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold leading-6 text-white">
+                <h3 className="text-sm font-semibold leading-6 text-white uppercase tracking-wider">
                   {tFooter("navigation")}
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
@@ -110,8 +105,9 @@ export default function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="text-sm leading-6 text-gray-400 hover:text-brand transition-colors duration-200"
+                        className="text-sm leading-6 text-gray-400 hover:text-brand-primary-light transition-colors duration-200 flex items-center group"
                       >
+                        <span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-200 mr-0 group-hover:mr-1 opacity-0 group-hover:opacity-100">›</span>
                         {item.name}
                       </Link>
                     </li>
@@ -119,24 +115,24 @@ export default function Footer() {
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-white">
+                <h3 className="text-sm font-semibold leading-6 text-white uppercase tracking-wider">
                   {tFooter("contact")}
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
-                  <li className="flex items-center space-x-2">
-                    <Mail className="h-4 w-4 text-gray-400" />
+                  <li className="flex items-start space-x-3">
+                    <Mail className="h-5 w-5 text-brand shrink-0 mt-0.5" />
                     <span className="text-sm leading-6 text-gray-400">
                       {CONTACT_INFO.EMAIL}
                     </span>
                   </li>
-                  <li className="flex items-center space-x-2">
-                    <Globe className="h-4 w-4 text-gray-400" />
+                  <li className="flex items-start space-x-3">
+                    <Globe className="h-5 w-5 text-brand shrink-0 mt-0.5" />
                     <span className="text-sm leading-6 text-gray-400">
                       {tFooter("onlineLessons")}
                     </span>
                   </li>
-                  <li className="flex items-center space-x-2">
-                    <Clock className="h-4 w-4 text-gray-400" />
+                  <li className="flex items-start space-x-3">
+                    <Clock className="h-5 w-5 text-brand shrink-0 mt-0.5" />
                     <span className="text-sm leading-6 text-gray-400">
                       {tFooter("availableSchedule")}
                     </span>
@@ -146,31 +142,34 @@ export default function Footer() {
             </div>
             <div className="md:grid md:grid-cols-1">
               <div>
-                <h3 className="text-sm font-semibold leading-6 text-white">
+                <h3 className="text-sm font-semibold leading-6 text-white uppercase tracking-wider">
                   {tFooter("quickLinks")}
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
                   <li>
                     <Link
                       href="/contact"
-                      className="text-sm leading-6 text-brand hover:text-brand-dark transition-colors duration-200 font-medium"
+                      className="text-sm leading-6 text-brand hover:text-brand-primary-light transition-colors duration-200 font-medium flex items-center group"
                     >
+                       <span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-200 mr-0 group-hover:mr-1 opacity-0 group-hover:opacity-100">›</span>
                       {tFooter("contactMe")}
                     </Link>
                   </li>
                   <li>
                     <Link
                       href="/services"
-                      className="text-sm leading-6 text-gray-400 hover:text-brand transition-colors duration-200"
+                      className="text-sm leading-6 text-gray-400 hover:text-brand-primary-light transition-colors duration-200 flex items-center group"
                     >
+                       <span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-200 mr-0 group-hover:mr-1 opacity-0 group-hover:opacity-100">›</span>
                       {tFooter("teachingServices")}
                     </Link>
                   </li>
                   <li>
                     <Link
                       href="/blog"
-                      className="text-sm leading-6 text-gray-400 hover:text-brand transition-colors duration-200"
+                      className="text-sm leading-6 text-gray-400 hover:text-brand-primary-light transition-colors duration-200 flex items-center group"
                     >
+                       <span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-200 mr-0 group-hover:mr-1 opacity-0 group-hover:opacity-100">›</span>
                       {tFooter("learningResources")}
                     </Link>
                   </li>
@@ -188,13 +187,13 @@ export default function Footer() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-sm leading-6 text-gray-400 hover:text-brand transition-colors duration-200"
+                  className="text-sm leading-6 text-gray-500 hover:text-gray-300 transition-colors duration-200"
                 >
                   {item.name}
                 </Link>
               ))}
             </div>
-            <p className="mt-8 text-sm leading-5 text-gray-400 md:order-1 md:mt-0">
+            <p className="mt-8 text-sm leading-5 text-gray-500 md:order-1 md:mt-0">
               {tFooter("copyrightExtended", { year: new Date().getFullYear() })}
             </p>
           </div>
